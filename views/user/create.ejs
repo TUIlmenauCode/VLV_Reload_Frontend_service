@@ -154,7 +154,7 @@
     
     <ul class="costum_error_list">
         <% apiErrors.forEach(function(err) { %>
-            <li class="costum_error_item"> <%- err %> <span onclick="remove_error()"><i class="icofont icofont-close-line-circled"></i> </span></li>
+            <li class="costum_error_item"> <%- err %> <span onclick="remove_error(this)"><i class="icofont icofont-close-line-circled"></i> </span></li>
         <% }); %>
     </ul>
      
@@ -188,8 +188,8 @@
 
     <script>
     
-    function remove_error(){
-
+    function remove_error(child){
+        $( child ).parent().fadeOut("slow");
     }
 
     $(document).ready(function(){
