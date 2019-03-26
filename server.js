@@ -12,6 +12,9 @@ var bodyParser = require('body-parser');
 var cors=require('cors');
 var session = require('express-session');
 const fileUpload = require('express-fileupload');
+const utility = require("./utility");
+
+// Const 
 
 
 
@@ -28,8 +31,8 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, './public')));
-//app.use(express.static('public'));
+//app.use('/static', express.static(__dirname + './public'));
+app.use(express.static('public'));
 app.use(session({ secret: 'krunal', resave: false, saveUninitialized: true, }));
 
 
@@ -53,6 +56,15 @@ app.get('/', function (req, res, next) {
 
 
 app.use("/user", user_Route);
+
+// app.get("/user/login", function(req, res, next){
+
+//   var data = {
+//     url : utility.domain
+//   }
+
+//   res.render("user/login", data)  ;
+// })
 
 
 
