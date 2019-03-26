@@ -151,9 +151,16 @@
     </section>
     <%- include('../parts/html-foot.ejs', {url : url}); %>
 
-    <% if (typeof apiErrors !== 'undefined') { %>
+    <script>
+    
+    var errors = <% if (typeof apiErrors !== 'undefined') { %>
         <%= apiErrors %>
         <% } %>
+    ;
+    
+    
+    </script>
+    
 </body>
 
 </html>
