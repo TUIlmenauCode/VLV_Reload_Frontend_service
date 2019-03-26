@@ -154,7 +154,7 @@
     
     <ul class="costum_error_list">
         <% apiErrors.forEach(function(err) { %>
-            <li class="costum_error_item"> <%- err %> </li>
+            <li class="costum_error_item"> <%- err %> <span onclick="remove_error()"><i class="icofont icofont-close-line-circled"></i> </span></li>
         <% }); %>
     </ul>
      
@@ -168,15 +168,17 @@
     }
     .costum_error_item{
         margin: 1em;
-        padding: 0.8em;
-        background: white;
-        color:#e83e8c;
-        border: 1px solid #e83e8c;
-        border-radius: 1em;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5)
+padding: 1em 1.4em;
+background: white;
+color: #e83e8c;
+border: 1px solid #e83e8c;
+border-radius: 0.5em;
+box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
     }
     
     </style>
+
+    
     
     
     
