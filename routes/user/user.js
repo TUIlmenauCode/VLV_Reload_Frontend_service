@@ -34,7 +34,7 @@ router.post("/create", function(req, res, next){
             console.log(err);
             var data = {
                 url : utility.domain,
-                apiErrors : JSON.stringify(err)
+                apiErrors : err
             }
             res.render("user/create", data)  ;
         }else{
