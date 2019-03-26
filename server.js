@@ -33,6 +33,10 @@ app.use(express.static('public'));
 app.use(session({ secret: 'krunal', resave: false, saveUninitialized: true, }));
 
 
+// fixed Routes
+
+const user_Route = require("./routes/user/user");
+
 
 
 // ROUTES 
@@ -40,10 +44,15 @@ app.get('/', function (req, res, next) {
   res.send("Hello World! VLV Frontent ")
 });
 
-app.get('/test', function (req, res, next) {
-  res.render('user/login')
-  
-});
+
+
+
+/**
+ *  USER
+ */
+
+
+app.use("/user", user_Route);
 
 
 
