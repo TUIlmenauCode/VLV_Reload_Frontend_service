@@ -151,7 +151,9 @@
     </section>
     <%- include('../parts/html-foot.ejs', {url : url}); %>
 
-    <%= apiResult %>
+    <% if (typeof apiErrors !== 'undefined') { %>
+        <%= apiErrors %>
+        <% } %>
 </body>
 
 </html>
