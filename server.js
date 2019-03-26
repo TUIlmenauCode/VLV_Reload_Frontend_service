@@ -13,11 +13,13 @@ var cors=require('cors');
 var session = require('express-session');
 const fileUpload = require('express-fileupload');
 
+
+
 var app = express();
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/client/views');
+app.set('views', __dirname + '/views');
 app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
@@ -42,6 +44,11 @@ var app = express();
 app.get('/', function (req, res) {
   res.send('Hello World! <br> This is the VLV Frontend');
 });
+
+
+app.get('/test', function(req, res, next){
+  res.render('user/login')
+})
 
 /**
  * Create HTTP server.
