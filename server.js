@@ -55,7 +55,20 @@ app.get('/', function (req, res, next) {
  */
 app.use("/user", user_Route);
 
+app.get("/test", function(req, res, next){
+  
+  var test = require("./models/test")
+  test.start(function(err, result){
+    if (err){
+      console.log(err);
+      res.send("error");
 
+    }else{
+      res.send(JSON.stringify(result));
+    }
+  })
+
+})
 
 
 
