@@ -152,9 +152,9 @@
     <%- include('../parts/html-foot.ejs', {url : url}); %>
 
     
-    <ul>
+    <ul class="costum_error_list">
         <% apiErrors.forEach(function(err) { %>
-            <li class=" costum "> <%- err %> </li>
+            <li class="costum_error_item"> <%- err %> </li>
         <% }); %>
     </ul>
      
