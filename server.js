@@ -18,8 +18,10 @@ const fileUpload = require('express-fileupload');
 var app = express();
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-app.set('view engine', 'ejs');
+
 app.set('views', __dirname + '/views');
+app.engine('ejs', ejs.renderFile);
+app.set('view engine', 'ejs');
 app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
