@@ -44,7 +44,10 @@ const user_Route = require("./routes/user/user");
 
 // ROUTES 
 app.get('/', function (req, res, next) {
-  res.send("Hello World! VLV Frontent ")
+  var data = {
+    url : utility.domain
+  }
+res.render("welcome", data)  ;
 });
 
 
