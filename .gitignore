@@ -60,4 +60,4 @@ typings/
 # next.js build output
 .next
 Design/
-dbconnection.js
+dbConnection.js
