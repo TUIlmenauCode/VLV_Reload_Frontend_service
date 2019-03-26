@@ -151,15 +151,17 @@
     </section>
     <%- include('../parts/html-foot.ejs', {url : url}); %>
 
-    <script>
     
-    var errors = <% if (typeof apiErrors !== 'undefined') { %>
-        <%= apiErrors %>
+    <ul>
+        <% apiErrors.forEach(function(err) { %>
+            <li class=" costum "> <%- apiErrors %> </li>
         <% } %>
-    ;
+    </ul>
+     
+
     
     
-    </script>
+    
     
 </body>
 
