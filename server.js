@@ -13,6 +13,23 @@ var cors=require('cors');
 var session = require('express-session');
 const fileUpload = require('express-fileupload');
 
+var app = express();
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/client/views');
+app.use(cors());
+app.use(logger('dev'));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: false }));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static('public'));
+app.use(session({ secret: 'krunal', resave: false, saveUninitialized: true, }));
+app.use(fileUpload());
+
+
 
 
 
