@@ -1,0 +1,22 @@
+{
+  "name": "vlv_reload_frontend_service",
+  "version": "1.0.0",
+  "description": "Project about interact VLV Resources with User",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TUIlmenauCode/VLV_Reload_Frontend_service.git"
+  },
+  "author": "Kai Gothe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TUIlmenauCode/VLV_Reload_Frontend_service/issues"
+  },
+  "homepage": "https://github.com/TUIlmenauCode/VLV_Reload_Frontend_service#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
