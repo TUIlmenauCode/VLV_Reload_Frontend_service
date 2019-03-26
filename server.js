@@ -47,7 +47,7 @@ app.get('/', function (req, res) {
 
 
 app.get('/test', function(req, res, next){
-  res.render('user/login')
+  res.send('view/user/login.ejs')
 })
 
 /**
