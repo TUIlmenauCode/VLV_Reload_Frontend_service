@@ -23,11 +23,11 @@ const User = {
             errorMessage.push("Deine angegebene E-Mail Adresse ist nicht korrekt")
         }
 
-        if (user_email.match(emailPattern)){
+        if (!user_email.match(emailPattern)){
             errorMessage.push("Deine angegebene E-Mail Adresse ist nicht von der TU Ilmenau")
         }
 
-        if ( new String(user_password).valueOf !== new String(user_password_confirm).valueOf){
+        if ( user_password !== user_password_confirm){
             errorMessage.push("Du hast zwei unterschiedliche Passworter angegeben")
         }
 
