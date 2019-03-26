@@ -9,6 +9,7 @@ function validateEmail(email) {
 const User = {
 
     create:function(user_name, user_email, user_password, user_password_confirm, callback){
+        console.log("Start create user ");
         var errorMessage = [];
         var emailPattern =  /@tu-ilmenau.de+/g
 
