@@ -1,5 +1,5 @@
 /**
- *   REQUIREMENTS 
+ *      REQUIREMENTS
  */
 
 var express = require('express');
@@ -15,13 +15,13 @@ const fileUpload = require('express-fileupload');
 
 
 
+
+// configure app
 var app = express();
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-
-app.set('views', __dirname + '/views');
-app.engine('ejs', ejs.renderFile);
 app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
 app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
@@ -31,26 +31,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(express.static(path.join(__dirname, './public')));
 app.use(express.static('public'));
 app.use(session({ secret: 'krunal', resave: false, saveUninitialized: true, }));
-app.use(fileUpload());
 
 
 
 
+// ROUTES 
+app.get('/', function (req, res, next) {
+  res.send("Hello World! VLV Frontent ")
+});
 
-
-
-
-
-var app = express();
-
-app.get('/', function (req, res) {
-  res.send('Hello World! <br> This is the VLV Frontend');
+app.get('/test', function (req, res, next) {
+  res.render('user/login')
+  
 });
 
 
-app.get('/test', function(req, res, next){
-  res.send('view/user/login.ejs')
-})
 
 /**
  * Create HTTP server.
@@ -70,7 +65,6 @@ server.on('listening', onListening);
 
 
 
-
 /**
  * 
  * FUNCTIONS
@@ -82,60 +76,60 @@ server.on('listening', onListening);
  */
 
 function normalizePort(val) {
-  var port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
+    var port = parseInt(val, 10);
+  
+    if (isNaN(port)) {
+      // named pipe
+      return val;
+    }
+  
+    if (port >= 0) {
+      // port number
+      return port;
+    }
+  
+    return false;
   }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
 
 
 /**
-* Event listener for HTTP server "error" event.
-*/
-
-function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
-
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
-
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-}
-
-
-/**
- * Event listener for HTTP server "listening" event.
+ * Event listener for HTTP server "error" event.
  */
 
-function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
-}
+function onError(error) {
+    if (error.syscall !== 'listen') {
+      throw error;
+    }
+  
+    var bind = typeof port === 'string'
+      ? 'Pipe ' + port
+      : 'Port ' + port;
+  
+    // handle specific listen errors with friendly messages
+    switch (error.code) {
+      case 'EACCES':
+        console.error(bind + ' requires elevated privileges');
+        process.exit(1);
+        break;
+      case 'EADDRINUSE':
+        console.error(bind + ' is already in use');
+        process.exit(1);
+        break;
+      default:
+        throw error;
+    }
+  }
+  
 
+  /**
+   * Event listener for HTTP server "listening" event.
+   */
+  
+  function onListening() {
+    var addr = server.address();
+    var bind = typeof addr === 'string'
+      ? 'pipe ' + addr
+      : 'port ' + addr.port;
+    debug('Listening on ' + bind);
+  }
+  
