@@ -53,18 +53,10 @@ app.get('/', function (req, res, next) {
 /**
  *  USER
  */
-
-
 app.use("/user", user_Route);
 
-// app.get("/user/login", function(req, res, next){
 
-//   var data = {
-//     url : utility.domain
-//   }
 
-//   res.render("user/login", data)  ;
-// })
 
 
 
