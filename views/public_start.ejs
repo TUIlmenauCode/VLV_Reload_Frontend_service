@@ -101,18 +101,33 @@ $(document).ready(function(){
             confirmButtonText: 'Next &rarr;',
             showCancelButton: true,
             title: 'Akademischer Grad',
-                text: 'Bitte wähle deinen angestrebten Akademischen Grad',
-                inputOptions: academicDegreePromise
+            text: 'Bitte wähle deinen angestrebten Akademischen Grad',
+            inputOptions: academicDegreePromise
         }).then((result) => {
                 if (result.value) {
-                Swal.fire({
-                    title: 'All done!',
-                    html:
-                    'Your answers: <pre><code>' +
-                        JSON.stringify(result.value) +
-                    '</code></pre>',
-                    confirmButtonText: 'Lovely!'
-                })
+                    Swal.fire({
+                        input: 'select',
+                        confirmButtonText: 'Next &rarr;',
+                        showCancelButton: true,
+                        title: 'Akademischer Grad',
+                        text: 'Bitte wähle deinen angestrebten Akademischen Grad',
+                        inputOptions: academicDegreePromise
+                    }).then((result) => {
+                            if (result.value) {
+                                Swal.fire({
+                                    input: 'select',
+                                    confirmButtonText: 'Next &rarr;',
+                                    showCancelButton: true,
+                                    title: 'Akademischer Grad',
+                                    text: 'Bitte wähle deinen angestrebten Akademischen Grad',
+                                    inputOptions: academicDegreePromise
+                                }).then((result) => {
+                                        if (result.value) {
+                                            
+                                        }
+                                    })
+                            }
+                        })
                 }
             })
     }
