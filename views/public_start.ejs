@@ -132,16 +132,18 @@ $(document).ready(function(){
             })
     }
 
-    var inputOptionsPromise = new Promise(function (resolve) {
+    
+
+
+});
+
+var inputOptionsPromise = new Promise(function (resolve) {
 
         $.post("https://app.vlv-relod.de/api/AcademicDegree/get_Name_ID", function(data, status){
             resolve(data);
           });
         })
     
-
-
-});
 
 </script>
 
