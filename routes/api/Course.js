@@ -1,8 +1,10 @@
-var dataHandler = require("../../models/db/DB_AcademicDegree");
+const dataHandler = require("../../models/db/DB_Course");
 var express = require('express');
 var router = express.Router();
 
 router.post('/get_Name_ID', function(req, res) {
+    
+
     dataHandler.get_Name_ID(function(err, apiResult){
         if(err){
             console.log(err);
@@ -14,4 +16,3 @@ router.post('/get_Name_ID', function(req, res) {
   });
 
   module.exports = router;
-

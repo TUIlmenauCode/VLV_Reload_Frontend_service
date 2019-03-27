@@ -95,7 +95,6 @@ $(document).ready(function(){
 
 
     function showTour(){
-
         Swal.fire({
             input: 'select',
             confirmButtonText: 'Next &rarr;',
@@ -123,7 +122,18 @@ $(document).ready(function(){
                                     inputOptions: academicDegreePromise
                                 }).then((result) => {
                                         if (result.value) {
-                                            
+                                            Swal.fire({
+                                                input: 'select',
+                                                confirmButtonText: 'Next &rarr;',
+                                                showCancelButton: true,
+                                                title: 'Akademischer Grad',
+                                                text: 'Bitte wähle deinen angestrebten Akademischen Grad',
+                                                inputOptions: academicDegreePromise
+                                            }).then((result) => {
+                                                    if (result.value) {
+                                                        buildCalendar(result.value);
+                                                    }
+                                                })
                                         }
                                     })
                             }
@@ -131,11 +141,11 @@ $(document).ready(function(){
                 }
             })
     }
-
-    
-
-
 });
+
+function buildCalendar(seminar_gruppe){
+    Swal.fire(seminar_gruppe);
+}
 
 var academicDegreePromise = new Promise(function (resolve, reject) {
     $.ajax({
