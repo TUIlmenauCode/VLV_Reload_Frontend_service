@@ -85,4 +85,64 @@
     <%- include('./parts/foot.ejs',{url : url})%>
 </body>
 
+<script>
+
+$(document).ready(function(){
+    
+
+    
+    setTimeout(function(){ showTour(); }, 800);
+
+
+    function showTour(){
+        Swal.mixin({
+                input: 'select',
+                confirmButtonText: 'Next &rarr;',
+                showCancelButton: true,
+                progressSteps: ['1', '2', '3', '4']
+            }).queue([
+                {
+                title: 'Akademischer Grad',
+                text: 'Bitte wähle deinen angestrebten Akademischen Grad',
+                inputOptions: inputOptionsPromise
+                },
+                {
+                title: 'Studienfach',
+                text: 'Bitte wähle deinen ausgewählte Studienrichtung'
+                },
+                {
+                title: 'Fachsemester',
+                text: 'Bitte wähle dein aktuelles Fachsemester'
+                },
+                {
+                title: 'Seminargruppe',
+                text: 'Bitte wähle deine Seminargruppe'
+                }
+            ]).then((result) => {
+                if (result.value) {
+                Swal.fire({
+                    title: 'All done!',
+                    html:
+                    'Your answers: <pre><code>' +
+                        JSON.stringify(result.value) +
+                    '</code></pre>',
+                    confirmButtonText: 'Lovely!'
+                })
+                }
+            })
+    }
+
+    var inputOptionsPromise = new Promise(function (resolve) {
+
+        $.post("https://app.vlv-relod.de/api/AcademicDegree/get_Name_ID", function(data, status){
+            resolve(data);
+          });
+        })
+    
+
+
+});
+
+</script>
+
 </html>

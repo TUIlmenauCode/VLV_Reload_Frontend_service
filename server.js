@@ -40,6 +40,8 @@ app.use(session({ secret: 'krunal', resave: false, saveUninitialized: true, }));
 
 const user_Route = require("./routes/user/user");
 
+const api_AcademicDegree = require("./routes/api/AcademicDegree");
+
 
 
 // ROUTES 
@@ -80,6 +82,12 @@ app.get("/test", function(req, res, next){
 
 })
 
+
+/**
+ *  API 
+ */
+
+app.use("/api/AcademicDegree", api_AcademicDegree);
 
 
 
