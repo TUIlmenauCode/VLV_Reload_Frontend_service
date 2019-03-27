@@ -149,7 +149,9 @@ var inputOptionsPromise = new Promise(function (resolve, reject) {
             var returnObject = [];
             JSON.parse(data).forEach(function(e){
                 console.log(e);
+                returnObject.push( e.academicDegreeID : e.name );
             })
+            console.log(returnObject);
 
             resolve(JSON.parse(data))
         }
