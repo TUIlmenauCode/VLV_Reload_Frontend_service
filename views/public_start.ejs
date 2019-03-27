@@ -95,30 +95,15 @@ $(document).ready(function(){
 
 
     function showTour(){
-        Swal.mixin({
-                input: 'select',
-                confirmButtonText: 'Next &rarr;',
-                showCancelButton: true,
-                progressSteps: ['1', '2', '3', '4']
-            }).queue([
-                {
-                title: 'Akademischer Grad',
+
+        Swal.fire({
+            input: 'select',
+            confirmButtonText: 'Next &rarr;',
+            showCancelButton: true,
+            title: 'Akademischer Grad',
                 text: 'Bitte wähle deinen angestrebten Akademischen Grad',
-                inputOptions: inputOptionsPromise
-                },
-                {
-                title: 'Studienfach',
-                text: 'Bitte wähle deinen ausgewählte Studienrichtung'
-                },
-                {
-                title: 'Fachsemester',
-                text: 'Bitte wähle dein aktuelles Fachsemester'
-                },
-                {
-                title: 'Seminargruppe',
-                text: 'Bitte wähle deine Seminargruppe'
-                }
-            ]).then((result) => {
+                inputOptions: academicDegreePromise
+        }).then((result) => {
                 if (result.value) {
                 Swal.fire({
                     title: 'All done!',
@@ -137,22 +122,15 @@ $(document).ready(function(){
 
 });
 
-var inputOptionsPromise = new Promise(function (resolve, reject) {
+var academicDegreePromise = new Promise(function (resolve, reject) {
     $.ajax({
         url: "https://app.vlv-reload.de/api/AcademicDegree/get_Name_ID",
         method : "POST",
         success: function (data) {
-            
-            console.log(data);
-            console.log(typeof JSON.parse(data));
-
             var returnObject = {};
             JSON.parse(data).forEach(function(e){
-                console.log(e);
                 returnObject[e.academicDegreeID ] = e.name ;
             })
-            console.log(returnObject);
-
             resolve(returnObject)
         }
     });
