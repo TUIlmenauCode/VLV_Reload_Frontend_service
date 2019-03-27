@@ -142,7 +142,13 @@ var inputOptionsPromise = new Promise(function (resolve, reject) {
         url: "https://app.vlv-reload.de/api/AcademicDegree/get_Name_ID",
         method : "POST",
         success: function (data) {
-            console.log(data);
+            
+
+            var returnObject = [];
+            data.forEach(function(e){
+                console.log(e);
+            })
+
             resolve(JSON.parse(data))
         }
     });
