@@ -104,6 +104,8 @@ $(document).ready(function(){
             inputOptions: academicDegreePromise
         }).then((result) => {
                 if (result.value) {
+                    console.log(result.value);
+                    console.log(typeof result.value);
                     Swal.fire({
                         input: 'select',
                         confirmButtonText: 'Next &rarr;',
@@ -161,7 +163,42 @@ var academicDegreePromise = new Promise(function (resolve, reject) {
     });
 });
 
+var semesterPromise = new Promise(function (resolve, reject) {
+    $.ajax({
+        url: "https://app.vlv-reload.de/api/Semester/get_Name_ID",
+        method : "POST",
+        success: function (data) {
+            var returnObject = {};
+            JSON.parse(data).forEach(function(e){
+                returnObject[e.semesterID ] = e.name ;
+            })
+            resolve(returnObject)
+        }
+    });
+});
+
 var CoursePromise = function(grade){
+    return new Promise(function (resolve, reject) {
+        $.ajax({
+            url: "https://app.vlv-reload.de/api/Course/get_Name_ID",
+            method : "POST",
+            data: {'AcademicDegree' : 3},
+            success: function (data) {
+                console.log(data);
+                var returnObject = {};
+                JSON.parse(data).forEach(function(e){
+                    returnObject[e.courseID ] = e.name ;
+                })
+                resolve(returnObject)
+            },
+            error: function(jqxhr, status, exception) {
+             alert('Exception:', exception);
+         }
+        });
+    });
+}
+
+var CoursePromise = function(course, semester){
     return new Promise(function (resolve, reject) {
         $.ajax({
             url: "https://app.vlv-reload.de/api/Course/get_Name_ID",
