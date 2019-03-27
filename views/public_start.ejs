@@ -144,10 +144,10 @@ var inputOptionsPromise = new Promise(function (resolve, reject) {
         success: function (data) {
             
             console.log(data);
-            console.log(typeof data);
+            console.log(typeof JSON.parse(data));
 
             var returnObject = [];
-            data.forEach(function(e){
+            JSON.parse(data).forEach(function(e){
                 console.log(e);
             })
 
