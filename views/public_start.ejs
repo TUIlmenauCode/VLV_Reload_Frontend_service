@@ -108,9 +108,9 @@ $(document).ready(function(){
                         input: 'select',
                         confirmButtonText: 'Next &rarr;',
                         showCancelButton: true,
-                        title: 'Akademischer Grad',
+                        title: 'Fachsemester',
                         text: 'Bitte wähle deinen angestrebten Akademischen Grad',
-                        inputOptions: academicDegreePromise
+                        inputOptions: CoursePromise(result.value)
                     }).then((result) => {
                             if (result.value) {
                                 Swal.fire({
@@ -160,6 +160,26 @@ var academicDegreePromise = new Promise(function (resolve, reject) {
         }
     });
 });
+
+var CoursePromise = function(grade){
+    return new Promise(function (resolve, reject) {
+        $.ajax({
+            url: "https://app.vlv-reload.de/api/Course/get_Name_ID",
+            method : "POST",
+            success: function (data) {
+                console.log(data);
+                var returnObject = {};
+                JSON.parse(data).forEach(function(e){
+                    returnObject[e.courseID ] = e.name ;
+                })
+                resolve(returnObject)
+            }
+        });
+    });
+}
+
+
+
 
 </script>
 

@@ -42,6 +42,8 @@ const user_Route = require("./routes/user/user");
 
 const api_AcademicDegree = require("./routes/api/AcademicDegree");
 const api_Course = require("./routes/api/Course");
+const api_SeminarGroup = require("./routes/api/Seminargroup");
+const api_Semester = require("./routes/api/Semester");
 
 
 
@@ -90,6 +92,8 @@ app.get("/test", function(req, res, next){
 
 app.use("/api/AcademicDegree", api_AcademicDegree);
 app.use("/api/Course", api_Course);
+app.use("/api/Semester", api_Semester);
+app.use("/api/SeminarGroup", api_SeminarGroup);
 
 
 

@@ -1,10 +1,9 @@
-const dataHandler = require("../../models/db/DB_Course");
+var dataHandler = require("../../models/db//DB_Semester");
 var express = require('express');
 var router = express.Router();
 
 router.post('/get_Name_ID', function(req, res) {
-    var AcademicDegree = req.body.AcademicDegree;
-    dataHandler.get_Name_ID(AcademicDegree, function(err, apiResult){
+    dataHandler.get_Name_ID(function(err, apiResult){
         if(err){
             console.log(err);
             res.send(err);
