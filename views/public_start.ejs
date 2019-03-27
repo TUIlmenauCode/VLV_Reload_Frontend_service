@@ -143,6 +143,13 @@ var inputOptionsPromise = new Promise(function (resolve, reject) {
         method : "POST",
         success: function (data) {
             
+        console.log(data);
+
+            // var returnObject = [];
+            // data.forEach(function(e){
+            //     console.log(e);
+            // })
+
             resolve(JSON.parse(data))
         }
     });
