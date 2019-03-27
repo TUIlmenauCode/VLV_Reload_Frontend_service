@@ -51,6 +51,14 @@ app.get('/', function (req, res, next) {
 res.render("welcome", data)  ;
 });
 
+app.get('/public/view',function(req,res,next){
+  var data = {
+    url : utility.domain,
+    page_title : "öffendliche Ansicht"
+  }
+res.render("public_start", data)  ;
+})
+
 
 
 
