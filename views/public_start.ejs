@@ -137,13 +137,15 @@ $(document).ready(function(){
 
 });
 
-var inputOptionsPromise = new Promise(function (resolve) {
-
-        $.post("https://app.vlv-relod.de/api/AcademicDegree/get_Name_ID", function(data, status){
-            resolve(data);
-          });
-        })
-    
+var inputOptionsPromise = new Promise(function (resolve, reject) {
+    $.ajax({
+        url: "https://app.vlv-reload.de/api/AcademicDegree/get_Name_ID",
+        method : "POST",
+        success: function (data) {
+            resolve(JSON.parse(data))
+        }
+    });
+});
 
 </script>
 
