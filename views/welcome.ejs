@@ -1,5 +1,5 @@
 
-<%- include('./parts/head.ejs')%>
+<%- include('./parts/head.ejs',{url : url, page_title : "Willkommen"})%>
 
 <body>
 
@@ -78,7 +78,7 @@
             </div>
         </div>
     </div>
-    <%- include('./parts/foot.ejs')%>
+    <%- include('./parts/foot.ejs',{url : url})%>
 </body>
 
 </html>
