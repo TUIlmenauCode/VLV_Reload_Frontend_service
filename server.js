@@ -45,7 +45,8 @@ const user_Route = require("./routes/user/user");
 // ROUTES 
 app.get('/', function (req, res, next) {
   var data = {
-    url : utility.domain
+    url : utility.domain,
+    page_title : "Willkommen"
   }
 res.render("welcome", data)  ;
 });
@@ -59,13 +60,11 @@ res.render("welcome", data)  ;
 app.use("/user", user_Route);
 
 app.get("/test", function(req, res, next){
-  
   var test = require("./models/test")
   test.start(function(err, result){
     if (err){
       console.log(err);
       res.send("error");
-
     }else{
       res.send(JSON.stringify(result));
     }

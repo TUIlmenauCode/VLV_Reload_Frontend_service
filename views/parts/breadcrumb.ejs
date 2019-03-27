@@ -5,8 +5,14 @@
         <div class="page-header-title">
             <i class="feather icon-home bg-c-blue"></i>
             <div class="d-inline">
-                <h5>Dashboard</h5>
-                <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                <h5><% if (typeof page_title !== 'undefined') { %>
+                    <%= page_title %>
+                    <% } %></h5>
+                <span>
+                <% if (typeof page_description !== 'undefined') { %>
+                    <%= page_description %>
+                    <% } %>
+                </span>
             </div>
         </div>
     </div>
@@ -14,12 +20,19 @@
         <div class="page-header-breadcrumb">
             <ul class=" breadcrumb breadcrumb-title">
                 <li class="breadcrumb-item">
-                    <a href="index.html"><i class="feather icon-home"></i></a>
+                    <a href="<%= url %>"><i class="feather icon-home"></i></a>
                 </li>
-                <li class="breadcrumb-item"><a href="index.html#!">Dashboard</a> </li>
+
+                
+                <% breadcrumb.forEach(function(drink) { %>
+                    <li class="breadcrumb-item"><a href=" <%= url + drink.link %> "><%= drink.name %></a> </li>
+                <% }); %>
             </ul>
         </div>
     </div>
 </div>
 </div>
 <!-- [ breadcrumb ] end -->
+
+
+

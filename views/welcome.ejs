@@ -1,5 +1,5 @@
 
-<%- include('./parts/head.ejs',{url : url, page_title : "Willkommen"})%>
+<%- include('./parts/head.ejs',{url : url, page_title : page_title})%>
 
 <body>
 
@@ -21,8 +21,12 @@
                     
                     <%- include('./parts/side_nav.ejs')%> 
                     <div class="pcoded-content">
-                        <%- include('./parts/breadcrumb.ejs') %>
-                        <div class="pcoded-inner-content">
+                        
+                    <%- include('./parts/breadcrumb.ejs',{url : url , page_description : "Test" , page_title : page_title, breadcrumb : [{name : "Willkommen", link: "/"}]}) %>
+                    
+                        
+                    
+                    <div class="pcoded-inner-content">
                             <div class="main-body">
                                 <div class="page-wrapper">
                                     <div class="page-body">
