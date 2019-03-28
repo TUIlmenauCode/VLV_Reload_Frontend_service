@@ -26,53 +26,57 @@
                     
                         
                     
-                    <div class="pcoded-inner-content">
-                            <div class="main-body">
-                                <div class="page-wrapper">
-                                    <div class="page-body">
-                                        <!-- [ page content ] start -->
-                                        <div class="row">
+                    <div class="pcoded-inner-content full-calender">
+                  <div class="main-body">
+                    <div class="page-wrapper">
 
-                                            <!-- lettest acivity and statustic card start -->
-
-                                            <div class="col-xl-6 col-md-6">
-                                            <div class="card">
-														<div class="card-header">
-															<h5>Hello card</h5>
-														</div>
-														<div class="card-block">
-															<p>
-																Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-																in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                                            </p>
-                                                            <button class="btn waves-effect waves-light btn-success btn-square btn-block">zum öffendlichen Bereich</button>
-														</div>
-													</div>
-                                            </div>
-                                            <div class="col-xl-6 col-md-6">
-                                            <div class="card">
-														<div class="card-header">
-															<h5>Hello card</h5>
-														</div>
-														<div class="card-block">
-															<p>
-																Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-																in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                                            </p>
-                                                            <button class="btn waves-effect waves-light btn-info btn-square btn-block">zum induviduellen Bereich</button>
-														</div>
-													</div>
-                                            </div>
-
-
-                                            <!-- lettest acivity and statustic card end -->
-
-                                        </div>
-                                        <!-- [ page content ] end -->
-                                    </div>
+                      <div class="page-body">
+                        <div class="card">
+                          <div class="card-header">
+                            <h5>Full Calendar</h5>
+                          </div>
+                          <div class="card-block">
+                            <div class="row">
+                              <!--<div class="col-xl-2 col-md-12">
+                                <div id="external-events">
+                                  <h6 class="m-b-30 m-t-20">Events</h6>
+                                  <div class="fc-event ui-draggable ui-draggable-handle">My Event 1</div>
+                                  <div class="fc-event ui-draggable ui-draggable-handle">My Event 2</div>
+                                  <div class="fc-event ui-draggable ui-draggable-handle">My Event 3</div>
+                                  <div class="fc-event ui-draggable ui-draggable-handle">My Event 4</div>
+                                  <div class="fc-event ui-draggable ui-draggable-handle">My Event 5</div>
+                                  <div class="checkbox-fade fade-in-primary m-t-10">
+                                    <label>
+                                      <input type="checkbox" value="">
+                                      <span class="cr">
+                                        <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+                                      </span>
+                                      <span>Remove After Drop</span>
+                                    </label>
+                                  </div>
                                 </div>
+                              </div>-->
+                              <div class="col-xl-10 col-md-12">
+                                <div id='calendar'></div>
+                              </div>
                             </div>
+                          </div>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="page-error">
+                    <div class="card text-center">
+                      <div class="card-block">
+                        <div class="m-t-10">
+                          <i class="icofont icofont-warning text-white bg-c-yellow"></i>
+                          <h4 class="f-w-600 m-t-25">Not supported</h4>
+                          <p class="text-muted m-b-0">Full Calendar not supported in this device</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                     </div>
                     <!-- [ style Customizer ] start -->
                     <div id="styleSelector">
@@ -88,17 +92,13 @@
 <script>
 
 $(document).ready(function(){
-    
-
-    
     setTimeout(function(){ showTour(); }, 800);
 
+    
+});
 
-    function showTour(){
-
+function showTour(){
         var current_course;
-        
-
         Swal.fire({
             input: 'select',
             confirmButtonText: 'Next &rarr;',
@@ -126,7 +126,7 @@ $(document).ready(function(){
                                     showCancelButton: true,
                                     title: 'Fachsemester',
                                     text: 'Bitte wähle deinen angestrebten Akademischen Grad',
-                                    inputOptions: semesterPromise
+                                    inputOptions: semesterPromise(result.value)
                                 }).then((result) => {
                                         if (result.value) {
                                             Swal.fire({
@@ -148,7 +148,6 @@ $(document).ready(function(){
                 }
             })
     }
-});
 
 function buildCalendar(seminar_gruppe){
     Swal.fire(seminar_gruppe);
@@ -175,7 +174,7 @@ var semesterPromise_ = new Promise(function (resolve, reject) {
         success: function (data) {
             var returnObject = {};
             JSON.parse(data).forEach(function(e){
-                returnObject[e.fachSemesterID ] = e.name ;
+                returnObject[e.semester ] = e.name ;
             })
             resolve(returnObject)
         }
@@ -186,13 +185,13 @@ var semesterPromise = function(course){
     return new Promise(function (resolve, reject) {
         $.ajax({
             url: "https://app.vlv-reload.de/api/Semester/get_Name_ID",
-        method : "POST",
+            method : "POST",
             data: {Course : course},
             success: function (data) {
                 console.log(data);
                 var returnObject = {};
                 JSON.parse(data).forEach(function(e){
-                    returnObject[e.fachSemesterID ] = e.name ;
+                    returnObject[e.semester ] = e.name ;
                 })
                 resolve(returnObject)
             },
@@ -245,6 +244,9 @@ var GroupPromise = function(course, semester){
         });
     });
 }
+
+
+
 
 
 
