@@ -95,6 +95,10 @@ $(document).ready(function(){
 
 
     function showTour(){
+
+        var current_course;
+        
+
         Swal.fire({
             input: 'select',
             confirmButtonText: 'Next &rarr;',
@@ -115,13 +119,14 @@ $(document).ready(function(){
                         inputOptions: CoursePromise(result.value)
                     }).then((result) => {
                             if (result.value) {
+                                current_course = result.value;
                                 Swal.fire({
                                     input: 'select',
                                     confirmButtonText: 'Next &rarr;',
                                     showCancelButton: true,
-                                    title: 'Akademischer Grad',
+                                    title: 'Fachsemester',
                                     text: 'Bitte wähle deinen angestrebten Akademischen Grad',
-                                    inputOptions: academicDegreePromise
+                                    inputOptions: semesterPromise
                                 }).then((result) => {
                                         if (result.value) {
                                             Swal.fire({
@@ -130,7 +135,7 @@ $(document).ready(function(){
                                                 showCancelButton: true,
                                                 title: 'Akademischer Grad',
                                                 text: 'Bitte wähle deinen angestrebten Akademischen Grad',
-                                                inputOptions: academicDegreePromise
+                                                inputOptions: GroupPromise(current_course, result.value)
                                             }).then((result) => {
                                                     if (result.value) {
                                                         buildCalendar(result.value);
@@ -163,26 +168,48 @@ var academicDegreePromise = new Promise(function (resolve, reject) {
     });
 });
 
-var semesterPromise = new Promise(function (resolve, reject) {
+var semesterPromise_ = new Promise(function (resolve, reject) {
     $.ajax({
         url: "https://app.vlv-reload.de/api/Semester/get_Name_ID",
         method : "POST",
         success: function (data) {
             var returnObject = {};
             JSON.parse(data).forEach(function(e){
-                returnObject[e.semesterID ] = e.name ;
+                returnObject[e.fachSemesterID ] = e.name ;
             })
             resolve(returnObject)
         }
     });
 });
 
+var semesterPromise = function(course){
+    return new Promise(function (resolve, reject) {
+        $.ajax({
+            url: "https://app.vlv-reload.de/api/Semester/get_Name_ID",
+        method : "POST",
+            data: {Course : course},
+            success: function (data) {
+                console.log(data);
+                var returnObject = {};
+                JSON.parse(data).forEach(function(e){
+                    returnObject[e.fachSemesterID ] = e.name ;
+                })
+                resolve(returnObject)
+            },
+            error: function(jqxhr, status, exception) {
+             console.log( exception);
+         }
+        });
+    });
+}
+
+
 var CoursePromise = function(grade){
     return new Promise(function (resolve, reject) {
         $.ajax({
             url: "https://app.vlv-reload.de/api/Course/get_Name_ID",
-            method : "POST",
-            data: {'AcademicDegree' : 3},
+            type : "POST",
+            data: {AcademicDegree : grade },
             success: function (data) {
                 console.log(data);
                 var returnObject = {};
@@ -192,25 +219,29 @@ var CoursePromise = function(grade){
                 resolve(returnObject)
             },
             error: function(jqxhr, status, exception) {
-             alert('Exception:', exception);
+             console.log( exception);
          }
         });
     });
 }
 
-var CoursePromise = function(course, semester){
+var GroupPromise = function(course, semester){
     return new Promise(function (resolve, reject) {
         $.ajax({
-            url: "https://app.vlv-reload.de/api/Course/get_Name_ID",
-            method : "POST",
+            url: "https://app.vlv-reload.de/api/SeminarGroup/get_Name_ID",
+            type : "POST",
+            data: {Semester : semester, Course:  course},
             success: function (data) {
                 console.log(data);
                 var returnObject = {};
                 JSON.parse(data).forEach(function(e){
-                    returnObject[e.courseID ] = e.name ;
+                    returnObject[e.seminarGroupID ] = e.name ;
                 })
                 resolve(returnObject)
-            }
+            },
+            error: function(jqxhr, status, exception) {
+             console.log( exception);
+         }
         });
     });
 }
