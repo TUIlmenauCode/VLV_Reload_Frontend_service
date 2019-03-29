@@ -43,12 +43,6 @@ app.use(function (req, res, next) {
     req.connection.remoteAddress || 
     req.socket.remoteAddress ||
     (req.connection.socket ? req.connection.socket.remoteAddress : null);
-  console.log("URL: "+ fullUrl);
-  console.log("IP Adresse: " + ip);
-  console.log("Browser: " + req.headers['user-agent']);
-  console.log('Time:', Date.now());
-  console.log("================================ \n\n")
-
   DB_Stat_Source.write(ip, req.headers['user-agent'], fullUrl, function(err, result){
     
   });

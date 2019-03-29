@@ -76,10 +76,10 @@
                                         <h3 class="text-center txt-primary">Account erstellen</h3>
                                     </div>
                                 </div>
-                                <p class="text-muted text-center p-b-5">Erstelle deinen induviduellen Account</p>
+                                <p id="userNameDescription" class="text-muted text-center p-b-5">Erstelle deinen induviduellen Account</p>
                                 <div class="form-group form-primary">
                                     <input type="text" name="name" class="form-control" autocomplete="username" onchange="validateUserName(this)"
-                                    onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();>
+                                    onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()">
                                     <span class="form-bar"></span>
                                     <label class="float-label">Wähle deinen Nutzernamen</label>
                                 </div>
@@ -195,8 +195,6 @@
         $( child ).parent().fadeOut("slow");
     }
 
-    var userName_tooltip;
-
     $(document).ready(function(){
         
         $(".costum_error_item").hide();
@@ -216,30 +214,57 @@
     //disabled
 
     function validateUserName(e){
+        const username  = e.value;
+        console.log(username);
 
-    const username  = e.value;
-    console.log(username);
     
-    // min 6 char
-    if(username.length < 7){
-        console.log("To short");
-        userName_tooltip = new Tooltip(e, {
-            placement: 'top', // or bottom, left, right, and variations
-            title: "Benutzername zu kurz (min 7 Zeichen)"
+
+
+        // min 6 char
+        if(username.length < 7){
+            console.log("To short");
+            disableSubmit(true)
+            setDescriptionLabel("Der Benutzername ist zu kurz 😮 (min 7 Zeichen)", true);
+        }else{
+            disableSubmit(false)
+            setDescriptionLabel("", false);
+
+            $.ajax({
+            url: "https://app.vlv-reload.de/user/exist_UserName",
+            method : "POST",
+            data: {UserName : username},
+            success: function (data) {
+                console.log(data);
+                console.log(JSON.parse(data));
+                if (JSON.parse(data).length > 0){
+                    disableSubmit(true)
+                    setDescriptionLabel("Der Benutzername ist schon vergeben 😮", true);
+                }else{
+                    disableSubmit(false)
+                    setDescriptionLabel("", false);
+                }
+            },
+            error: function(jqxhr, status, exception) {
+             console.log( exception);
+         }
         });
-        disableSubmit(true)
-    }else 
-    //  exist User Name 
-    if {
 
 
-
-    }
-
+        }
 
 
     }
+
     
+function setDescriptionLabel(text, state){
+    if(state){
+        $("#userNameDescription").text(text).attr('style', 'color: red !important');
+    }else{
+        $("#userNameDescription").text("Erstelle deinen induviduellen Account").attr('style', '');
+    }
+}
+
+
     function disableSubmit(state){
         $("#submitButton").prop("disabled",state);
     }

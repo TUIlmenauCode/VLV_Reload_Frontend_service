@@ -21,6 +21,23 @@ router.get("/create", function(req, res, next){
     res.render("user/create", data)  ;
 });
 
+router.post("/exist_UserName", function(req,res,next){
+    var inputName = req.body.UserName;
+    if (inputName){
+        userModule.existUserName(inputName, function(err, apiResult){
+            if (err){
+                res.status(500).send("DB Error")
+            }else{
+                res.send(JSON.stringify(apiResult));
+            }
+        })
+    }else{
+        res.status(400).send("not enough was data sent");
+    }
+    
+
+})
+
 router.post("/create", function(req, res, next){
     console.log(req.body);
     var user_name = req.body.name;

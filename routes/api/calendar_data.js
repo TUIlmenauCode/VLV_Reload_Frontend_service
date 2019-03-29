@@ -17,7 +17,7 @@ router.post("/TerminsForGroup", function(req, res, next){
             }
         });
     }else{
-        res.status(400).send("not enough data sent")
+        res.status(400).send("not enough was data sent")
     }
 
 
