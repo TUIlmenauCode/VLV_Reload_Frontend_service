@@ -14,7 +14,8 @@ router.get("/login", function(req, res, next){
 
 router.get("/create", function(req, res, next){
     var data = {
-            url : utility.domain
+            url : utility.domain,
+            apiErrors : ""
           }
         
     res.render("user/create", data)  ;
@@ -27,8 +28,6 @@ router.post("/create", function(req, res, next){
     var user_password_confirm = req.body.user_password_confirm;
     var user_email = req.body.user_email;
 
-    console.log(typeof user_email);
-
     userModule.create(user_name, user_email, user_password, user_password_confirm, function(err, result){
         if (err){
             console.log(err);
@@ -40,7 +39,8 @@ router.post("/create", function(req, res, next){
         }else{
             console.log(result);
             var data = {
-                url : utility.domain
+                url : utility.domain,
+                apiErrors : ""
             }
             res.render("user/login", data)  ;
         }

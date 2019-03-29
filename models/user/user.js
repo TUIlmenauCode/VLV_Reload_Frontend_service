@@ -39,8 +39,14 @@ const User = {
             callback(null, 98);
         }
 
-    }
+    },
+
+    existUserName:function(inputName, callback){
+        return db.query("SELECT Student.studentID FROM `Student` WHERE Student.name = ?", [inputName], callback)
+    },
 
 }
+
+
 
 module.exports = User;
