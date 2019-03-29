@@ -13,6 +13,7 @@ var cors=require('cors');
 var session = require('express-session');
 const fileUpload = require('express-fileupload');
 const utility = require("./utility");
+const DB_Stat_Source = require("./models/db/DB_Statistic_source")
 
 // Const 
 
@@ -34,6 +35,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //app.use('/static', express.static(__dirname + './public'));
 app.use(express.static('public'));
 app.use(session({ secret: 'krunal', resave: false, saveUninitialized: true, }));
+
+app.use(function (req, res, next) {
+
+  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  var ip = req.headers['x-forwarded-for'] || 
+    req.connection.remoteAddress || 
+    req.socket.remoteAddress ||
+    (req.connection.socket ? req.connection.socket.remoteAddress : null);
+  console.log("URL: "+ fullUrl);
+  console.log("IP Adresse: " + ip);
+  console.log("Browser: " + req.headers['user-agent']);
+  console.log('Time:', Date.now());
+  console.log("================================ \n\n")
+
+  DB_Stat_Source.write(ip, req.headers['user-agent'], fullUrl, function(err, result){
+    
+  });
+  next();
+});
 
 
 // fixed Routes
@@ -72,19 +92,28 @@ res.render("public_start", data)  ;
  */
 app.use("/user", user_Route);
 
+// app.get("/test", function(req, res, next){
+//   var test = require("./models/test")
+//   test.start(function(err, result){
+//     if (err){
+//       console.log(err);
+//       res.send("error");
+//     }else{
+//       res.send(JSON.stringify(result));
+//     }
+//   })
+
+// })
+
 app.get("/test", function(req, res, next){
-  var test = require("./models/test")
-  test.start(function(err, result){
-    if (err){
-      console.log(err);
-      res.send("error");
-    }else{
-      res.send(JSON.stringify(result));
-    }
-  })
+  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  var ip = req.headers['x-forwarded-for'] || 
+    req.connection.remoteAddress || 
+    req.socket.remoteAddress ||
+    (req.connection.socket ? req.connection.socket.remoteAddress : null);
+  res.send(req.headers['user-agent'] +"<br>" + fullUrl+"<br>" + ip);
 
 })
-
 
 /**
  *  API 
