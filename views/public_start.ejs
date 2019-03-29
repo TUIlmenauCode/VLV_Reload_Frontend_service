@@ -94,10 +94,13 @@
 <script src='<%= url %>/files/bower_components/fullcalendar-3.9.0/fullcalendar.js'></script>
 <script src='<%= url %>/files/bower_components/fullcalendar-3.9.0/locale/de.js'></script>
 <script src='<%= url %>/files/bower_components/superagent/superagent-4_1_0.js'></script>
+<script src='<%= url %>/files/bower_components/moment/js/moment.min.js'></script>
 
 
 
 <script>
+
+var request = new superagent();
 
 $(document).ready(function(){
     setTimeout(function(){ showTour(); }, 800);
@@ -109,12 +112,40 @@ $(document).ready(function(){
             right : ''
         },
         defaultDate: '2019-04-04',
-        defaultView : 'agendaDay'
+        defaultView : 'agendaDay',
+        events:fetchTermins()
     })
 
     
+    
 
 });
+
+
+
+var fetchTermins = function(course = 1, date = moment().format('YYYY-MM-DD')){
+
+    date = "2019-04-01";
+    console.log("Fetch Termins by C: " + course + " date: " + date);
+
+    return new Promise(function (resolve, reject) {
+        $.ajax({
+            url: "https://app.vlv-reload.de/api/public/calendar/TerminsForGroup",
+            method : "POST",
+            data: {Course : course, Request_Date : date},
+            success: function (data) {
+                console.log(data);
+                console.log(JSON.parse(data));
+                
+                resolve(data)
+            },
+            error: function(jqxhr, status, exception) {
+             console.log( exception);
+         }
+        });
+    });
+}
+
 
 function showTour(){
         var current_course;
