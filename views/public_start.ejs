@@ -32,9 +32,7 @@
 
                       <div class="page-body">
                         <div class="card">
-                          <div class="card-header">
-                            <h5>Full Calendar</h5>
-                          </div>
+                          
                           <div class="card-block">
                             <div class="row">
                               <!--<div class="col-xl-2 col-md-12">
@@ -90,8 +88,11 @@
 </body>
 
 <link rel='stylesheet' href='<%= url %>/files/bower_components/fullcalendar-3.9.0/fullcalendar.css' />
+<link rel='stylesheet' href='<%= url %>/files/assets/css/pages.css' />
+
 <script src='<%= url %>/files/bower_components/moment/js/moment.min.js'></script>
 <script src='<%= url %>/files/bower_components/fullcalendar-3.9.0/fullcalendar.js'></script>
+<script src='<%= url %>/files/bower_components/fullcalendar-3.9.0/locale/de.js'></script>
 
 
 <script>
@@ -100,8 +101,14 @@ $(document).ready(function(){
     setTimeout(function(){ showTour(); }, 800);
 
     $('#calendar').fullCalendar({
-    // put your options and callbacks here
-  })
+        header: {
+            left: 'prev, today, next',
+            center: 'title',
+            right : ''
+        },
+        defaultDate: '2019-04-04',
+        defaultView : 'agendaDay'
+    })
 
     
 
