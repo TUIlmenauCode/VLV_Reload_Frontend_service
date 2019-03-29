@@ -78,7 +78,8 @@
                                 </div>
                                 <p class="text-muted text-center p-b-5">Erstelle deinen induviduellen Account</p>
                                 <div class="form-group form-primary">
-                                    <input type="text" name="name" class="form-control" autocomplete="username">
+                                    <input type="text" name="name" class="form-control" autocomplete="username" onchange="validateUserName(this)"
+                                    onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();>
                                     <span class="form-bar"></span>
                                     <label class="float-label">Wähle deinen Nutzernamen</label>
                                 </div>
@@ -125,7 +126,7 @@
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Jetzt erstellen</button>
+                                        <button id="submitButton" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Jetzt erstellen</button>
                                     </div>
                                 </div>
                                 <hr/>
@@ -186,11 +187,15 @@
     
     </style>
 
+    <script src="<%= url %>/files/bower_components/tooltip/js/tooltip.js"></script>
+
     <script>
     
     function remove_error(child){
         $( child ).parent().fadeOut("slow");
     }
+
+    var userName_tooltip;
 
     $(document).ready(function(){
         
@@ -200,9 +205,46 @@
             function() 
             {
                 $(".costum_error_item").slideDown();
-            }, 500);
+            }, 
+        500);
+
+        
+
     })
+
+
+    //disabled
+
+    function validateUserName(e){
+
+    const username  = e.value;
+    console.log(username);
     
+    // min 6 char
+    if(username.length < 7){
+        console.log("To short");
+        userName_tooltip = new Tooltip(e, {
+            placement: 'top', // or bottom, left, right, and variations
+            title: "Benutzername zu kurz (min 7 Zeichen)"
+        });
+        disableSubmit(true)
+    }else 
+    //  exist User Name 
+    if {
+
+
+
+    }
+
+
+
+    }
+    
+    function disableSubmit(state){
+        $("#submitButton").prop("disabled",state);
+    }
+
+
     </script>
 
     

@@ -40,7 +40,7 @@ router.post("/create", function(req, res, next){
             console.log(result);
             var data = {
                 url : utility.domain,
-                apiErrors : ""
+                apiErrors : []
             }
             res.render("user/login", data)  ;
         }
