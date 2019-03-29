@@ -94,6 +94,7 @@ app.use("/api/AcademicDegree", api_AcademicDegree);
 app.use("/api/Course", api_Course);
 app.use("/api/Semester", api_Semester);
 app.use("/api/SeminarGroup", api_SeminarGroup);
+app.use("/api/public/calendar", require("./routes/api/calendar_data"))
 
 
 
