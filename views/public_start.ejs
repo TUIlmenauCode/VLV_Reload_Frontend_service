@@ -99,27 +99,35 @@
 
 
 <script>
+var current_termins = []; //JSON.parse('[{"start":"2019-04-01T11:00:00","end":"2019-04-01T12:30:00","room":"Hs 2","title":"Mathematik 2"},{"start":"2019-04-01T13:00:00","end":"2019-04-01T16:00:00","room":"Praktikum Chemie","title":"Physikalisch-Chemisches Praktikum 1"},{"start":"2019-04-01T13:00:00","end":"2019-04-01T16:00:00","room":"F 1004 (Praktikum Physik)","title":"Physikpraktikum"},{"start":"2019-04-01T17:00:00","end":"2019-04-01T18:30:00","room":"R-Hs","title":"Organische Chemie"}]');
+var current_course;
+var day;
+var current_group;
 
-var request = new superagent();
+
 
 $(document).ready(function(){
-    setTimeout(function(){ showTour(); }, 800);
+    setTimeout(function(){ showTour();}, 800);
+    createCalendar();
+});
 
+function createCalendar(){
     $('#calendar').fullCalendar({
         header: {
             left: 'prev, today, next',
             center: 'title',
             right : ''
         },
-        defaultDate: '2019-04-04',
+        defaultDate: '2019-04-01',
         defaultView : 'agendaDay',
-        events:fetchTermins()
+        events: current_termins,
+        eventBorderColor: '#ff5252',
+        eventBackgroundColor: '#ff5252',
+        eventTextColor: '#fff',
+        minTime: "06:30:00",
+        nowIndicator: true
     })
-
-    
-    
-
-});
+}
 
 
 
@@ -127,6 +135,11 @@ var fetchTermins = function(course = 1, date = moment().format('YYYY-MM-DD')){
 
     date = "2019-04-01";
     console.log("Fetch Termins by C: " + course + " date: " + date);
+
+    //current_termins = JSON.parse('[{"start":"2019-04-01T09:00:00","end":"2019-04-01T10:30:00","room":"R-Hs","title":"Anorganische Chemie 2"},{"start":"2019-04-01T11:00:00","end":"2019-04-01T12:30:00","room":"Hs 2","title":"Mathematik 2"},{"start":"2019-04-01T13:00:00","end":"2019-04-01T16:00:00","room":"Praktikum Chemie","title":"Physikalisch-Chemisches Praktikum 1"},{"start":"2019-04-01T13:00:00","end":"2019-04-01T16:00:00","room":"F 1004 (Praktikum Physik)","title":"Physikpraktikum"},{"start":"2019-04-01T17:00:00","end":"2019-04-01T18:30:00","room":"R-Hs","title":"Organische Chemie"}]'),
+    $('#calendar').fullCalendar( 'destroy' );
+    //createCalendar();
+    
 
     return new Promise(function (resolve, reject) {
         $.ajax({
@@ -136,8 +149,9 @@ var fetchTermins = function(course = 1, date = moment().format('YYYY-MM-DD')){
             success: function (data) {
                 console.log(data);
                 console.log(JSON.parse(data));
-                
-                resolve(data)
+                current_termins = JSON.parse(data);
+                createCalendar();
+                resolve(JSON.parse(data))
             },
             error: function(jqxhr, status, exception) {
              console.log( exception);
@@ -148,7 +162,6 @@ var fetchTermins = function(course = 1, date = moment().format('YYYY-MM-DD')){
 
 
 function showTour(){
-        var current_course;
         Swal.fire({
             input: 'select',
             confirmButtonText: 'Next &rarr;',
@@ -188,7 +201,8 @@ function showTour(){
                                                 inputOptions: GroupPromise(current_course, result.value)
                                             }).then((result) => {
                                                     if (result.value) {
-                                                        buildCalendar(result.value);
+                                                        current_group = result.value;
+                                                        fetchTermins()
                                                     }
                                                 })
                                         }
@@ -198,10 +212,6 @@ function showTour(){
                 }
             })
     }
-
-function buildCalendar(seminar_gruppe){
-    Swal.fire(seminar_gruppe);
-}
 
 var academicDegreePromise = new Promise(function (resolve, reject) {
     $.ajax({
