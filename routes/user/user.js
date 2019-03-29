@@ -15,7 +15,7 @@ router.get("/login", function(req, res, next){
 router.get("/create", function(req, res, next){
     var data = {
             url : utility.domain,
-            apiErrors : ""
+            apiErrors : []
           }
         
     res.render("user/create", data)  ;
