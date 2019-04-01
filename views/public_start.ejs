@@ -141,10 +141,16 @@ function createCalendar(day){
                     'background-color': '#3D9CDD',
                     'border-color': '#3498DB'
                 });
-            }else if (event.type.includes("Übung")){
+            }else if (event.type.includes("Prakt")){
                 element.css({
                     'background-color': '#23E1BB',
                     'border-color': '#1CC9A7'
+                });
+            }
+            if (event.type.includes("Seminar")){
+                element.css({
+                    'background-color': '#06D3F2',
+                    'border-color': '#05C6E3'
                 });
             }
         } 
