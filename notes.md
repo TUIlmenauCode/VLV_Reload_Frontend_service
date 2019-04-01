@@ -1,0 +1,10 @@
+
+# Dashboard 
+## Room future view
+```SQL 
+SELECT Room.roomID, Room.name, Termin.*
+FROM Room, Termin
+WHERE CURRENT_TIMESTAMP() BETWEEN Termin.start AND Termin.end AND Room.roomID = 1 AND Termin.room = Room.roomID;
+
+SELECT Room.roomID, Room.name, Termin.* FROM Room, Termin WHERE DATE_ADD(NOW(), INTERVAL 2 HOUR) BETWEEN Termin.start AND Termin.end AND Room.roomID = 1 AND Termin.room = Room.roomID
+```
