@@ -213,7 +213,7 @@ function showTour(){
                                             }).then((result) => {
                                                     if (result.value) {
                                                         current_group = result.value;
-                                                        fetchTermins()
+                                                        fetchTermins(result.value)
                                                     }
                                                 })
                                         }
