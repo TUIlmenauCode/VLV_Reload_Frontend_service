@@ -127,8 +127,13 @@ function createCalendar(day){
         eventTextColor: '#fff',
         minTime: "06:30:00",
         nowIndicator: true,
-        height: window.innerHeight - 80
-    })
+        height: window.innerHeight - 80,
+        eventRender: function(event, element) { 
+            element.find('.fc-title').append("<br/>" + event.room +"<br/>" + event.room); 
+            console.log(event);
+        } 
+    }
+    )
 }
 
 $('body').on('click', 'button.fc-prev-button', function() {
