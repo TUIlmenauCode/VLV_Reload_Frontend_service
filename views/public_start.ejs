@@ -129,8 +129,24 @@ function createCalendar(day){
         nowIndicator: true,
         height: window.innerHeight - 80,
         eventRender: function(event, element) { 
-            element.find('.fc-title').append("<br/>" + event.room +"<br/>" + event.room); 
+            element.find('.fc-title').append("<br/>" + event.type +"<br/>" + event.room); 
             console.log(event);
+            if (event.type.includes("Vorlesung")){
+                element.css({
+                    'background-color': '#FFB92B',
+                    'border-color': '#FFB012'
+                });
+            }else if (event.type.includes("Übung")){
+                element.css({
+                    'background-color': '#3D9CDD',
+                    'border-color': '#3498DB'
+                });
+            }else if (event.type.includes("Übung")){
+                element.css({
+                    'background-color': '#23E1BB',
+                    'border-color': '#1CC9A7'
+                });
+            }
         } 
     }
     )
