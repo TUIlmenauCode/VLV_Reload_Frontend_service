@@ -10,8 +10,7 @@ router.post("/get_Name_Id", function(req, res , next){
             console.log(err);
             res.send(err);
         }else{
-            //res.send(JSON.stringify(apiResult));
-            res.send("Success");
+            res.send(JSON.stringify(apiResult));
         }
     })
 })
