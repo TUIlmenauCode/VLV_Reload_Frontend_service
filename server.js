@@ -16,8 +16,7 @@ const utility = require("./utility");
 const DB_Stat_Source = require("./models/db/DB_Statistic_source")
 
 // Const 
-
-
+const DB_room = require("./models/db/DB_Room");
 
 
 // configure app
@@ -79,11 +78,25 @@ res.render("public_start", data)  ;
 })
 
 app.get('/public/dashboard',function(req,res,next){
-  var data = {
-    url : utility.domain,
-    page_title : "aktuelle Raum Übersicht"
-  }
-res.render("roomOverview", data)  ;
+  
+  var fetched_roomList = [{ roomId : 0, name : "Dummy"}];
+  DB_room.selectAll__Name_ID(function(err, apiResult){
+    if(err){
+        console.log(err);
+    }else{
+        fetched_roomList = apiResult;
+        var data = {
+          url : utility.domain,
+          page_title : "aktuelle Raum Übersicht",
+          room_list : fetched_roomList
+        }
+      
+      res.render("roomOverview", data)  ;
+    }
+  })
+  
+  
+  
 })
 
 

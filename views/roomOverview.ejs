@@ -35,21 +35,24 @@
 
                                             <!-- lettest acivity and statustic card start -->
 
+                                            <% room_list.forEach(function(room){ %>
                                             <div class="col-xl-4 col-md-6">
                                                 <div class="card latest-update-card">
                                                     <div class="card-header">
-                                                        <h5>Audimax</h5>
+                                                        <h5><%= room.name %></h5>
                                                         <div class="card-header-right">
                                                             <div id="calendar1">
                                                             
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="card-block">
-                                                        
-                                                    </div>
+                                                    
                                                 </div>
                                             </div>
+                                            
+                                            <% }) %>
+
+                                            
 
                                             <!-- lettest acivity and statustic card end -->
 
