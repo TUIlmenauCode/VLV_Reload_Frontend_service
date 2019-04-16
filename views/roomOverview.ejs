@@ -41,7 +41,7 @@
                                                     <div class="card-header">
                                                         <h5><%= room.name %></h5>
                                                         <div class="card-header-right">
-                                                            <div id="calendar1">
+                                                            <div id="<%= room.roomID %>" class="room-calendar">
                                                             
                                                             </div>
                                                         </div>
@@ -71,7 +71,15 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        console.log("Test");
+        $( document ).ready(function() {
+            console.log( "ready!" );
+        });
+    </script>
     <%- include('./parts/foot.ejs',{url : url})%>
 </body>
+
+
 
 </html>
