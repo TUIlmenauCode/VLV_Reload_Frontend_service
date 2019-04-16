@@ -78,6 +78,14 @@ app.get('/public/view',function(req,res,next){
 res.render("public_start", data)  ;
 })
 
+app.get('/public/dashboard',function(req,res,next){
+  var data = {
+    url : utility.domain,
+    page_title : "aktuelle Raum Übersicht"
+  }
+res.render("roomOverview", data)  ;
+})
+
 
 
 
@@ -118,7 +126,8 @@ app.use("/api/AcademicDegree", api_AcademicDegree);
 app.use("/api/Course", api_Course);
 app.use("/api/Semester", api_Semester);
 app.use("/api/SeminarGroup", api_SeminarGroup);
-app.use("/api/public/calendar", require("./routes/api/calendar_data"))
+app.use("/api/public/calendar", require("./routes/api/calendar_data"));
+app.use("/api/Room", require("./routes/api/room"));
 
 
 
