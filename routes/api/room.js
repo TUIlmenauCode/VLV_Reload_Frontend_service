@@ -27,6 +27,8 @@ router.post("/get_current_Termins", function(req, res , next){
                 res.send(JSON.stringify(apiResult));
             }
         })
+    }else{
+        res.send("Not enought data")
     }
 })
 
