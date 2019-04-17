@@ -1,6 +1,7 @@
 const db = require("../../dbConnection");
 const bcrypt = require('bcrypt');
-const DB_User = require('../../models/db/DB_user')
+const DB_User = require('../../models/db/DB_user');
+const verify_hash = require('../../models/verify_hash');
 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -42,11 +43,14 @@ const User = {
             bcrypt.genSalt(saltRounds, function(err, salt) {
                 bcrypt.hash(user_password, salt, function(err, hash) {
                     
+                    
                     DB_User.insert(user_name, user_email, hash, "", 0, function(err, apiResult){
                         if (err){
                             callback([err], null);
                         }else{
+                            verify_hash.generate(apiResult.insertId);
                             callback(null, apiResult.insertId);
+
                         }
                     })
 
