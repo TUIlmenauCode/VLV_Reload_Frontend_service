@@ -7,7 +7,7 @@ const Room = {
     },
 
     select__Termins___from_Room:function(roomID, callback){
-        return db.query("SELECT Termin.terminID, Termin.start as \"start\", Termin.end as \"end\", `Event`.`title` as \"eventTitle\", EventType.name as \"eventType\" FROM Termin, `Event`, EventType WHEREDATE( Termin.start ) = CURDATE() AND Termin.room = ? AND Termin.event = `Event`.`eventID` AND EventType.eventTypeID = Event.eventType", [roomID], callback);
+        return db.query("SELECT Termin.terminID, Termin.start as \"start\", Termin.end as \"end\", `Event`.`title` as \"eventTitle\", EventType.name as \"eventType\" FROM Termin, `Event`, EventType WHERE DATE( Termin.start ) = CURDATE() AND Termin.room = ? AND Termin.event = `Event`.`eventID` AND EventType.eventTypeID = Event.eventType", [roomID], callback);
     }
 
 }
