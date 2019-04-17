@@ -22,7 +22,7 @@
                     <%- include('./parts/side_nav.ejs')%> 
                     <div class="pcoded-content">
                         
-                    <%- include('./parts/breadcrumb.ejs',{url : url , page_description : "Test" , page_title : page_title, breadcrumb : [{name : "Willkommen", link: "/"}]}) %>
+                    <%- include('./parts/breadcrumb.ejs',{url : url , page_description : "Hier kannst Du einsehen, ob ein Raum aktuell belegt ist." , page_title : page_title, breadcrumb : [{name : "Willkommen", link: "/"}]}) %>
                     
                         
                     
@@ -110,12 +110,20 @@ $(document).ready(function(){
             
             var dataList = JSON.parse(data);
 
-            var html = "";
+            var html = "<br>";
+
+            console.log(dataList.length)
+
+            if (dataList.length > 0) {
+                
+                    console.log(dataList[0]);
+                    html += (dataList[0].eventTitle + " : " + dataList[0].eventType) ;
+                
+            }else{
+                html += '<label class="label  label-lg label-success">Frei</label>';
+            }
             
-            dataList.forEach(function(element){
-                console.log(element);
-                html += (element.eventTitle + "<hr>") ;
-            });
+            
 
     
             element.append(html);
