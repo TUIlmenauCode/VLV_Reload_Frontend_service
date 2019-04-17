@@ -42,7 +42,7 @@ const User = {
             bcrypt.genSalt(saltRounds, function(err, salt) {
                 bcrypt.hash(user_password, salt, function(err, hash) {
                     
-                    DB_User.insert(user_name, user_email, hash, "", "", function(err, apiResult){
+                    DB_User.insert(user_name, user_email, hash, "", 0, function(err, apiResult){
                         if (err){
                             callback([err], null);
                         }else{
