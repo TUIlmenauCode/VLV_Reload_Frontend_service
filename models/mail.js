@@ -1,18 +1,8 @@
 var nodemailer = require('nodemailer');
-
+var config = require('./secure_mail_components');
 var transporter = nodemailer.createTransport({
-    
-    host: "kaigowebservice.com",
-    port: 25,
-    // tls: {
-    //     rejectUnauthorized:false
-    // },
-    secure: false, // use TLS
-    auth: {
-      user: "automatischer_brieftraeger@vlv-reload.de",
-      pass: 
-    }
-  });
+     config
+});
   
   var mailOptions = {
     from: '😎 VLV Reload Briefträger<automatischer_brieftraeger@vlv-reload.de>',
@@ -410,7 +400,7 @@ var transporter = nodemailer.createTransport({
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
 <div align="center" class="img-container center autowidth fullwidth" style="padding-right: 0px;padding-left: 0px;">
-<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]--><img align="center" alt="Image" border="0" class="center autowidth fullwidth" src="images/password_icon_ok(0).jpg" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; border: 0; height: auto; float: none; width: 100%; max-width: 600px; display: block;" title="Image" width="600"/>
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]--><img align="center" alt="Image" border="0" class="center autowidth fullwidth" src="https://app.vlv-reload.de/files/assets/images/mail/email_header.png" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; border: 0; height: auto; float: none; width: 100%; max-width: 600px; display: block;" title="Image" width="600"/>
 <!--[if mso]></td></tr></table><![endif]-->
 </div>
 <!--[if (!mso)&(!IE)]><!-->
@@ -526,9 +516,9 @@ var transporter = nodemailer.createTransport({
 <table activate="activate" align="center" alignment="alignment" cellpadding="0" cellspacing="0" class="social_table" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: undefined; mso-table-tspace: 0; mso-table-rspace: 0; mso-table-bspace: 0; mso-table-lspace: 0;" to="to" valign="top">
 <tbody>
 <tr align="center" style="vertical-align: top; display: inline-block; text-align: center;" valign="top">
-<td style="word-break: break-word; vertical-align: top; padding-bottom: 5px; padding-right: 5px; padding-left: 5px; border-collapse: collapse;" valign="top"><a href="https://www.facebook.com/kaigostudio/" target="_blank"><img alt="Facebook" height="32" src="images/facebook.png" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; display: block;" title="Facebook" width="32"/></a></td>
-<td style="word-break: break-word; vertical-align: top; padding-bottom: 5px; padding-right: 5px; padding-left: 5px; border-collapse: collapse;" valign="top"><a href="https://twitter.com/KaiGo_studio" target="_blank"><img alt="Twitter" height="32" src="images/twitter.png" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; display: block;" title="Twitter" width="32"/></a></td>
-<td style="word-break: break-word; vertical-align: top; padding-bottom: 5px; padding-right: 5px; padding-left: 5px; border-collapse: collapse;" valign="top"><a href="https://vlv-reload.de" target="_blank"><img alt="Web Site" height="32" src="images/website@2x.png" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; display: block;" title="Web Site" width="32"/></a></td>
+<td style="word-break: break-word; vertical-align: top; padding-bottom: 5px; padding-right: 5px; padding-left: 5px; border-collapse: collapse;" valign="top"><a href="https://www.facebook.com/kaigostudio/" target="_blank"><img alt="Facebook" height="32" src="https://app.vlv-reload.de/files/assets/images/mail/facebook.png" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; display: block;" title="Facebook" width="32"/></a></td>
+<td style="word-break: break-word; vertical-align: top; padding-bottom: 5px; padding-right: 5px; padding-left: 5px; border-collapse: collapse;" valign="top"><a href="https://twitter.com/KaiGo_studio" target="_blank"><img alt="Twitter" height="32" src="https://app.vlv-reload.de/files/assets/images/mail/twitter.png" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; display: block;" title="Twitter" width="32"/></a></td>
+<td style="word-break: break-word; vertical-align: top; padding-bottom: 5px; padding-right: 5px; padding-left: 5px; border-collapse: collapse;" valign="top"><a href="https://vlv-reload.de" target="_blank"><img alt="Web Site" height="32" src="https://app.vlv-reload.de/files/assets/images/mail/website@2x.png" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; height: auto; float: none; border: none; display: block;" title="Web Site" width="32"/></a></td>
 </tr>
 </tbody>
 </table>

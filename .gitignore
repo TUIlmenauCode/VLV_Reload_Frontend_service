@@ -61,3 +61,4 @@ typings/
 .next
 Design/
 dbConnection.js
+models/secure_mail_components.js
