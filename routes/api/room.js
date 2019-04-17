@@ -17,19 +17,19 @@ router.post("/get_Name_Id", function(req, res , next){
 router.post("/get_current_Termins", function(req, res , next){
 
     var roomID = req.body.roomID;
-
-    if (roomID != null) {
-        dataHandler.selectAll__Name_ID(roomID, function(err, apiResult){
-            if(err){
-                console.log(err);
-                res.send(err);
-            }else{
-                res.send(JSON.stringify(apiResult));
-            }
-        })
-    }else{
-        res.send("Not enought data")
-    }
+res.send({room : roomID});
+    // if (roomID != null) {
+    //     dataHandler.selectAll__Name_ID(roomID, function(err, apiResult){
+    //         if(err){
+    //             console.log(err);
+    //             res.send(err);
+    //         }else{
+    //             res.send(JSON.stringify(apiResult));
+    //         }
+    //     })
+    // }else{
+    //     res.send("Not enought data")
+    // }
 })
 
 module.exports = router;
