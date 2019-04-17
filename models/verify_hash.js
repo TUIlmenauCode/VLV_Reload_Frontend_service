@@ -4,9 +4,10 @@ const  db_verify_hash = require('../models/db/DB_verify_hash');
 
 
 const uuid = {
-    
+
     generate:function(user){
         db_verify_hash.insert(user, uuidv1(), function(err, apiResult){
+            console.log("##############################################");
             console.log(err);
             console.log(apiResult);
         })
