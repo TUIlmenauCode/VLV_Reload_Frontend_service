@@ -544,7 +544,7 @@ const Mail = {
        var mailOptions = {
         from: '😎 VLV Reload Briefträger<automatischer_brieftraeger@vlv-reload.de>',
         to: user_email,
-        subject: 'Hey, hier ist Dein Bestätiungslink;',
+        subject: 'Hey, hier ist Dein Bestätiungslink',
         html: emailContent(user_name, url)
       };
 
