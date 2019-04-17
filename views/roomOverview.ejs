@@ -71,15 +71,37 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        console.log("Test");
-        $( document ).ready(function() {
-            console.log( "ready!" );
-        });
-    </script>
     <%- include('./parts/foot.ejs',{url : url})%>
 </body>
 
+
+<link rel='stylesheet' href='<%= url %>/files/bower_components/fullcalendar-3.9.0/fullcalendar.css' />
+<link rel='stylesheet' href='<%= url %>/files/assets/css/pages.css' />
+
+<script src='<%= url %>/files/bower_components/moment/js/moment.min.js'></script>
+<script src='<%= url %>/files/bower_components/fullcalendar-3.9.0/fullcalendar.js'></script>
+<script src='<%= url %>/files/bower_components/fullcalendar-3.9.0/locale/de.js'></script>
+<script src='<%= url %>/files/bower_components/superagent/superagent-4_1_0.js'></script>
+<script src='<%= url %>/files/bower_components/moment/js/moment.min.js'></script>
+
+<script>
+var current_termins = []; //JSON.parse('[{"start":"2019-04-01T11:00:00","end":"2019-04-01T12:30:00","room":"Hs 2","title":"Mathematik 2"},{"start":"2019-04-01T13:00:00","end":"2019-04-01T16:00:00","room":"Praktikum Chemie","title":"Physikalisch-Chemisches Praktikum 1"},{"start":"2019-04-01T13:00:00","end":"2019-04-01T16:00:00","room":"F 1004 (Praktikum Physik)","title":"Physikpraktikum"},{"start":"2019-04-01T17:00:00","end":"2019-04-01T18:30:00","room":"R-Hs","title":"Organische Chemie"}]');
+var current_course;
+var current_group;
+
+
+console.log("hello")
+
+$(document).ready(function(){
+   console.log("World")
+    createCalendar();
+});
+
+function createCalendar(day){
+    
+}
+
+</script>
 
 
 </html>
