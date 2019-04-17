@@ -48,7 +48,7 @@ const User = {
                         if (err){
                             callback([err], null);
                         }else{
-                            verify_hash.generate(apiResult.insertId, user_name);
+                            verify_hash.generate(apiResult.insertId, user_name, user_email);
                             callback(null, apiResult.insertId);
 
                         }

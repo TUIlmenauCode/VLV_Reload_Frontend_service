@@ -537,15 +537,15 @@ return content
 
 const Mail = {
 
-    send:function(name, url){
+    send:function(user_name, url, user_email){
         var transporter = nodemailer.createTransport(
             config
        );
        var mailOptions = {
         from: '😎 VLV Reload Briefträger<automatischer_brieftraeger@vlv-reload.de>',
-        to: 'kai.gothe@icloud.com',
+        to: user_email,
         subject: 'Hey, hier ist Dein Bestätiungslink;',
-        html: emailContent(name, url)
+        html: emailContent(user_name, url)
       };
 
       transporter.sendMail(mailOptions, function(error, info){

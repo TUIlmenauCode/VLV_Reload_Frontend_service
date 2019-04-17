@@ -6,14 +6,14 @@ const mail = require('./mail');
 
 const uuid = {
 
-    generate:function(userID, userName){
+    generate:function(userID, user_name, user_email){
         var hash = uuidv1()
         db_verify_hash.insert(userID, hash, function(err, apiResult){
             console.log("##############################################");
             if (err){
                 console.log(err);
             }else{
-                mail.send(userName, "https://app.vlv-reload.de/user/verifiy?code=" + hash + "&u=" + userID);
+                mail.send(user_name, "https://app.vlv-reload.de/user/verifiy?code=" + hash + "&u=" + userID, user_email);
             }
         })
 
