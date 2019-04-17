@@ -17,8 +17,6 @@ router.post("/get_Name_Id", function(req, res , next){
 router.post("/get_current_Termins", function(req, res , next){
 
     var roomID = req.body.roomID;
-   
-
     if (roomID != null) {
         dataHandler.select__Termins___from_Room(roomID, function(err, apiResult){
             if(err){

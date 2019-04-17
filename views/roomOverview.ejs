@@ -41,10 +41,13 @@
                                                     <div class="card-header">
                                                         <h5><%= room.name %></h5>
                                                         <div class="card-header-right">
-                                                            <div id="<%= room.roomID %>" class="room-calendar">
                                                             
-                                                            </div>
                                                         </div>
+                                                        <div id="<%= room.roomID %>" class="room-calendar">
+                                                            
+                                                                
+
+                                                            </div>
                                                     </div>
                                                     
                                                 </div>
@@ -78,6 +81,7 @@
 <link rel='stylesheet' href='<%= url %>/files/bower_components/fullcalendar-3.9.0/fullcalendar.css' />
 <link rel='stylesheet' href='<%= url %>/files/assets/css/pages.css' />
 
+
 <script src='<%= url %>/files/bower_components/moment/js/moment.min.js'></script>
 <script src='<%= url %>/files/bower_components/fullcalendar-3.9.0/fullcalendar.js'></script>
 <script src='<%= url %>/files/bower_components/fullcalendar-3.9.0/locale/de.js'></script>
@@ -88,17 +92,72 @@
 var current_termins = []; //JSON.parse('[{"start":"2019-04-01T11:00:00","end":"2019-04-01T12:30:00","room":"Hs 2","title":"Mathematik 2"},{"start":"2019-04-01T13:00:00","end":"2019-04-01T16:00:00","room":"Praktikum Chemie","title":"Physikalisch-Chemisches Praktikum 1"},{"start":"2019-04-01T13:00:00","end":"2019-04-01T16:00:00","room":"F 1004 (Praktikum Physik)","title":"Physikpraktikum"},{"start":"2019-04-01T17:00:00","end":"2019-04-01T18:30:00","room":"R-Hs","title":"Organische Chemie"}]');
 var current_course;
 var current_group;
-
+var minuteScale = 1 ;
 
 console.log("hello")
 
 $(document).ready(function(){
    console.log("World")
-    createCalendar();
+    var i = 1;
+    $(".room-calendar").each(function(index){
+        console.log($( this ).attr('id'));
+        i++;
+        console.log(i)
+
+        var element = $( this );
+
+        $.post("https://app.vlv-reload.de/api/Room/get_current_Termins", {roomID : element.attr('id')}, function(data){
+            
+            var dataList = JSON.parse(data);
+
+            var html = "";
+            
+            dataList.forEach(function(element){
+                console.log(element);
+                html += (element.eventTitle + "<hr>") ;
+            });
+
+    
+            element.append(html);
+            
+        })
+
+    })
+
+    
 });
 
-function createCalendar(day){
+
+
+
     
+
+
+function UIView(x,y,width,height, color = "#3f3f3f" ){
+    return "<span style=\" background: "+color+"; position: absolute; top : "+y+"px ; left : "+x+"px ; width: "+width+"; height : "+height+" \"> </span>"
+}
+
+function UIViewText(x,y,width,height,text){
+    var color = "#3f3f3f"
+    return "<span style=\" background: "+color+"; position: absolute; top : "+y+"; left : "+x+"; width: "+width+"; height : "+height+" \"> "+text+" </span>"
+}
+
+function eventRect(start, end){
+    var start_hour = moment(start).format("HH");
+    var start_minute = moment(start).format("m");
+    var end_hour = moment(end).format("HH");
+    var end_minute = moment(end).format("m");
+
+    console.log("start " + start_hour + "  " + start_minute +"\n" +"end " + end_hour + "  " + end_minute );
+
+    var start_point = (((Number(start_hour) * 60) + Number(start_minute))* minuteScale);
+    var end_point = (((Number(end_hour) * 60) + Number(end_minute))* minuteScale);
+    var height = end_point - start_point;
+    console.log(start_point);
+    console.log(end_point);
+    console.log(height)
+
+    return UIView(50, start_point , 200, height, "green" );
 }
 
 </script>
