@@ -152,7 +152,7 @@ router.post("/login", function(req, res, next){
                 url : utility.domain,
                 page_title : "Willkommen"
               }
-            res.render("user/dashboard", data);
+            res.redirect(utility.domain + "/user/dashboard", data);
         }
     })
 })
