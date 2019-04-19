@@ -143,7 +143,7 @@ router.post("/login", function(req, res, next){
             // req.session.userName = resObj.userName;
             // req.session.userEmail = resObj.userEmail;
             console.log("Weiter geht es");
-            res.send("hello");
+            //res.send("hello");
             res.end();
         }
     })
