@@ -73,7 +73,7 @@
                                 </div>
                                 <p class="text-muted text-center p-b-5">Hier kannst Du dich mit deine Uni - E-Mail einloggen</p>
                                 <div class="form-group form-primary">
-                                    <input type="text" name="user_name" class="form-control" required="">
+                                    <input type="text" name="user_name" class="form-control" required="" onfocusout="validateInput(this)">
                                     <span class="form-bar"></span>
                                     <label class="float-label">deine E-Mail Adresse</label>
                                 </div>
@@ -151,9 +151,18 @@
     </style>
 
     <script>
-     function remove_error(child){
-        $( child ).parent().fadeOut("slow");
-    }
+        function remove_error(child){
+            $( child ).parent().fadeOut("slow");
+        }
+
+        function validateInput(e){
+            console.log(e.value);
+        }
+
+        function validateEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
     
     </script>
 
