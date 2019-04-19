@@ -127,6 +127,8 @@ router.post("/create", function(req, res, next){
     })
 });
 
+
+
 router.post("/login", function(req, res, next){
 
     const current_user = req.body.user_name;
@@ -144,7 +146,7 @@ router.post("/login", function(req, res, next){
             res.session.userID = resObj.userID;
             res.session.userName = resObj.userName;
             res.session.userEmail = resObj.userEmail;
-            
+
         }
     })
 })

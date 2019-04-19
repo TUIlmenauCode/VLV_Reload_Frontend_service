@@ -94,6 +94,7 @@ const User = {
                     console.log(apiResult);
     
                     if (apiResult.length > 0){
+                        console.log(apiResult);
                         var user_ID = apiResult[0].studentID
                         var user_Name = apiResult[0].name
                         var user_email = apiResult[0].email
