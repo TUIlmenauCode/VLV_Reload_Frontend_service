@@ -79,20 +79,18 @@ const User = {
 
         if (user.length == 0){
             errorlist.push("Keine Email angegeben")
-        }else{
-            callback(errorlist);
-            console.log(errorlist);
         }
 
         if (errorlist.length == 0 ){
+
             DB_User.get__from_Email(user, function(err, apiResult){
                 if (err){
                     console.log(err);
                     errorlist.push(err);
                 }else{
-                    console.log(apiResult);
+                    //console.log(apiResult);
                     if (apiResult.length > 0){
-                        console.log(apiResult);
+                        //console.log(apiResult);
                         var user_ID = apiResult[0].studentID
                         var user_Name = apiResult[0].name
                         var user_email = apiResult[0].email
