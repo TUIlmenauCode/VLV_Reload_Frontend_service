@@ -142,11 +142,11 @@ router.post("/login", function(req, res, next){
             // req.session.userID = resObj.userID;
             // req.session.userName = resObj.userName;
             // req.session.userEmail = resObj.userEmail;
-            res.send("hello");
+            // res.send("hello");
         }
     })
 })
-
+ 
 
 
 
