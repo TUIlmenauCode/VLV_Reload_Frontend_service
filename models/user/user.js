@@ -113,6 +113,7 @@ const User = {
                                     userName : user_Name, 
                                     userEmail : user_email
                                 }
+                                console.log("Dump result")
                                 console.log(resObj);
                                 callback(errorlist, resObj);
 
