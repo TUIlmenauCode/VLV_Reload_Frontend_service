@@ -95,7 +95,12 @@ router.get("/logout", function(req, res, next){
     req.session.destroy(function(err) {
         // cannot access session here
       })
-      res.render("user/logout");
+
+      var data = {
+          url : utility.domain
+      }
+
+      res.render("user/logout", data);
 })
 
 
