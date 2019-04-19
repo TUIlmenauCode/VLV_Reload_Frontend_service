@@ -89,10 +89,14 @@ router.get("/dashboard", function(req, res, next){
         res.redirect(utility.domain + "/user/login");
     }
 
-
 })
 
-
+router.get("/logout", function(req, res, next){
+    req.session.destroy(function(err) {
+        // cannot access session here
+      })
+      res.render("user/logout");
+})
 
 
 
