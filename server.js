@@ -122,10 +122,7 @@ app.use("/user", user_Route);
 
 // })
 
-app.get("/test", function(req, res, next){
- 
-
-})
+app.use("/test", test_module);
 
 /**
  *  API 
