@@ -143,9 +143,11 @@ router.post("/login", function(req, res, next){
             }
             res.render("user/login", data);
         }else{
-            res.session.userID = resObj.userID;
-            res.session.userName = resObj.userName;
-            res.session.userEmail = resObj.userEmail;
+            console.log("Lets log in!");
+            console.log(resObj);
+            // res.session.userID = resObj.userID;
+            // res.session.userName = resObj.userName;
+            // res.session.userEmail = resObj.userEmail;
 
         }
     })
