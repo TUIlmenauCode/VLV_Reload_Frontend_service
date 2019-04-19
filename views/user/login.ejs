@@ -117,6 +117,44 @@
         <!-- end of container-fluid -->
     </section>
     <%- include('../parts/html-foot.ejs', {url : url}); %>
+    <ul class="costum_error_list">
+        <% apiErrors.forEach(function(err) { %>
+            <li class="costum_error_item"> <%- err %> <span onclick="remove_error(this)"><i class="icofont icofont-close-line-circled"></i> </span></li>
+        <% }); %>
+    </ul>
 </body>
+ <style>
+    .costum_error_list {
+        position: absolute;
+        bottom: 0;
+        width: calc(100vw - 6em);
+        left: 3em;
+    }
+    .costum_error_item{
+        margin: 1em;
+        padding: 1em 1.4em;
+        background: white;
+        color: #e83e8c;
+        border: 1px solid #e83e8c;
+        border-radius: 0.5em;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .costum_error_item span{
+        color: black;
+        position: absolute;
+        right: 2em;
+        cursor: pointer;
+    }
+
+    
+    </style>
+
+    <script>
+     function remove_error(child){
+        $( child ).parent().fadeOut("slow");
+    }
+    
+    </script>
 
 </html>

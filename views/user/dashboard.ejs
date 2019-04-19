@@ -35,39 +35,7 @@
 
                                             <!-- lettest acivity and statustic card start -->
 
-                                            <div class="col-xl-6 col-md-6">
-                                            <div class="card">
-														<div class="card-header">
-															<h5>Öffentlicher Bereich</h5>
-														</div>
-														<div class="card-block">
-															<p>
-																Hier findest Du tagesaktuell das "Standard" Vorlesungsverzeichnis aufbereitet für dein mobiles Gerät.
-                                                            </p>
-                                                            <button class="btn waves-effect waves-light btn-success btn-square btn-block" onclick="window.location.href='/public/view'">zum öffentlichen Bereich</button>
-														</div>
-													</div>
-                                            </div>
-                                            <div class="col-xl-6 col-md-6">
-                                            <div class="card">
-														<div class="card-header">
-															<h5>Dein Kalender</h5>
-														</div>
-														<div class="card-block">
-															<p>
-                                                                Hier kannst Du deinen eigenen Kalender erstellen. Shoppe einfache durch die empfohlenen Veranstaltungen oder suche Dir gezielt Veranstaltungen.<br> <br> 
-                                                                Du musst eine Veranstaltung nachholen? Kein Problem 😎. 
-                                                                Unser Algorithmus baut deinen eigenen individuellen Kalender zusammen. Der Algorithmus versucht so wenig Überschneidungen wie möglich zu erzeugen.
-                                                                <br>
-                                                                Und das Beste: dein individueller Kalender kann via Link in dein Smartphone integriert werden.
-                                                                <br> 
-                                                                <br> 
-                                                                <strong>--> Noch in Entwicklung <--</strong>   
-                                                            </p>
-                                                            <button class="btn waves-effect waves-light btn-info btn-square btn-block inactive">Zum individuellen Bereich</button>
-														</div>
-													</div>
-                                            </div>
+                                            
 
 
                                             <!-- lettest acivity and statustic card end -->
@@ -88,6 +56,37 @@
         </div>
     </div>
     <%- include('./parts/foot.ejs',{url : url})%>
+    <ul class="costum_error_list">
+        <% apiErrors.forEach(function(err) { %>
+            <li class="costum_error_item"> <%- err %> <span onclick="remove_error(this)"><i class="icofont icofont-close-line-circled"></i> </span></li>
+        <% }); %>
+    </ul>
 </body>
+ <style>
+    .costum_error_list {
+        position: absolute;
+        bottom: 0;
+        width: calc(100vw - 6em);
+        left: 3em;
+    }
+    .costum_error_item{
+        margin: 1em;
+        padding: 1em 1.4em;
+        background: white;
+        color: #e83e8c;
+        border: 1px solid #e83e8c;
+        border-radius: 0.5em;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .costum_error_item span{
+        color: black;
+        position: absolute;
+        right: 2em;
+        cursor: pointer;
+    }
+
+    
+    </style>
 
 </html>
