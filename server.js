@@ -20,6 +20,7 @@ const DB_room = require("./models/db/DB_Room");
 const test_module = require("./routes/test");
 
 
+
 // configure app
 var app = express();
 var port = normalizePort(process.env.PORT || '3000');
@@ -59,13 +60,17 @@ const api_Course = require("./routes/api/Course");
 const api_SeminarGroup = require("./routes/api/Seminargroup");
 const api_Semester = require("./routes/api/Semester");
 
-
-
 // ROUTES 
 app.get('/', function (req, res, next) {
   var data = {
     url : utility.domain,
-    page_title : "Willkommen"
+    page_title : "Willkommen",
+    userData : {
+      userId = req.session.userId || 0,
+      userName = req.session.userName || "Ronny Fuchs",
+      userEmail = req.session.userEmail || "example@test.io",
+      avatar = req.session.avatar ||""
+    }
   }
 res.render("welcome", data)  ;
 });
@@ -73,7 +78,13 @@ res.render("welcome", data)  ;
 app.get('/public/view',function(req,res,next){
   var data = {
     url : utility.domain,
-    page_title : "öffentliche Ansicht"
+    page_title : "öffentliche Ansicht",
+    userData : {
+      userId = req.session.userId || 0,
+      userName = req.session.userName || "Ronny Fuchs",
+      userEmail = req.session.userEmail || "example@test.io",
+      avatar = req.session.avatar ||""
+    }
   }
 res.render("public_start", data)  ;
 })
@@ -89,15 +100,18 @@ app.get('/public/dashboard',function(req,res,next){
         var data = {
           url : utility.domain,
           page_title : "aktuelle Raum Übersicht",
-          room_list : fetched_roomList
+          room_list : fetched_roomList,
+          userData : {
+            userId = req.session.userId || 0,
+            userName = req.session.userName || "Ronny Fuchs",
+            userEmail = req.session.userEmail || "example@test.io",
+            avatar = req.session.avatar ||""
+          }
         }
       
       res.render("roomOverview", data)  ;
     }
   })
-  
-  
-  
 })
 
 
@@ -109,18 +123,9 @@ app.get('/public/dashboard',function(req,res,next){
 
 app.use("/user", user_Route);
 
-// app.get("/test", function(req, res, next){
-//   var test = require("./models/test")
-//   test.start(function(err, result){
-//     if (err){
-//       console.log(err);
-//       res.send("error");
-//     }else{
-//       res.send(JSON.stringify(result));
-//     }
-//   })
-
-// })
+/** 
+ *  TEST
+ */
 
 app.use("/test", test_module);
 

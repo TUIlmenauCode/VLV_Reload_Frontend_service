@@ -71,7 +71,13 @@ router.get("/dashboard", function(req, res, next){
         var data = {
             url : utility.domain,
             page_title : "Dein Dashboard",
-            apiErrors : []
+            apiErrors : [],
+            userData : {
+                userId = req.session.userId || 0,
+                userName = req.session.userName || "Ronny Fuchs",
+                userEmail = req.session.userEmail || "example@test.io",
+                avatar = req.session.avatar ||""
+              }
           }
         res.render("user/dashboard", data);
 
