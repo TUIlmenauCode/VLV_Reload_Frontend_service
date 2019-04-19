@@ -59,12 +59,6 @@ router.get("/verifiy", function(req, res, next){
             res.send("<h1>Dein Code ist ungültig! </h1> Bitte schreibe dein Problem an kai.gothe@tu-ilmenau.de <hr>" + errorstring);
         }
     });
-    
-
-    
-
-   
-      
           
 });
 
@@ -145,7 +139,7 @@ router.post("/login", function(req, res, next){
         }else{
             console.log("Lets log in!");
             console.log(resObj);
-            res.session.test = "blub";
+            req.session.test = "blub";
             // res.session.userID = resObj.userID;
             // res.session.userName = resObj.userName;
             // res.session.userEmail = resObj.userEmail;
