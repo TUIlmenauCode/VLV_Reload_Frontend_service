@@ -64,10 +64,10 @@ const api_Semester = require("./routes/api/Semester");
 app.get('/', function (req, res, next) {
   
   var userData = {
-    userId = 0 ,
-    userName = "example@test.io" ,
-    avatar = ""
-  }
+    userId : 0 ,
+    userName : "example@test.io" ,
+    avatar : ""
+}
 
   if (req.session.userId){
     userData.userId = req.session.userId ;
@@ -86,10 +86,10 @@ app.get('/', function (req, res, next) {
 app.get('/public/view',function(req,res,next){
 
   var userData = {
-    userId = 0 ,
-    userName = "example@test.io" ,
-    avatar = ""
-  }
+    userId : 0 ,
+    userName : "example@test.io" ,
+    avatar : ""
+}
 
   if (req.session.userId){
     userData.userId = req.session.userId ;
@@ -108,10 +108,10 @@ res.render("public_start", data)  ;
 app.get('/public/dashboard',function(req,res,next){
 
   var userData = {
-    userId = 0 ,
-    userName = "example@test.io" ,
-    avatar = ""
-  }
+    userId : 0 ,
+    userName : "example@test.io" ,
+    avatar : ""
+}
 
   if (req.session.userId){
     userData.userId = req.session.userId ;
