@@ -7,7 +7,8 @@ const verify_hashModule = require("../../models/verify_hash")
 
 router.get("/login", function(req, res, next){
     var data = {
-            url : utility.domain
+            url : utility.domain,
+            apiErrors = []
           }
         
     res.render("user/login", data)  ;
