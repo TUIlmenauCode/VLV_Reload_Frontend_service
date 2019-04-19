@@ -133,9 +133,9 @@ router.post("/login", function(req, res, next){
         if (errorList.length > 0 ){
             var data = {
                 url : utility.domain,
-                apiErrors : []
+                apiErrors : errorList
             }
-            res.render("user/login", data);
+            //res.render("user/login", data);
         }else{
             console.log("Lets log in!");
             console.log(resObj);
