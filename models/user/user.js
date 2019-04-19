@@ -104,8 +104,6 @@ const User = {
                             }
 
                             if (b_result){
-                                // DO login 
-                                // create sessions
                                 const resObj = {
                                     userId : user_ID, 
                                     userName : user_Name, 
@@ -116,7 +114,9 @@ const User = {
                                 callback(errorlist, resObj);
 
                             }else{
-                                console.log()
+                                console.log("Password does not match");
+                                errorlist.push("Das Passwort stimmt nicht!");
+                                callback(errorlist)
                             }
                         })
                     }else{
