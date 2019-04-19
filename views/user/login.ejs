@@ -158,11 +158,11 @@
         function validateInput(e){
             console.log(e.value);
             console.log(validateEmail(e.value));
-            // if validateEmail(e.value) {
-            //     $("#login-btn").prop("disabled",false);
-            // }else{
-            //     $(".costum_error_list").append(' <li class="costum_error_item"> Bitte nutzte deine E-Mail Adresse als Login <span onclick="remove_error(this)"><i class="icofont icofont-close-line-circled"></i> </span></li>')
-            // }
+            if (validateEmail(e.value)) {
+                $("#login-btn").prop("disabled",false);
+            }else{
+                $(".costum_error_list").append(' <li class="costum_error_item"> Bitte nutzte deine E-Mail Adresse als Login <span onclick="remove_error(this)"><i class="icofont icofont-close-line-circled"></i> </span></li>')
+            }
 
         }
 
