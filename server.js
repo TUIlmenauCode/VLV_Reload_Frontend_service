@@ -65,7 +65,7 @@ app.get('/', function (req, res, next) {
   
   var userData = {
     userId : 0 ,
-    userName : "example@test.io" ,
+    userName : "Ronny Fuchs" ,
     avatar : ""
 }
 
@@ -87,7 +87,7 @@ app.get('/public/view',function(req,res,next){
 
   var userData = {
     userId : 0 ,
-    userName : "example@test.io" ,
+    userName : "Ronny Fuchs" ,
     avatar : ""
 }
 
@@ -109,7 +109,7 @@ app.get('/public/dashboard',function(req,res,next){
 
   var userData = {
     userId : 0 ,
-    userName : "example@test.io" ,
+    userName : "Ronny Fuchs" ,
     avatar : ""
 }
 

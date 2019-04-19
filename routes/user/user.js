@@ -66,7 +66,7 @@ router.get("/verifiy", function(req, res, next){
 router.get("/dashboard", function(req, res, next){
     var userData = {
         userId : 0 ,
-        userName : "example@test.io" ,
+        userName : "Ronny Fuchs" ,
         avatar : ""
     }
     
