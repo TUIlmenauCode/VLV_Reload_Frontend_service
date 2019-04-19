@@ -61,14 +61,6 @@ const User = {
 
             // generate Password hash 
 
-
-
-            
-
-            
-
-
-
         }
 
     },
@@ -76,6 +68,29 @@ const User = {
     existUserName:function(inputName, callback){
         return db.query("SELECT Student.studentID FROM `Student` WHERE Student.name = ?", [inputName], callback)
     },
+
+    login:function(user, password, saveLogin , callback){
+
+        var errorlist = [];
+
+        if (password.length == 0){
+            errorlist.push("Kein Password angegeben")
+        }
+
+        if (user.length == 0){
+            errorlist.push("Keine Email angegeben")
+        }
+
+        DB_User.get__from_Email(user, function(err, apiResult){
+            if (err){
+                console.log(err);
+                errorlist.push(err);
+            }else{
+                console.log(apiResult);
+            }
+        })
+    },
+
 
 }
 

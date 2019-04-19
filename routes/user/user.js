@@ -129,6 +129,25 @@ router.post("/create", function(req, res, next){
 
 router.post("/login", function(req, res, next){
 
+    const current_user = req.body.user_name;
+    const current_password = req.body.password;
+    const saveLogin = req.body.saveLoginInCache;
+
+    userModule.login(current_user, current_password, saveLogin, function(){
+        
+    })
+
+    var errorlist = [];
+
+    if (current_password.length == 0){
+        errorlist.push("Kein Password angegeben")
+    }
+
+    if (current_user.length == 0){
+        errorlist.push("Keine Email angegeben")
+    }
+
+    
 
     console.log(req.body);
 
