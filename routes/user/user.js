@@ -68,7 +68,12 @@ router.get("/dashboard", function(req, res, next){
         console.log(req.session);
 
     if (req.session.userId){
-        res.render("user/dashboard");
+        var data = {
+            url : utility.domain,
+            page_title : "Dein Dashboard",
+            apiErrors : []
+          }
+        res.render("user/dashboard", data);
 
     }else{
         res.redirect(utility.domain + "/user/login");
