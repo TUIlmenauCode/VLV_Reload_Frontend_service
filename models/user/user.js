@@ -108,8 +108,12 @@ const User = {
                             if (b_result){
                                 // DO login 
                                 // create sessions
-
-                                callback(errorlist, {userId : user_ID, userName : user_Name, userEmail : user_email})
+                                const resObj = {
+                                    userId : user_ID, 
+                                    userName : user_Name, 
+                                    userEmail : user_email
+                                }
+                                callback(errorlist, resObj);
 
                             }else{
                                 console.log()
