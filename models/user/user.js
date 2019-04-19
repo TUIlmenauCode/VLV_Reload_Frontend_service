@@ -90,9 +90,7 @@ const User = {
                     console.log(err);
                     errorlist.push(err);
                 }else{
-    
                     console.log(apiResult);
-    
                     if (apiResult.length > 0){
                         console.log(apiResult);
                         var user_ID = apiResult[0].studentID
@@ -121,12 +119,13 @@ const User = {
                                 console.log()
                             }
                         })
+                    }else{
+                        errorlist.push("Der Benutzer wurde nicht gefunden");
+                        callback(errorlist)
                     }
                 }
             })
         }
-
-        
     },
 
 
