@@ -142,7 +142,7 @@ router.post("/login", function(req, res, next){
             // req.session.userID = resObj.userID;
             // req.session.userName = resObj.userName;
             // req.session.userEmail = resObj.userEmail;
-            res.redirect( utility.domain + "/test/sessionDump");
+            res.send("hello");
         }
     })
 })
