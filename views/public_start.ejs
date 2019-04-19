@@ -114,6 +114,7 @@ $(document).ready(function(){
 function createCalendar(day){
     console.log(current_termins)
     $('#calendar').fullCalendar({
+        axisFormat: "HH:mm",
         header: {
             left: 'prev, today, next',
             center: 'title',
