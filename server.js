@@ -66,10 +66,9 @@ app.get('/', function (req, res, next) {
     url : utility.domain,
     page_title : "Willkommen",
     userData : {
-      userId = req.session.userId || 0,
-      userName = req.session.userName || "Ronny Fuchs",
-      userEmail = req.session.userEmail || "example@test.io",
-      avatar = req.session.avatar ||""
+      userId = (req.session.userId || 0),
+      userName = (req.session.userEmail || "example@test.io"),
+      avatar = (req.session.avatar ||"")
     }
   }
 res.render("welcome", data)  ;
@@ -102,7 +101,7 @@ app.get('/public/dashboard',function(req,res,next){
           page_title : "aktuelle Raum Übersicht",
           room_list : fetched_roomList,
           userData : {
-            userId = req.session.userId || 0,
+            userId = (req.session.userId || 0),
             userName = req.session.userName || "Ronny Fuchs",
             userEmail = req.session.userEmail || "example@test.io",
             avatar = req.session.avatar ||""
