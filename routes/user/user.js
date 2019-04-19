@@ -136,7 +136,7 @@ router.post("/login", function(req, res, next){
         apiErr = errorList;
 
         if (not_confirmed){
-            res.redirect(utility.domain + "user/send-verify");
+            res.redirect(utility.domain + "/user/send-verify");
         }else{
             if (errorList.length > 0 ){
                 var data = {
