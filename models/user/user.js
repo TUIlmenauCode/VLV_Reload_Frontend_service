@@ -86,7 +86,25 @@ const User = {
                 console.log(err);
                 errorlist.push(err);
             }else{
+
                 console.log(apiResult);
+
+                if (apiResult.length > 0){
+                    var user_ID = apiResult[0].studentID
+                    var user_Name = apiResult[0].name
+                    var user_email = apiResult[0].email
+                    var user_passwordHash = apiResult[0].password
+
+                    bcrypt.compare(password, user_passwordHash, function(b_err, b_result){
+                        console.log(b_err);
+                        console.log(b_result);
+                    })
+
+
+                }
+
+                
+
             }
         })
     },
