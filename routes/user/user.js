@@ -144,6 +144,7 @@ router.post("/login", function(req, res, next){
             // req.session.userEmail = resObj.userEmail;
             console.log("Weiter geht es");
             res.send("hello");
+            res.end();
         }
     })
 })
