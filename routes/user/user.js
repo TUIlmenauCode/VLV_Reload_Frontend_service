@@ -65,6 +65,8 @@ router.get("/verifiy", function(req, res, next){
 
 router.get("/dashboard", function(req, res, next){
 
+        console.log(req.session);
+
     if (req.session.userID){
         res.render("user/dashboard");
 
