@@ -12,7 +12,7 @@ const Student = {
     }, 
 
     get__from_Email(user_email, callback){
-        return db.query("SELECT `studentID`,`name`,`email`,`password`,`avatar`,`group` FROM `Student` WHERE Student.email = ?", [user_email], callback);
+        return db.query("SELECT `studentID`,`name`,`email`,`password`,`avatar`,`group`, `confirmed` FROM `Student` WHERE Student.email = ?", [user_email], callback);
     }
 
 }

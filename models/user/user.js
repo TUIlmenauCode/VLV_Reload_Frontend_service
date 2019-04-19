@@ -83,7 +83,7 @@ const User = {
 
         if (errorlist.length == 0 ){
 
-            DB_User.get__from_Email(user, function(err, apiResult){
+            DB_User.get__from_Email(user, function(err, apiResult, not_confirmed){
                 if (err){
                     console.log(err);
                     errorlist.push(err);
@@ -95,28 +95,35 @@ const User = {
                         var user_Name = apiResult[0].name
                         var user_email = apiResult[0].email
                         var user_passwordHash = apiResult[0].password
-    
-                        bcrypt.compare(password, user_passwordHash, function(b_err, b_result){
-                            if (err){
-                                console.log(b_err);
-                            }
+                        var user_confirmed = apiResult[0].confirmed
 
-                            if (b_result){
-                                const resObj = {
-                                    userId : user_ID, 
-                                    userName : user_Name, 
-                                    userEmail : user_email
+                        if (user_confirmed == 1){
+                            bcrypt.compare(password, user_passwordHash, function(b_err, b_result){
+                                if (err){
+                                    console.log(b_err);
                                 }
-                                console.log("Dump result")
-                                console.log(resObj);
-                                callback(errorlist, resObj);
-
-                            }else{
-                                console.log("Password does not match");
-                                errorlist.push("Das Passwort stimmt nicht!");
-                                callback(errorlist)
-                            }
-                        })
+    
+                                if (b_result){
+                                    const resObj = {
+                                        userId : user_ID, 
+                                        userName : user_Name, 
+                                        userEmail : user_email
+                                    }
+                                    console.log("Dump result")
+                                    console.log(resObj);
+                                    callback(errorlist, resObj);
+    
+                                }else{
+                                    console.log("Password does not match");
+                                    errorlist.push("Das Passwort stimmt nicht!");
+                                    callback(errorlist)
+                                }
+                            })
+                        }else{
+                            callback(errorlist, null, 1);
+                        }
+    
+                        
                     }else{
                         errorlist.push("Der Benutzer wurde nicht gefunden");
                         callback(errorlist)

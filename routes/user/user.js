@@ -131,29 +131,36 @@ router.post("/login", function(req, res, next){
     const saveLogin = req.body.saveLoginInCache;
     console.log(" User :" + current_user + "\n Password" + current_password + "\n Password" + saveLogin);
 
-    userModule.login(current_user, current_password, saveLogin, function(errorList, resObj){
+    userModule.login(current_user, current_password, saveLogin, function(errorList, resObj, not_confirmed){
         var apiErr = [];
         apiErr = errorList;
-        if (errorList.length > 0 ){
-            var data = {
-                url : utility.domain,
-                page_title : "User Login",
-                apiErrors : apiErr
-            }
-            res.render("user/login", data);
+
+        if (not_confirmed){
+            res.redirect(utility.domain + "user/send-verify");
         }else{
-            console.log("Lets log in!");
-            console.log(resObj);
-            req.session.userID = resObj.userID;
-            req.session.userName = resObj.userName;
-            req.session.userEmail = resObj.userEmail;
-            console.log("Weiter geht es");
-            var data = {
-                url : utility.domain,
-                page_title : "Willkommen"
-              }
-            res.redirect(utility.domain + "/user/dashboard");
+            if (errorList.length > 0 ){
+                var data = {
+                    url : utility.domain,
+                    page_title : "User Login",
+                    apiErrors : apiErr
+                }
+                res.render("user/login", data);
+            }else{
+                console.log("Lets log in!");
+                console.log(resObj);
+                req.session.userID = resObj.userID;
+                req.session.userName = resObj.userName;
+                req.session.userEmail = resObj.userEmail;
+                console.log("Weiter geht es");
+                var data = {
+                    url : utility.domain,
+                    page_title : "Willkommen"
+                  }
+                res.redirect(utility.domain + "/user/dashboard");
+            }
         }
+
+        
     })
 })
  
