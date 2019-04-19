@@ -63,6 +63,18 @@ router.get("/verifiy", function(req, res, next){
           
 });
 
+router.get("/dashboard", function(req, res, next){
+
+    if (req.session.userID){
+        res.render("user/dashboard");
+
+    }else{
+        res.redirect(utility.domain + "/user/login");
+    }
+
+
+})
+
 
 
 
