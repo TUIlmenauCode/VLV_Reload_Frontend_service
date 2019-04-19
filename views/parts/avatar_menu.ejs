@@ -1,40 +1,31 @@
 <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+
+
+<% if (userData.userId == 0) { %>
+
 <li>
     <a href="<%= url %>/user/login">
         <i class="feather icon-log-in"></i> Login
     </a>  
-</li>                      
+</li>         
 
-<!-- 
-                            <li>
-                            <a href="index.html#!">
-                            <i class="feather icon-settings"></i> Settings
+<% } else { %>
+<li>
+    <a href="index.html#!">
+        <i class="feather icon-settings"></i> Profil
+    </a>
+</li>
+<li>
+    <a href="index.html#!">
+        <i class="feather icon-settings"></i> Dashboard
+    </a>
+</li>
+<li>
+    <a href="index.html#!">
+        <i class="feather icon-settings"></i> Logout
+    </a>
+</li>
+<% } %>
 
-                        </a>
-                        </li>
-                        <li>
-                            <a href="index.html#">
-                            <i class="feather icon-user"></i> Profile
-
-                        </a>
-                        </li>
-                        <li>
-                            <a href="email-inbox.html">
-                            <i class="feather icon-mail"></i> My Messages
-
-                        </a>
-                        </li>
-                        <li>
-                            <a href="auth-lock-screen.html">
-                            <i class="feather icon-lock"></i> Lock Screen
-
-                        </a>
-                        </li>
-                        <li>
-                            <a href="auth-sign-in-social.html">
-                            <i class="feather icon-log-out"></i> Logout
-
-                        </a>
-                        </li>
-                        -->
-                    </ul>
+ 
+ </ul>
