@@ -100,8 +100,15 @@ const User = {
                         var user_passwordHash = apiResult[0].password
     
                         bcrypt.compare(password, user_passwordHash, function(b_err, b_result){
-                            console.log(b_err);
-                            console.log(b_result);
+                            if (err){
+                                console.log(b_err);
+                            }
+
+                            if b_result{
+
+                            }else{
+                                console.log()
+                            }
                         })
                     }
                 }
