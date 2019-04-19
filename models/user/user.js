@@ -104,8 +104,9 @@ const User = {
                                 console.log(b_err);
                             }
 
-                            if b_result{
-
+                            if (b_result){
+                                // DO login 
+                                // create sessions
                             }else{
                                 console.log()
                             }
