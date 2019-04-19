@@ -6,12 +6,12 @@ const Verify_hash = {
         return db.query("INSERT INTO `verify_hash` (`verify_hashId`, `hash`, `user`, `created`, `updated`, `used`) VALUES (NULL, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '0')", [hash, user], callback);
     },
 
-    isActive:function(hash, callback){
-
+    getHash:function(hash, user, callback){
+        return db.query("SELECT `hash`, `user`, `created`, `updated`, `used` FROM `verify_hash` WHERE verify_hash.hash = ? AND verify_hash.user = ?", [hash, user], callback)
     },
 
-    devalue:function(hash, user){
-        
+    do_inActive:function(hash, callback){
+        return db.query("UPDATE `verify_hash` SET `used`= 1  WHERE verify_hash.hash = ?", [hash], callback)
     }
 
 }

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const utility = require("../../utility");
 const userModule = require("../../models/user/user")
+const verify_hashModule = require("../../models/verify_hash")
 
 
 router.get("/login", function(req, res, next){
@@ -20,6 +21,68 @@ router.get("/create", function(req, res, next){
         
     res.render("user/create", data)  ;
 });
+
+router.get("/send-verify", function(req, res, next){
+    var data = {
+            url : utility.domain,
+            apiErrors : []
+          }
+        
+    res.render("user/send-verify", data)  ;
+});
+
+
+router.get("/verifiy", function(req, res, next){
+
+    const hash = req.query.code;
+    const u = req.query.u;
+    
+    verify_hashModule.check(hash, u, function(check_errors){
+        console.log(check_errors)
+        if (check_errors.length == 0){
+            var data = {
+                url : utility.domain,
+                apiErrors : []
+              }
+            res.render("user/login", data)
+        }else{
+            var data = {
+                url : utility.domain,
+                apiErrors : check_errors
+              }
+
+            var errorstring = "<h3>Error Log: </h3>";
+            check_errors.forEach(function(e){
+                errorstring = errorstring + "<br>  - " + e;
+            })
+
+            res.send("<h1>Dein Code ist ungültig! </h1> Bitte schreibe dein Problem an kai.gothe@tu-ilmenau.de <hr>" + errorstring);
+        }
+    });
+    
+
+    
+
+   
+      
+          
+});
+
+
+
+
+
+
+
+
+
+/**
+ *
+ *  POST ROUTES
+ * 
+ */
+
+
 
 router.post("/exist_UserName", function(req,res,next){
     var inputName = req.body.UserName;
@@ -59,10 +122,18 @@ router.post("/create", function(req, res, next){
                 url : utility.domain,
                 apiErrors : []
             }
-            res.render("user/login", data)  ;
+            res.render("user/send-verify", data)  ;
         }
     })
 });
+
+router.post("/login", function(req, res, next){
+
+
+    console.log(req.body);
+
+
+})
 
 
 

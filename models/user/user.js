@@ -1,6 +1,6 @@
 const db = require("../../dbConnection");
 const bcrypt = require('bcrypt');
-const DB_User = require('../../models/db/DB_user');
+const DB_User = require('../db/DB_Student');
 const verify_hash = require('../../models/verify_hash');
 
 function validateEmail(email) {
