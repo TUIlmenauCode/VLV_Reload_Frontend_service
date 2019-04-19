@@ -64,20 +64,24 @@ router.get("/verifiy", function(req, res, next){
 });
 
 router.get("/dashboard", function(req, res, next){
-
-        console.log(req.session);
+    var userData = {
+        userId = 0 ,
+        userName = "example@test.io" ,
+        avatar = ""
+    }
+    
+    if (req.session.userId){
+        userData.userId = req.session.userId ;
+        userData.userName = req.session.userName;
+        userData.avatar = req.session.avatar;
+    }
 
     if (req.session.userId){
         var data = {
             url : utility.domain,
             page_title : "Dein Dashboard",
             apiErrors : [],
-            userData : {
-                userId = req.session.userId || 0,
-                userName = req.session.userName || "Ronny Fuchs",
-                userEmail = req.session.userEmail || "example@test.io",
-                avatar = req.session.avatar ||""
-              }
+            userData : userData,
           }
         res.render("user/dashboard", data);
 

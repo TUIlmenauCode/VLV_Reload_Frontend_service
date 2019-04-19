@@ -62,33 +62,62 @@ const api_Semester = require("./routes/api/Semester");
 
 // ROUTES 
 app.get('/', function (req, res, next) {
+  
+  var userData = {
+    userId = 0 ,
+    userName = "example@test.io" ,
+    avatar = ""
+  }
+
+  if (req.session.userId){
+    userData.userId = req.session.userId ;
+    userData.userName = req.session.userName;
+    userData.avatar = req.session.avatar;
+  }
+  
   var data = {
     url : utility.domain,
     page_title : "Willkommen",
-    userData : {
-      userId = (req.session.userId || 0),
-      userName = (req.session.userEmail || "example@test.io"),
-      avatar = (req.session.avatar ||"")
-    }
+    userData : userData
   }
-res.render("welcome", data)  ;
+  res.render("welcome", data)  ;
 });
 
 app.get('/public/view',function(req,res,next){
+
+  var userData = {
+    userId = 0 ,
+    userName = "example@test.io" ,
+    avatar = ""
+  }
+
+  if (req.session.userId){
+    userData.userId = req.session.userId ;
+    userData.userName = req.session.userName;
+    userData.avatar = req.session.avatar;
+  }
+
   var data = {
     url : utility.domain,
     page_title : "öffentliche Ansicht",
-    userData : {
-      userId = req.session.userId || 0,
-      userName = req.session.userName || "Ronny Fuchs",
-      userEmail = req.session.userEmail || "example@test.io",
-      avatar = req.session.avatar ||""
-    }
+    userData : userData
   }
 res.render("public_start", data)  ;
 })
 
 app.get('/public/dashboard',function(req,res,next){
+
+  var userData = {
+    userId = 0 ,
+    userName = "example@test.io" ,
+    avatar = ""
+  }
+
+  if (req.session.userId){
+    userData.userId = req.session.userId ;
+    userData.userName = req.session.userName;
+    userData.avatar = req.session.avatar;
+  }
   
   var fetched_roomList = [{ roomId : 0, name : "Dummy"}];
   DB_room.selectAll__Name_ID(function(err, apiResult){
@@ -100,12 +129,7 @@ app.get('/public/dashboard',function(req,res,next){
           url : utility.domain,
           page_title : "aktuelle Raum Übersicht",
           room_list : fetched_roomList,
-          userData : {
-            userId = (req.session.userId || 0),
-            userName = req.session.userName || "Ronny Fuchs",
-            userEmail = req.session.userEmail || "example@test.io",
-            avatar = req.session.avatar ||""
-          }
+          userData : userData
         }
       
       res.render("roomOverview", data)  ;
