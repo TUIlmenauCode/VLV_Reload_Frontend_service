@@ -4,17 +4,17 @@
 
 <body>
 
-<%- include('./parts/preloader.ejs')%>    
+<%- include('../parts/preloader.ejs')%>    
     <div id="pcoded" class="pcoded" >
         <div class="pcoded-overlay-box"></div>
         <div class="pcoded-container navbar-wrapper">
             
 
-        <%- include('./parts/header.ejs')%>    
+        <%- include('../parts/header.ejs')%>    
 
-        <%- include('./parts/chat_persons.ejs')%>    
+        <%- include('../parts/chat_persons.ejs')%>    
 
-        <%- include('./parts/chat.ejs')%>    
+        <%- include('../parts/chat.ejs')%>    
 
             
             <div class="pcoded-main-container">
@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-    <%- include('./parts/foot.ejs',{url : url})%>
+    <%- include('../parts/foot.ejs',{url : url})%>
     <ul class="costum_error_list">
         <% apiErrors.forEach(function(err) { %>
             <li class="costum_error_item"> <%- err %> <span onclick="remove_error(this)"><i class="icofont icofont-close-line-circled"></i> </span></li>
