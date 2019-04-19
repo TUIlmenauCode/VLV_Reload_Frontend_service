@@ -128,6 +128,7 @@ router.post("/login", function(req, res, next){
     const current_user = req.body.user_name;
     const current_password = req.body.password;
     const saveLogin = req.body.saveLoginInCache;
+    console.log("User :" + current_user + "\n Password" + current_password + "\n Password" + saveLogin);
 
     userModule.login(current_user, current_password, saveLogin, function(errorList, resObj){
         if (errorList.length > 0 ){
