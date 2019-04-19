@@ -128,7 +128,7 @@ router.post("/login", function(req, res, next){
     const current_user = req.body.user_name;
     const current_password = req.body.password;
     const saveLogin = req.body.saveLoginInCache;
-    console.log("User :" + current_user + "\n Password" + current_password + "\n Password" + saveLogin);
+    console.log(" User :" + current_user + "\n Password" + current_password + "\n Password" + saveLogin);
 
     userModule.login(current_user, current_password, saveLogin, function(errorList, resObj){
         if (errorList.length > 0 ){
@@ -140,15 +140,15 @@ router.post("/login", function(req, res, next){
         }else{
             console.log("Lets log in!");
             console.log(resObj);
-            req.session.userID = resObj.userID;
-            req.session.userName = resObj.userName;
-            req.session.userEmail = resObj.userEmail;
-            console.log("Weiter geht es");
-            var data = {
-                url : utility.domain,
-                page_title : "Willkommen"
-              }
-            res.render("welcome", data)
+            // req.session.userID = resObj.userID;
+            // req.session.userName = resObj.userName;
+            // req.session.userEmail = resObj.userEmail;
+            // console.log("Weiter geht es");
+            // var data = {
+            //     url : utility.domain,
+            //     page_title : "Willkommen"
+            //   }
+            // res.render("welcome", data)
         }
     })
 })
