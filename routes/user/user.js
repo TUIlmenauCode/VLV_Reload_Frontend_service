@@ -131,11 +131,13 @@ router.post("/login", function(req, res, next){
     console.log(" User :" + current_user + "\n Password" + current_password + "\n Password" + saveLogin);
 
     userModule.login(current_user, current_password, saveLogin, function(errorList, resObj){
+        var apiErr = [];
+        apiErr = errorList;
         if (errorList.length > 0 ){
             var data = {
                 url : utility.domain,
                 page_title : "User Login",
-                apiErrors : errorList
+                apiErrors : apiErr
             }
             res.render("user/login", data);
         }else{
