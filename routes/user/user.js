@@ -139,11 +139,10 @@ router.post("/login", function(req, res, next){
         }else{
             console.log("Lets log in!");
             console.log(resObj);
-            req.session.test = "blub";
-            // res.session.userID = resObj.userID;
-            // res.session.userName = resObj.userName;
-            // res.session.userEmail = resObj.userEmail;
-
+            req.session.userID = resObj.userID;
+            req.session.userName = resObj.userName;
+            req.session.userEmail = resObj.userEmail;
+            res.redirect( utility.domain + "/test/sessionDump");
         }
     })
 })
