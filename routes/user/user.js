@@ -145,6 +145,7 @@ router.post("/login", function(req, res, next){
         }else{
             console.log("Lets log in!");
             console.log(resObj);
+            res.session.test = "blub";
             // res.session.userID = resObj.userID;
             // res.session.userName = resObj.userName;
             // res.session.userEmail = resObj.userEmail;
