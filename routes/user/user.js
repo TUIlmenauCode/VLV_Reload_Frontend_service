@@ -67,7 +67,7 @@ router.get("/dashboard", function(req, res, next){
 
         console.log(req.session);
 
-    if (req.session.userID){
+    if (req.session.userId){
         res.render("user/dashboard");
 
     }else{
@@ -162,7 +162,7 @@ router.post("/login", function(req, res, next){
             }else{
                 console.log("Lets log in!");
                 console.log(resObj);
-                req.session.userID = resObj.userID;
+                req.session.userId = resObj.userId;
                 req.session.userName = resObj.userName;
                 req.session.userEmail = resObj.userEmail;
                 console.log("Weiter geht es");
