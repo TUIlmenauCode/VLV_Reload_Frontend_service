@@ -17,6 +17,7 @@ const DB_Stat_Source = require("./models/db/DB_Statistic_source")
 
 // Const 
 const DB_room = require("./models/db/DB_Room");
+const test_module = require("./models/test");
 
 
 // configure app
@@ -122,12 +123,7 @@ app.use("/user", user_Route);
 // })
 
 app.get("/test", function(req, res, next){
-  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-  var ip = req.headers['x-forwarded-for'] || 
-    req.connection.remoteAddress || 
-    req.socket.remoteAddress ||
-    (req.connection.socket ? req.connection.socket.remoteAddress : null);
-  res.send(req.headers['user-agent'] +"<br>" + fullUrl+"<br>" + ip);
+ 
 
 })
 
