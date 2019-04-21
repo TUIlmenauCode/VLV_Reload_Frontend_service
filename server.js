@@ -59,6 +59,7 @@ const api_AcademicDegree = require("./routes/api/AcademicDegree");
 const api_Course = require("./routes/api/Course");
 const api_SeminarGroup = require("./routes/api/Seminargroup");
 const api_Semester = require("./routes/api/Semester");
+const api_meal = require("./routes/api/Meals")
 
 // ROUTES 
 app.get('/', function (req, res, next) {
@@ -168,6 +169,7 @@ app.use("/api/Semester", api_Semester);
 app.use("/api/SeminarGroup", api_SeminarGroup);
 app.use("/api/public/calendar", require("./routes/api/calendar_data"));
 app.use("/api/Room", require("./routes/api/room"));
+app.use("/api/meal/", api_meal);
 
 
 
