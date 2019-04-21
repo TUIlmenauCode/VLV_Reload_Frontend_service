@@ -14,3 +14,10 @@ SELECT Room.roomID, Room.name, Termin.* FROM Room, Termin WHERE DATE_ADD(NOW(), 
 ```SQL
 SELECT DISTINCT Termin.start, Termin.end, Room.name, `Event`.`title` FROM Termin, Room, `Event` WHERE DATE(Termin.start) = CURRENT_DATE AND Room.roomID = Termin.room AND `Event`.eventID = Termin.event ORDER BY `Termin`.`start` DESC
 ```
+
+
+## OpenMensa 
+
+https://openmensa.org/api/v2/canteens/846/days
+
+/canteens/846/days/2019-04-24/meals
