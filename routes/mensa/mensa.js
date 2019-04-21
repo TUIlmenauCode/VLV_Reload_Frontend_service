@@ -72,7 +72,7 @@ res.render("Mensa_Cafe", data);
 })
 
 
-router.get("/Cafeteria_Röntgenbau", function(req, res, next){
+router.get("/Cafeteria_R%C3%B6ntgenbau", function(req, res, next){
   var userData = {
     userId : 0 ,
     userName : "Ronny Fuchs" ,
