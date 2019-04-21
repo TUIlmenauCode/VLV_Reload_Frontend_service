@@ -5,7 +5,8 @@ const utility = require("../../utility");
 
 router.get("/", function(req, res, next){
     var data = {
-        url : utility.domain
+        url : utility.domain,
+        page_title : "Übersicht Mensa"
     }
     res.render("Mensa/Mensa", data);
 })
