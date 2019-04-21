@@ -33,7 +33,7 @@
                                         <div class="col-sm-12">
                                             <div class="card">
                                                 <div class="card-block">
-                                                    <button class="btn btn-primary waves-effect waves-light" onClick="addDay()">ein Tag zurück</button>
+                                                    <button class="btn btn-primary waves-effect waves-light" onClick="subDay()">ein Tag zurück</button>
                                                     <span id="date"></span>
                                                     <button class="btn btn-primary waves-effect waves-light" onClick="addDay()">ein Tag weiter</button>
                                                 </div>
@@ -165,7 +165,7 @@
     function getMeals(){
         var display_date = moment(request_date).format("dddd DD.MM.YYYY");
         $("#date").html("   " + display_date + "   ");
-        
+
         $.ajax({
                 url: "https://app.vlv-reload.de/api/meal/getAll",
                 method : "POST",
