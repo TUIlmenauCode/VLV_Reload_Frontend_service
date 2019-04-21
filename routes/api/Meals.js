@@ -16,4 +16,17 @@ router.post('/getAll', function(req, res) {
     })
   });
 
+  router.post('/getNotes', function(req, res) {
+    console.log(req.body);
+    var mensaId = req.body.mealId;
+    dataHandler.getNotes(mensaId, function(err, apiResult){
+        if(err){
+            console.log(err);
+            res.send(err);
+        }else{
+            res.send(JSON.stringify(apiResult));
+        }
+    })
+  });
+
   module.exports = router;
