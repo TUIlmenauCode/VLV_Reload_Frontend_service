@@ -1,0 +1,109 @@
+
+<%- include('./parts/head.ejs',{url : url, page_title : page_title})%>
+
+<body>
+
+<%- include('./parts/preloader.ejs')%>    
+    <div id="pcoded" class="pcoded" >
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            
+
+        <%- include('./parts/header.ejs')%>    
+
+        <%- include('./parts/chat_persons.ejs')%>    
+
+        <%- include('./parts/chat.ejs')%>    
+
+            
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    
+                    <%- include('./parts/side_nav.ejs')%> 
+                    <div class="pcoded-content">
+                        
+                    <%- include('./parts/breadcrumb.ejs',{url : url , page_description : "Guten Appetit :D" , page_title : page_title, breadcrumb : [{name : "Mensa", link: "/mensa"}]}) %>
+                    
+                        
+                    
+                    <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <div class="page-body">
+                                        <!-- [ page content ] start -->
+                                        <div class="row">
+
+                                            <!-- lettest acivity and statustic card start -->
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card prod-p-card card-blue">
+                                                    <div class="card-body" onClick="window.location='<%= url %>/mensa/Ehrenberg'">
+                                                        <div class="row align-items-center m-b-30"> 
+                                                            <div class="col">
+                                                                <h3 class="m-b-0 f-w-700 text-white">Mensa Ehrenberg</h3>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card prod-p-card card-red">
+                                                    <div class="card-body" onClick="window.location='<%= url %>/mensa/Cafeteria_Mensa_Ehrenberg'">
+                                                        <div class="row align-items-center m-b-30"> 
+                                                            <div class="col">
+                                                                <h3 class="m-b-0 f-w-700 text-white">Cafeteria Mensa Ehrenberg</h3>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card prod-p-card card-yellow">
+                                                    <div class="card-body" onClick="window.location='<%= url %>/mensa/Cafeteria_Röntgenbau'">
+                                                        <div class="row align-items-center m-b-30"> 
+                                                            <div class="col">
+                                                                <h3 class="m-b-0 f-w-700 text-white">Mensa Röntgenbau</h3>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card prod-p-card card-green">
+                                                    <div class="card-body" onClick="window.location='<%= url %>/mensa/NANOteria'">
+                                                        <div class="row align-items-center m-b-30"> 
+                                                            <div class="col">
+                                                                <h3 class="m-b-0 f-w-700 text-white">NANOteria</h3>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- lettest acivity and statustic card end -->
+
+                                        </div>
+                                        <!-- [ page content ] end -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ style Customizer ] start -->
+                    <div id="styleSelector">
+                    </div>
+                    <!-- [ style Customizer ] end -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('./parts/foot.ejs',{url : url})%>
+</body>
+
+</html>
