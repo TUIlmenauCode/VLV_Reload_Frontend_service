@@ -30,6 +30,16 @@
                                 <div class="page-wrapper">
                                     <div class="page-body">
                                         <!-- [ page content ] start -->
+                                        <div class="col-sm-12">
+                                            <div class="card">
+                                                <div class="card-block">
+                                                    <button class="btn btn-primary waves-effect waves-light" onClick="addDay()">ein Tag zurück</button>
+                                                    <span id="date"></span>
+                                                    <button class="btn btn-primary waves-effect waves-light" onClick="addDay()">ein Tag weiter</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="row" id="row">
 
                                             <!-- lettest acivity and statustic card start -->
@@ -94,12 +104,30 @@
     
     <script>
 
-    var request_date = moment().format("YYYY-MM-DD");
+    var request_date = moment(new Date()).format("YYYY-MM-DD");
+    var day_offset = 0;
     
     $(document).ready(function(){
         
         getMeals();
     })
+
+    function updateview(){
+        request_date = moment().add(day_offset, 'days').format("YYYY-MM-DD");
+        console.log(request_date);
+        $("#row").html("")
+        getMeals()
+    }
+
+    function addDay(){
+        day_offset = day_offset + 1;
+        updateview()
+    }
+
+    function subDay(){
+        day_offset = day_offset - 1;
+        updateview()
+    }
 
 
     function showMealInfo(mealId){
