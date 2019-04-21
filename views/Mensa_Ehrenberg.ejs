@@ -1,0 +1,220 @@
+<%- include('./parts/head.ejs',{url : url, page_title : page_title})%>
+
+<body>
+
+<%- include('./parts/preloader.ejs')%>    
+    <div id="pcoded" class="pcoded" >
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            
+
+        <%- include('./parts/header.ejs')%>    
+
+        <%- include('./parts/chat_persons.ejs')%>    
+
+        <%- include('./parts/chat.ejs')%>    
+
+            
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    
+                    <%- include('./parts/side_nav.ejs')%> 
+                    <div class="pcoded-content">
+                        
+                    <%- include('./parts/breadcrumb.ejs',{url : url , page_description : "Guten Appetit :D" , page_title : page_title, breadcrumb : [{name : "Mensa", link: "/mensa"}]}) %>
+                    
+                        
+                    
+                    <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <div class="page-body">
+                                        <!-- [ page content ] start -->
+                                        <div class="row">
+
+                                            <!-- lettest acivity and statustic card start -->
+
+                                            <!--<div class="col-sm-12">
+													<div class="card">
+														<div class="card-block">
+															<nav aria-label="Page navigation example" style="margin:auto">
+                                                                <ul class="pagination">
+                                                                    <li class="page-item">
+                                                                        <a class="page-link" href="other.html#" aria-label="Previous">
+                                                                            <span aria-hidden="true">«</span>
+                                                                            <span class="sr-only">Previous</span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="page-item"><a class="page-link" href="other.html#">1</a></li>
+                                                                    <li class="page-item active"><a class="page-link" href="other.html#">2</a></li>
+                                                                    <li class="page-item"><a class="page-link" href="other.html#">3</a></li>
+                                                                    <li class="page-item">
+                                                                        <a class="page-link" href="other.html#" aria-label="Next">
+                                                                            <span aria-hidden="true">»</span>
+                                                                            <span class="sr-only">Next</span>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </nav>
+														</div>
+													</div>
+												</div>-->
+                                            
+                                            <div class="col-xl-6 col-md-12">
+                                                <div class="card" style="height: 275px">
+                                                    <div class="card-header">
+                                                        <h3>Ausgabe xy</h3>
+                                                        
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div class="latest-update-box" style="overflow:hidden">
+                                                            
+                                                            <div class="food-img" > 
+                                                                <span ><i class="feather icon-info" style="font-size:1.5em; margin:auto;"></i></span>
+                                                            </div>
+                                                            <div class="food-desc">
+                                                                <h4> Käse- Lauch-Suppe mit Hackfleisch und Pilzen, Brot oder Brötchen </h4> 
+                                                                <hr>
+                                                                <ul>
+                                                                    <li> <h5>Studierender 3,50 <label class="label label-inverse">Geld</label> </h5></li>
+                                                                    <li> Mitarbeiter 3,50€ </li>
+                                                                    <li> Ausenstehende 3,50€</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-xl-6 col-md-12">
+                                                <div class="card" style="height: 275px">
+                                                    <div class="card-header">
+                                                        <h3>Ausgabe xy</h3>
+                                                        
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div class="latest-update-box" style="overflow:hidden">
+                                                            
+                                                            <div class="food-img" > 
+                                                                <span ><i class="feather icon-info" style="font-size:1.5em; margin:auto;"></i></span>
+                                                            </div>
+                                                            <div class="food-desc">
+                                                                <h4> Käse- Lauch-Suppe mit Hackfleisch und Pilzen, Brot oder Brötchen </h4> 
+                                                                <hr>
+                                                                <ul>
+                                                                    <li> <h5>Studierender 3,50 <label class="label label-inverse">Geld</label> </h5></li>
+                                                                    <li> Mitarbeiter 3,50€ </li>
+                                                                    <li> Ausenstehende 3,50€</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-xl-6 col-md-12">
+                                                <div class="card" style="height: 275px">
+                                                    <div class="card-header">
+                                                        <h3>Ausgabe xy</h3>
+                                                        
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div class="latest-update-box" style="overflow:hidden">
+                                                            
+                                                            <div class="food-img" > 
+                                                                <span ><i class="feather icon-info" style="font-size:1.5em; margin:auto;"></i></span>
+                                                            </div>
+                                                            <div class="food-desc">
+                                                                <h4> Käse- Lauch-Suppe mit Hackfleisch und Pilzen, Brot oder Brötchen </h4> 
+                                                                <hr>
+                                                                <ul>
+                                                                    <li> <h5>Studierender 3,50 <label class="label label-inverse">Geld</label> </h5></li>
+                                                                    <li> Mitarbeiter 3,50€ </li>
+                                                                    <li> Ausenstehende 3,50€</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            
+
+                                            <!-- lettest acivity and statustic card end -->
+
+                                        </div>
+                                        <!-- [ page content ] end -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ style Customizer ] start -->
+                    <div id="styleSelector">
+                    </div>
+                    <!-- [ style Customizer ] end -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('./parts/foot.ejs',{url : url})%>
+    <script>
+    
+    $(document).ready(function(){
+        alert("Hello World;")
+    })
+
+
+    function fetchMeals(){
+        
+    }
+    
+    
+    </script>
+</body>
+
+<style>
+                                            
+    .food-img{
+        height :  200px;
+        width : 30%;
+        background: #f8f8f8;
+        position: absolute;
+        left:0 ;
+        bottom: 0;
+        background: url('https://images.unsplash.com/photo-1536510233921-8e5043fce771?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60');
+        background-repeat : no-repaet;
+        background-position : center center;
+        background-size: cover;
+        border-radius: 0 5px 0 5px;
+    }
+    .food-img span{
+        position: absolute;
+        left: calc(50% - 1em);
+        color: white;
+        border-radius: 50%;
+        bottom : 5px;
+        cursor: pointer;
+        background : #00bcd4;
+    }
+
+    .food-img span i{
+        font-size: 1em;
+        padding : 0.25em;
+        display: block;
+    }
+
+    .food-desc{
+        height :  200px;
+        width : calc(60% - 1em);
+        position: absolute;
+        right:1em ;
+        bottom: 0;
+        
+    }
+    
+    </style>
+
+</html>

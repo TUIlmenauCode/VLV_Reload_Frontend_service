@@ -25,4 +25,27 @@ router.get("/", function(req, res, next){
     res.render("Mensa", data);
 })
 
+
+router.get("/Ehrenberg", function(req, res, next){
+  var userData = {
+    userId : 0 ,
+    userName : "Ronny Fuchs" ,
+    avatar : ""
+}
+
+  if (req.session.userId){
+    userData.userId = req.session.userId ;
+    userData.userName = req.session.userName;
+    userData.avatar = req.session.avatar;
+  }
+
+var data = {
+    url : utility.domain,
+    page_title : "Mensa Ehrenberg",
+    userData : userData
+}
+res.render("Mensa_Ehrenberg", data);
+})
+
+
 module.exports = router;
