@@ -18,7 +18,7 @@ const DB_Stat_Source = require("./models/db/DB_Statistic_source")
 // Const 
 const DB_room = require("./models/db/DB_Room");
 const test_module = require("./routes/test");
-
+const mensa_module = require("./routes/mensa/mensa");
 
 
 // configure app
@@ -151,6 +151,12 @@ app.use("/user", user_Route);
  */
 
 app.use("/test", test_module);
+
+/**
+ *   MENSA
+ */
+
+ app.use("/mensa", mensa_module);
 
 /**
  *  API 
