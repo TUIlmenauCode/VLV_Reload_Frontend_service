@@ -1,19 +1,19 @@
 
-<%- include('./parts/head.ejs',{url : url, page_title : page_title})%>
+<%- include('../parts/head.ejs',{url : url, page_title : page_title})%>
 
 <body>
 
-<%- include('./parts/preloader.ejs')%>    
+<%- include('../parts/preloader.ejs')%>    
     <div id="pcoded" class="pcoded" >
         <div class="pcoded-overlay-box"></div>
         <div class="pcoded-container navbar-wrapper">
             
 
-        <%- include('./parts/header.ejs')%>    
+        <%- include('../parts/header.ejs')%>    
 
-        <%- include('./parts/chat_persons.ejs')%>    
+        <%- include('../parts/chat_persons.ejs')%>    
 
-        <%- include('./parts/chat.ejs')%>    
+        <%- include('../parts/chat.ejs')%>    
 
             
             <div class="pcoded-main-container">
@@ -68,7 +68,7 @@
             </div>
         </div>
     </div>
-    <%- include('./parts/foot.ejs',{url : url})%>
+    <%- include('../parts/foot.ejs',{url : url})%>
 </body>
 
 </html>
