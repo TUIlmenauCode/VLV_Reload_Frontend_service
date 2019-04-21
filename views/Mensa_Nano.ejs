@@ -137,6 +137,8 @@
 
 
     function getMeals(){
+        var display_date = moment(request_date).format("dddd DD.MM.YYYY");
+        $("#date").html("   " + display_date + "   ");
         $.ajax({
                 url: "https://app.vlv-reload.de/api/meal/getAll",
                 method : "POST",
