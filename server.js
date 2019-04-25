@@ -139,6 +139,43 @@ app.get('/public/dashboard',function(req,res,next){
 })
 
 
+/**
+ *   DEPARTURE TIMES 
+ */
+
+app.get('/zug/abfahrtzeiten',function(req,res,next){
+
+  var userData = {
+    userId : 0 ,
+    userName : "Ronny Fuchs" ,
+    avatar : ""
+}
+
+  if (req.session.userId){
+    userData.userId = req.session.userId ;
+    userData.userName = req.session.userName;
+    userData.avatar = req.session.avatar;
+  }
+  
+  var fetched_roomList = [{ roomId : 0, name : "Dummy"}];
+  DB_room.selectAll__Name_ID(function(err, apiResult){
+    if(err){
+        console.log(err);
+    }else{
+        fetched_roomList = apiResult;
+        var data = {
+          url : utility.domain,
+          page_title : "aktuelle Raum Übersicht",
+          room_list : fetched_roomList,
+          userData : userData
+        }
+      
+      res.render("departure_times", data)  ;
+    }
+  })
+})
+
+
 
 
 /**
