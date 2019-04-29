@@ -62,3 +62,4 @@ typings/
 Design/
 dbConnection.js
 models/secure_mail_components.js
+sabre_dbConnection.js
