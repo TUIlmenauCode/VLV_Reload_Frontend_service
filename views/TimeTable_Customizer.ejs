@@ -1,0 +1,74 @@
+<%- include('./parts/head.ejs',{url : url, page_title : page_title})%>
+
+<body>
+
+<%- include('./parts/preloader.ejs')%>    
+    <div id="pcoded" class="pcoded" >
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            
+
+        <%- include('./parts/header.ejs')%>    
+
+        <%- include('./parts/chat_persons.ejs')%>    
+
+        <%- include('./parts/chat.ejs')%>    
+
+            
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    
+                    <%- include('./parts/side_nav.ejs')%> 
+                    <div class="pcoded-content">
+                        
+                    <%- include('./parts/breadcrumb.ejs',{url : url , page_description : "Hier kannst Du einsehen, ob ein Raum aktuell belegt ist." , page_title : page_title, breadcrumb : [{name : "Willkommen", link: "/"}]}) %>
+                    
+                        
+                    
+                    <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <div class="page-body">
+                                        <!-- [ page content ] start -->
+                                        <div class="row">
+
+                                            <!-- lettest acivity and statustic card start -->
+
+
+
+
+
+                                            <!-- lettest acivity and statustic card end -->
+
+                                        </div>
+                                        <!-- [ page content ] end -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ style Customizer ] start -->
+                    <div id="styleSelector">
+                    </div>
+                    <!-- [ style Customizer ] end -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('./parts/foot.ejs',{url : url})%>
+</body>
+
+
+<link rel='stylesheet' href='<%= url %>/files/bower_components/fullcalendar-3.9.0/fullcalendar.css' />
+<link rel='stylesheet' href='<%= url %>/files/assets/css/pages.css' />
+
+
+<script src='<%= url %>/files/bower_components/moment/js/moment.min.js'></script>
+<script src='<%= url %>/files/bower_components/fullcalendar-3.9.0/fullcalendar.js'></script>
+<script src='<%= url %>/files/bower_components/fullcalendar-3.9.0/locale/de.js'></script>
+<script src='<%= url %>/files/bower_components/superagent/superagent-4_1_0.js'></script>
+<script src='<%= url %>/files/bower_components/moment/js/moment.min.js'></script>
+
+
+
+</html>
