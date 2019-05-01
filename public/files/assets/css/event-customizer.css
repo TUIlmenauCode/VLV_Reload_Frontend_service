@@ -7,4 +7,14 @@
     height: 75px;
     background: #2ed8b6;
     border-top-left-radius: 100%;
+    -webkit-box-shadow: -1px -1px 15px 1px rgba(0,0,0,0.25);
+    -moz-box-shadow: -1px -1px 15px 1px rgba(0,0,0,0.25);
+    box-shadow: -1px -1px 15px 1px rgba(0,0,0,0.25);
+    transition: all 0.25 ease-out;
+}
+
+#cart-drop:hover{
+    width: 100px;
+    height: 100px;
+
 }
