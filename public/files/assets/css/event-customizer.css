@@ -54,7 +54,8 @@
     position: relative;
     width: calc(100% - 2em);
     margin-left: 1em;
-    border-radius: 7px;
+    border-radius: 0.4em;
+    border: 1px solid #2ed8b6;
 }
 
 .event-title-box{
@@ -65,4 +66,7 @@
     top: 0;
     left: 0;
     color: azure;
+    font-size: 1.2em;
+    border-top-right-radius: 0.4em;
+    border-top-left-radius: 0.4em;
 }
