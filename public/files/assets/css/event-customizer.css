@@ -1,6 +1,6 @@
 
 #cart-drop{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 0;
     width: 80px;
@@ -42,6 +42,8 @@
     padding-right: 1em;
     border-radius: 0.5em;
     cursor: pointer;
+    margin: 0.6em;
+    margin-bottom: 1.2em;
 }
   
 .alert-button {
