@@ -54,7 +54,7 @@
     position: relative;
     width: calc(100% - 2em);
     margin-left: 1em;
-    border-radius: 0.4em;
+    border-radius: 7px;
     border: 1px solid #2ed8b6;
 }
 
@@ -62,11 +62,8 @@
     width: 100%;
     padding: 1em 2em;
     background: #2ed8b6;
-    position: absolute;
-    top: 0;
-    left: 0;
     color: azure;
     font-size: 1.2em;
-    border-top-right-radius: 0.4em;
-    border-top-left-radius: 0.4em;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
 }
