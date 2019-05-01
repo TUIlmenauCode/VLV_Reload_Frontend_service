@@ -16,5 +16,5 @@
 #cart-drop:hover{
     width: 100px;
     height: 100px;
-
+    transition: all 0.25 ease-out;
 }
