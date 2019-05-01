@@ -105,6 +105,67 @@
 <script src='<%= url %>/files/bower_components/superagent/superagent-4_1_0.js'></script>
 <script src='<%= url %>/files/bower_components/moment/js/moment.min.js'></script>
 
+<script>
+var academicGrade = {
+	title : "kein Filter gesetzt",
+  id : 0,
+}
+
+var fachRichtung = {
+	title : "kein Filter gesetzt",
+  id : 0,
+}
+
+
+var inputOption ={
+			0 : "kein Filter gesetzt",
+      1: 'Apples',
+      3: 'Bananas',
+      4: 'Grapes',
+      5: 'Oranges'
+  }
+
+
+$("#button-filter").on("click", function(){
+	filterMenu(academicGrade, fachRichtung);
+})
+
+
+
+
+function filterMenu(academicGrade, fachRichtung){
+Swal.fire({
+  	title: "Filter",
+    html: `
+    <h4>Akademischer Grad</h4>
+    <div class="button alert-button" id="test"> `+ academicGrade.title +`</div>
+    <br>
+    <h4>Fachrichtung</h4>
+    <div class="button alert-button" >`+ fachRichtung.title +`</div>
+    <br>
+    `,
+    showCancelButton: true,
+    cancelButtonColor: '#d33'
+  });
+}
+
+$(document).on('click', "#test", function() {
+  Swal.fire({
+  	title: "Akademischer Grad",
+    input: 'select',
+  	inputOptions: inputOption,
+  inputValidator: (value) => {
+   console.log(inputOption[value]);
+  }
+  }).then((result)=>{
+  	console.log(result);
+  	academicGrade.title = inputOption[result.value];
+  	filterMenu(academicGrade, fachRichtung)
+  })
+});
+
+
+</script>
 
 
 </html>

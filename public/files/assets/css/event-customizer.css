@@ -38,6 +38,8 @@
     float: left;
     background: rgba(0, 0, 0, 0.1);
     padding: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
     border-radius: 0.5em;
     cursor: pointer;
 }
