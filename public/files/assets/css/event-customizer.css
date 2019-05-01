@@ -1,0 +1,10 @@
+
+#cart-drop{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 75px;
+    height: 75px;
+    background: #2ed8b6;
+    border-top-left-radius: 100%;
+}
