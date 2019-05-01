@@ -49,3 +49,17 @@
 .alert-button {
     float: none;
 }
+
+.event-box{
+    position: relative;
+}
+
+.event-title-box{
+    width: 100%;
+    padding: 1em 2em;
+    background: #2ed8b6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: azure;
+}
