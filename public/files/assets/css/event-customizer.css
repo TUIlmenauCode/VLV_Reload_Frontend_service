@@ -52,6 +52,9 @@
 
 .event-box{
     position: relative;
+    width: calc(100% - 2em);
+    margin-left: 1em;
+    border-radius: 7px;
 }
 
 .event-title-box{
