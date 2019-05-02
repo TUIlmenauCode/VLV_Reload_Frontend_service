@@ -82,8 +82,8 @@
 
                                         </div>
 
-                                        <div id="cart-drop">
-
+                                        <div class="cart-drop">
+<i class="feather icon-shopping-cart"></i>
                                            
                                             
                                         </div>
@@ -127,8 +127,12 @@
 
 $(".event-box").bind("dragstart", function(evt){
     evt.dataTransfer.setData('text', this.id);
-    $("#cart-drop").css(width: "100px", height: "100px")
-})
+    $(".cart-drop").addClass("big-cart-drop");
+});
+
+$(".event-box").bind("dragstop", function(evt){
+    $(".cart-drop").removeClass("big-cart-drop");
+});
 
 // $('#cart-drop')
 // 	.bind('dragover', function (evt) {
