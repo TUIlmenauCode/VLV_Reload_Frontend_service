@@ -1,0 +1,120 @@
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
+<script src="https://momentjs.com/downloads/moment.min.js"></script>
+
+<div class="room-calendar">
+    <div class="room-calendar-content">
+
+    </div>
+</div>
+
+
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.room-calendar{
+    width: 300px;
+    height: 400px;
+    border: 1px solid black;
+    position: relative;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.room-calendar-content{
+    width: 100%;
+    height: 20px;
+    overflow: hidden;
+    overflow-y: scroll;
+    background: lightgray;
+}
+
+
+
+</style>
+
+<script   src="https://code.jquery.com/jquery-3.4.0.min.js"   integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="   crossorigin="anonymous"></script>
+
+
+<script>
+var minuteScale = 1 ;
+$( document ).ready(function(){
+    $(".room-calendar-content").height( 24 * 60 * minuteScale);
+    
+    var hour  = 0;
+    var minutes = 0;
+    for(var i = 0; i <= (24 * 60); i++){
+        if (i % 60 == 0){
+            minutes = 0;
+        }
+
+        if  (i % 60 == 0  && i != 0){
+            hour = hour + 1
+        }
+
+
+        if (i % 30 == 0){
+            $(".room-calendar-content").append(UIView(0, (i * 1 * minuteScale), "100%", "1px"));
+            $(".room-calendar-content").append(UIViewText(0, (i * 1 * minuteScale), "80px", "1px", ('0' + hour).slice(-2)+":"+('0' + minutes).slice(-2)));
+        }
+
+        
+        minutes = minutes + 1;
+    }
+    var d = new Date();
+    var current_hour = d.getHours();
+    var current_minutes = d.getMinutes();
+    console.log(current_hour);
+    console.log(current_minutes);
+    var offset = (((current_hour * 60) + current_minutes) * minuteScale);
+    console.log(offset);
+
+    $(".room-calendar").scrollTop(offset - 45 * minuteScale);
+
+    $(".room-calendar").append(UIView(0, offset , "100%", "1px" , "red"));
+
+    var date_1_start = "2019-04-17T11:00:00";
+    var date_1_end = "2019-04-17T12:30:00";
+    var date_2_start = "2019-04-17T13:00:00";
+    var date_2_end = "2019-04-17T14:30:00";
+
+    $(".room-calendar-content").append(eventRect(date_1_start, date_1_end));
+    $(".room-calendar-content").append(eventRect(date_2_start, date_2_end));
+
+})
+
+
+function UIView(x,y,width,height, color = "#3f3f3f" ){
+    return "<span style=\" background: "+color+"; position: absolute; top : "+y+"px ; left : "+x+"px ; width: "+width+"; height : "+height+" \"> </span>"
+}
+
+function UIViewText(x,y,width,height,text){
+    var color = "#3f3f3f"
+    return "<span style=\" background: "+color+"; position: absolute; top : "+y+"; left : "+x+"; width: "+width+"; height : "+height+" \"> "+text+" </span>"
+}
+
+function eventRect(start, end){
+    var start_hour = moment(start).format("HH");
+    var start_minute = moment(start).format("m");
+    var end_hour = moment(end).format("HH");
+    var end_minute = moment(end).format("m");
+
+    console.log("start " + start_hour + "  " + start_minute +"\n" +"end " + end_hour + "  " + end_minute );
+
+    var start_point = (((Number(start_hour) * 60) + Number(start_minute))* minuteScale);
+    var end_point = (((Number(end_hour) * 60) + Number(end_minute))* minuteScale);
+    var height = end_point - start_point;
+    console.log(start_point);
+    console.log(end_point);
+    console.log(height)
+
+    return UIView(50, start_point , 200, height, "green" );
+
+
+}
+
+</script>

@@ -64,7 +64,7 @@
                                             <!-- MenuBar : end -->
 
 
-                                            <div class="event-box" draggable="true" id="test-box-may">
+                                            <div class="event-box" id="test-box-may">
                                                 
                                                     <div class="event-title-box"> 
                                                         Titel der Veranstalltung
@@ -84,7 +84,7 @@
 
                                         <div id="cart-drop">
 
-                                            <i class="feather icon-shopping-cart"></i>
+                                           
                                             
                                         </div>
                                         <!-- [ page content ] end -->
@@ -120,52 +120,58 @@
 <script src='<%= url %>/files/assets/js/jquery.ndd.js'></script>
 <script src='<%= url %>/files/assets/js/jqueryTouchPunch.js'></script>
 
-<script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+<!--<script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>-->
 
 <script>
 
 
-$(".event-box").bind("dragstart", function(evt){
-    evt.dataTransfer.setData('text', this.id);
-    $("#cart-drop").css("width: 100px; height: 100px;")
+$( document ).ready(function(){
+    alert("test");
 })
 
-$('#cart-drop')
-	.bind('dragover', function (evt) {
-        evt.preventDefault();
-	})
-	.bind('dragenter', function (evt) {
-		evt.preventDefault();
-	})
-	.bind('drop', function (evt) {
-		var id = evt.dataTransfer.getData('text');
-			// item = $('#' + id),
-			// cartList = $("#cart ul"),
-			// total = $("#total span"),
-			// price = $('p:eq(1) span', item).text(),
-			// prevCartItem = null,
-			// notInCart = (function () {
-			// 	var lis = $('li', cartList),
-			// 		len = lis.length,
-			// 		i;
 
-			// 	for (i = 0; i < len; i++ ) {
-			// 		var temp = $(lis[i]);
-			// 		if (temp.data('id') === id) {
-			// 			prevCartItem = temp;
-			// 			return false;
-			// 		}
-			// 	}
-			// 	return true;
-			// } ()),
-			// quantLeftEl, quantBoughtEl, quantLeft;
+
+// $(".event-box").bind("dragstart", function(evt){
+//     evt.dataTransfer.setData('text', this.id);
+//     $("#cart-drop").css("width: 100px; height: 100px;")
+// })
+
+// $('#cart-drop')
+// 	.bind('dragover', function (evt) {
+    //     evt.preventDefault();
+	// })
+	// .bind('dragenter', function (evt) {
+	// 	evt.preventDefault();
+	// })
+	// .bind('drop', function (evt) {
+	// 	var id = evt.dataTransfer.getData('text');
+	// 		// item = $('#' + id),
+	// 		// cartList = $("#cart ul"),
+	// 		// total = $("#total span"),
+	// 		// price = $('p:eq(1) span', item).text(),
+	// 		// prevCartItem = null,
+	// 		// notInCart = (function () {
+	// 		// 	var lis = $('li', cartList),
+	// 		// 		len = lis.length,
+	// 		// 		i;
+
+	// 		// 	for (i = 0; i < len; i++ ) {
+	// 		// 		var temp = $(lis[i]);
+	// 		// 		if (temp.data('id') === id) {
+	// 		// 			prevCartItem = temp;
+	// 		// 			return false;
+	// 		// 		}
+	// 		// 	}
+	// 		// 	return true;
+	// 		// } ()),
+	// 		// quantLeftEl, quantBoughtEl, quantLeft;
 
 		
-            alert(id);
+    //         alert(id);
 		
-		evt.stopPropagation();
-		return false;
-	});
+	// 	evt.stopPropagation();
+	// 	return false;
+	// });
 
 var academicGrade = {
 	title : "kein Filter gesetzt",
