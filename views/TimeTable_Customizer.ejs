@@ -125,16 +125,10 @@
 <script>
 
 
-$( document ).ready(function(){
-    alert("test");
+$(".event-box").bind("dragstart", function(evt){
+    evt.dataTransfer.setData('text', this.id);
+    $("#cart-drop").css(width: "100px", height: "100px")
 })
-
-
-
-// $(".event-box").bind("dragstart", function(evt){
-//     evt.dataTransfer.setData('text', this.id);
-//     $("#cart-drop").css("width: 100px; height: 100px;")
-// })
 
 // $('#cart-drop')
 // 	.bind('dragover', function (evt) {
