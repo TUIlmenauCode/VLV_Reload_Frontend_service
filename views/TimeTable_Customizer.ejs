@@ -118,23 +118,26 @@
 <script src='<%= url %>/files/bower_components/superagent/superagent-4_1_0.js'></script>
 <script src='<%= url %>/files/bower_components/moment/js/moment.min.js'></script>
 <script src='<%= url %>/files/assets/js/jquery.ndd.js'></script>
+<script src='<%= url %>/files/assets/js/jqueryTouchPunch.js'></script>
+jqueryTouchPunch
 
 <script>
 
 
 $(".event-box").bind("dragstart", function(evt){
     evt.dataTransfer.setData('text', this.id);
+    $("#cart-drop").css("width: 100px; height: 100px;")
 })
 
 $('#cart-drop')
 	.bind('dragover', function (evt) {
-		evt.preventDefault();
+        evt.preventDefault();
 	})
 	.bind('dragenter', function (evt) {
 		evt.preventDefault();
 	})
 	.bind('drop', function (evt) {
-		var id = evt.dataTransfer.getData('text'),
+		var id = evt.dataTransfer.getData('text');
 			// item = $('#' + id),
 			// cartList = $("#cart ul"),
 			// total = $("#total span"),
