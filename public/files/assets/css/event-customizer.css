@@ -2,22 +2,15 @@
 .cart-drop{
     position: fixed;
     bottom: 0;
-    right: 0;
+    left: 0;
     width: 80px;
     height: 80px;
     background: #2ed8b6;
-    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
     -webkit-box-shadow: -1px -1px 15px 1px rgba(0,0,0,0.25);
     -moz-box-shadow: -1px -1px 15px 1px rgba(0,0,0,0.25);
     box-shadow: -1px -1px 15px 1px rgba(0,0,0,0.25);
-    transition: all 0.1s ease-out;
-}
-
-.big-cart-drop{
-    width: 100vw; 
-    height: 100vw;
-    max-width : 500px;
-    max-height: 500px;
+    transition: all 0.5s ease-out;
 }
 
 .cart-drop:hover{
@@ -29,7 +22,7 @@
 .cart-drop i{
     position: absolute;
     bottom: 10px;
-    right: 10px;
+    left: 10px;
     padding: 10px;
     background: rgba(0,0,0,0.1);
     border-radius: 25%;
@@ -39,7 +32,19 @@
     cursor: pointer;
 }
 
+.cart-drop label{
+    position: absolute;
+    bottom: 30px;
+    left: 40px;
+    
+}
 
+.big-cart-drop{
+    width: 300px; 
+    height: 300px;
+    /* max-width : 500px;
+    max-height: 500px; */
+}
   
 .button {
     float: left;
@@ -58,17 +63,21 @@
 }
 
 .event-box{
+    -webkit-box-shadow: -1px -1px 15px 1px rgba(0,0,0,0.25);
+    -moz-box-shadow: -1px -1px 15px 1px rgba(0,0,0,0.25);
+    box-shadow: -1px -1px 15px 1px rgba(0,0,0,0.25);
     position: relative;
     width: calc(100% - 2em);
     margin-left: 1em;
     border-radius: 7px;
     border: 1px solid #2ed8b6;
     background: white;
+    margin-bottom: 1.33em;
 }
 
 .event-title-box{
     width: 100%;
-    padding: 1em 2em;
+    padding: 0.8em 1.2em;
     background: #2ed8b6;
     color: azure;
     font-size: 1.2em;
