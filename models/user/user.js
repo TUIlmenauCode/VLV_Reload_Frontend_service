@@ -96,6 +96,7 @@ const User = {
                         var user_email = apiResult[0].email
                         var user_passwordHash = apiResult[0].password
                         var user_confirmed = apiResult[0].confirmed
+                        var user_avatar = apiResult[0].avatar;
 
                         if (user_confirmed == 1){
                             bcrypt.compare(password, user_passwordHash, function(b_err, b_result){
@@ -107,7 +108,8 @@ const User = {
                                     const resObj = {
                                         userId : user_ID, 
                                         userName : user_Name, 
-                                        userEmail : user_email
+                                        userEmail : user_email,
+                                        userAvatar : user_avatar,
                                     }
                                     console.log("Dump result")
                                     console.log(resObj);
