@@ -106,7 +106,7 @@
                                                         <h5>Benutzername veränderen</h5>
                                                     </div>
                                                     <div class="card-block">
-                                                        <button class="btn waves-effect waves-light btn-primary btn-block">neuer Benutzername</button>
+                                                        <span id="userName-btn" class="btn waves-effect waves-light btn-primary btn-block">neuer Benutzername</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -118,7 +118,20 @@
                                                         <h5>Passwort veränderen</h5>
                                                     </div>
                                                     <div class="card-block">
-                                                    <button class="btn waves-effect waves-light btn-primary btn-block">neuers Passwort</button>
+                                                        <button class="btn waves-effect waves-light btn-primary btn-block">neueres Passwort</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12">
+                                                <div class="card proj-progress-card">
+                                                    <div class="card-header">
+                                                        <h5>calDav aktivieren</h5>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        
+                                                        <p class="m-b-30 text-muted">calDav ermöglicht Dir, deine Auswahl von Veranstalltungen über einen Link in deiner eigener Kalender Anwendung zu importieren.</p>
+                                                        <span class="btn waves-effect waves-light btn-success btn-block">calDav aktivieren</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -249,6 +262,28 @@ $("#save-new-avatar").on('click', function(){
         console.log(base64);
     });
 })
+
+
+
+$("#userName-btn").on('click', function(){
+    console.log("Test");
+    
+    Swal.fire({
+        title: "Benutzername ändern",
+        input: 'text',
+        inputValue: '<%= userData.userName %>',
+        showCancelButton: true,
+        confirmButtonText: "Speichern",
+        cancelButtonText : "Abbrechen",
+    }).then((result) => {
+        console.log(result);
+        if (result.value){
+            
+        }
+    })
+})
+
+
 </script>
 
 

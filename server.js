@@ -213,6 +213,7 @@ app.use("/api/SeminarGroup", api_SeminarGroup);
 app.use("/api/public/calendar", require("./routes/api/calendar_data"));
 app.use("/api/Room", require("./routes/api/room"));
 app.use("/api/meal/", api_meal);
+app.use("/api/user/", require("./routes/api/user"))
 
 
 

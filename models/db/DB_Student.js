@@ -13,6 +13,10 @@ const Student = {
 
     get__from_Email(user_email, callback){
         return db.query("SELECT `studentID`,`name`,`email`,`password`,`avatar`,`group`, `confirmed` FROM `Student` WHERE Student.email = ?", [user_email], callback);
+    },
+
+    set_Name__with_ID:function(userId, UserName, callback){
+        return db.query("UPDATE `Student` SET `name`= ? WHERE Student.studentID = ?", [UserName, userId], callback);
     }
 
 }
