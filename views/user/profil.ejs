@@ -306,6 +306,8 @@ function userName_menu(){
                                 title: 'Benutzername wurde geändert',
                                 showConfirmButton: false,
                                 timer: 1500
+                            }).then(() => {
+                                window.location.href = "<%= url %>/user/logout";
                             })  
                         }else{
                           Swal.fire({
