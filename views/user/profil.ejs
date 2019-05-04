@@ -133,12 +133,11 @@
                                                         <div class="row">
                                                             <div class="col-xl-3 col-md-6">
                                                             
-                                                                <img src="<%= userData.userAvatar %>"   alt="Profiles Avatar" class="profile-Avatar-presentation">
+                                                            
+                                                                <img src="<%= userData.userAvatar %>"   id ="profile-Avatar-croppie" alt="change Profiles Avatar ">
                                                                 
                                                             </div>
-                                                            <div class="col-xl-9 col-md-6">
-                                                                <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
-                                                            </div>
+                                                            
                                                             
                                                         </div>
                                                     </div>
@@ -207,8 +206,19 @@
         <% }); %>
     </ul>
 </body>
+<link rel="stylesheet" href="<%= url %>/files/bower_components/Croppie/croppie.css">
+<script src="<%= url %>/files/bower_components/Croppie/croppie.js"></script>
 
-<script src="<%= url %>/files/bower_components/dropzone/dropzone.js"></script>
+
+<script>
+$('#profile-Avatar-croppie').croppie({
+    boundary: { width: 260, height: 260 },
+    viewport: { width: 190, height: 190, type: 'circle' }
+});
+
+</script>
+
+
 
  <style>
 
