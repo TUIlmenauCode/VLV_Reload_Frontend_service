@@ -104,6 +104,30 @@ router.get("/logout", function(req, res, next){
 })
 
 
+router.get("/profil", function(req, res, next){
+
+    var userData = utility.userData;
+
+    var data = utility.data;
+
+    if (req.session.userId){
+        data.userData.userId = req.session.userId ;
+        data.userData.userName = req.session.userName;
+        data.userData.avatar = req.session.avatar;
+    }
+
+    if (req.session.userId){
+        var data = {
+            url : utility.domain,
+            page_title : "Dein Dashboard",
+            apiErrors : [],
+            userData : userData,
+        }
+    }
+    
+    res.render("user/profil", data);
+})
+
 
 
 
@@ -189,6 +213,7 @@ router.post("/login", function(req, res, next){
                 req.session.userId = resObj.userId;
                 req.session.userName = resObj.userName;
                 req.session.userEmail = resObj.userEmail;
+                req.session.userAvatar = resObj.userAvatar;
                 console.log("Weiter geht es");
                 var data = {
                     url : utility.domain,
