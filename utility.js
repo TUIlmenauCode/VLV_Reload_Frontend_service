@@ -8,6 +8,15 @@ var utilities = {
           avatar : ""
      },
 
+     data : {
+          page_title : "Website Title",
+          apiErrors : []
+      },
+
 }
+
+
+utilities.data.url = utilities.domain;
+utilities.data.userData = utilities.userData;
 
 module.exports = utilities;
