@@ -21,7 +21,7 @@
                     <%- include('./parts/side_nav.ejs')%> 
                     <div class="pcoded-content">
                         
-                    <%- include('./parts/breadcrumb.ejs',{url : url , page_description : "Hier kannst Du einsehen, ob ein Raum aktuell belegt ist." , page_title : page_title, breadcrumb : [{name : "Willkommen", link: "/"}]}) %>
+                    <%- include('./parts/breadcrumb.ejs',{url : url , page_description : "Wähle dein Stundenplan aus" , page_title : page_title, breadcrumb : [{name : "Willkommen", link: "/"}]}) %>
                     
                         
                     
@@ -64,28 +64,56 @@
                                             <!-- MenuBar : end -->
 
 
-                                            <div class="event-box" id="test-box-may" draggable="true">
-                                                
-                                                    <div class="event-title-box"> 
-                                                        Titel der Veranstalltung
-                                                    </div>
-                                                    <div class="event-body-box">
-                                                        <span>Vorlesung</span>
-                                                        <span>Mitwoch 10:30 - 12:30</span>
-                                                    </div>
-                                                
+                                           
+                                            <div class="event-box col-xl-9 col-md-12" data-eventID="test-box-may">                      
+                                                <div class="event-title-box"> 
+                                                    Titel der Veranstalltung
+                                                </div>
+                                                <div class="event-body-box">
+                                                    <span>Vorlesung</span>
+                                                    <span>Mittwoch 10:30 - 12:30</span>
+                                                </div>
                                             </div>
 
+                                            <div class="event-box col-xl-9 col-md-12" data-eventID="test-box-may2">                      
+                                                <div class="event-title-box"> 
+                                                    Titel der Veranstalltung
+                                                </div>
+                                                <div class="event-body-box">
+                                                    <span>Vorlesung</span>
+                                                    <span>Mittwoch 10:30 - 12:30</span>
+                                                </div>
+                                            </div>
 
+                                            <div class="event-box col-xl-9 col-md-12" data-eventID="test-box-may3">                      
+                                                <div class="event-title-box"> 
+                                                    Titel der Veranstalltung
+                                                </div>
+                                                <div class="event-body-box">
+                                                    <span>Vorlesung</span>
+                                                    <span>Mittwoch 10:30 - 12:30</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="event-box col-xl-9 col-md-12" data-eventID="test-box-may4">                      
+                                                <div class="event-title-box"> 
+                                                    Titel der Veranstalltung
+                                                </div>
+                                                <div class="event-body-box">
+                                                    <span>Vorlesung</span>
+                                                    <span>Mittwoch 10:30 - 12:30</span>
+                                                </div>
+                                            </div>
+                                                
 
                                             <!-- lettest acivity and statustic card end -->
 
                                         </div>
 
                                         <div class="cart-drop" >
-    <i class="feather icon-shopping-cart"></i>
-    <label id="event-counter"class="badge badge-primary">0</label>
-</div>
+                                            <i class="feather icon-shopping-cart"></i>
+                                            <label id="event-counter"class="badge badge-primary">0</label>
+                                        </div>
                                            
                                             
                                         </div>
@@ -119,59 +147,45 @@
 <script src='<%= url %>/files/bower_components/fullcalendar-3.9.0/locale/de.js'></script>
 <script src='<%= url %>/files/bower_components/superagent/superagent-4_1_0.js'></script>
 <script src='<%= url %>/files/bower_components/moment/js/moment.min.js'></script>
-<script src='<%= url %>/files/assets/js/jquery.ndd.js'></script>
+<!--<script src='<%= url %>/files/assets/js/jquery.ndd.js'></script>-->
 <script src='<%= url %>/files/assets/js/jqueryTouchPunch.js'></script>
 
 <!--<script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>-->
 
 <script>
 
+  $( function() {
+    $( ".event-box" ).draggable({
+        helper: "clone",
+        scroll: false,
+        appendTo: "body",
+        cursor: "pointer",
+        refreshPositions: true,
+        start: function( event, ui ) {
+            console.log(event);
+            console.log(ui);
+           
+            $(".cart-drop").addClass("big-cart-drop");
+            
+        },
+        stop: function( event, ui ) {
+            $(".cart-drop").removeClass("big-cart-drop");
+        }
+    });
 
-$(".event-box").bind("dragstart", function(evt){
-    evt.dataTransfer.setData('text', this.id);
-    $(".cart-drop").addClass("big-cart-drop");
-});
+    $( ".cart-drop" ).droppable({
+      drop: function( event, ui ) {
+          console.log("Drop")
+        console.log(event);
 
-$(".event-box").bind("dragleave", function(evt){
-    $(".cart-drop").removeClass("big-cart-drop");
-});
+        console.log(ui);
+        ui.helper.hide('slow', function(){ui.helper.remove(); });
+        console.log(ui.helper.attr('data-eventid'));
+        alert(ui.helper.attr('data-eventid'))
+      }
+    });
+  } );
 
-// $('#cart-drop')
-// 	.bind('dragover', function (evt) {
-    //     evt.preventDefault();
-	// })
-	// .bind('dragenter', function (evt) {
-	// 	evt.preventDefault();
-	// })
-	// .bind('drop', function (evt) {
-	// 	var id = evt.dataTransfer.getData('text');
-	// 		// item = $('#' + id),
-	// 		// cartList = $("#cart ul"),
-	// 		// total = $("#total span"),
-	// 		// price = $('p:eq(1) span', item).text(),
-	// 		// prevCartItem = null,
-	// 		// notInCart = (function () {
-	// 		// 	var lis = $('li', cartList),
-	// 		// 		len = lis.length,
-	// 		// 		i;
-
-	// 		// 	for (i = 0; i < len; i++ ) {
-	// 		// 		var temp = $(lis[i]);
-	// 		// 		if (temp.data('id') === id) {
-	// 		// 			prevCartItem = temp;
-	// 		// 			return false;
-	// 		// 		}
-	// 		// 	}
-	// 		// 	return true;
-	// 		// } ()),
-	// 		// quantLeftEl, quantBoughtEl, quantLeft;
-
-		
-    //         alert(id);
-		
-	// 	evt.stopPropagation();
-	// 	return false;
-	// });
 
 var academicGrade = {
 	title : "kein Filter gesetzt",
