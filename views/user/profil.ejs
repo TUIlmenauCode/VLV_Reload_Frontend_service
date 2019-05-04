@@ -137,10 +137,7 @@
                                                                 
                                                             </div>
                                                             <div class="col-xl-9 col-md-6">
-                                                            <br>
-                                                            <br>
-                                                                <h4><%= userData.userName %></h4>
-                                                                <h5 class="m-b-30 text-muted"><%= userData.userEmail %></h5>
+                                                                <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
                                                             </div>
                                                             
                                                         </div>
@@ -210,6 +207,9 @@
         <% }); %>
     </ul>
 </body>
+
+<script src="<%= url %>/files/bower_components/dropzone/dropzone.js"></script>
+
  <style>
 
 
