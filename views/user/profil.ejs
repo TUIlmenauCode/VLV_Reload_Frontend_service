@@ -37,28 +37,164 @@
                                             <!-- lettest acivity and statustic card start -->
 
                                             
-                                            <div class="col-sm-12">
-													<div class="card">
-														<div class="card-header">
-															<h5>Dein Profil</h5>
-															
-														</div>
-														<div class="card-block">
-															
-														</div>
-													</div>
-												</div>
-
-
+                                            <div class="col-xl-12">
+                                                <div class="card proj-progress-card">
+                                                    <div class="card-block">
+                                                        <div class="row">
+                                                            <div class="col-xl-3 col-md-6">
+                                                            
+                                                                <img src="<%= userData.userAvatar %>"   alt="Profiles Avatar" class="profile-Avatar-presentation">
+                                                                
+                                                            </div>
+                                                            <div class="col-xl-9 col-md-6">
+                                                            <br>
+                                                            <br>
+                                                                <h4><%= userData.userName %></h4>
+                                                                <h5 class="m-b-30 text-muted"><%= userData.userEmail %></h5>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <!-- lettest acivity and statustic card end -->
 
                                         </div>
+
+                                       
                                         <!-- [ page content ] end -->
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
+
+
+
+                        <div class="page-header card">
+                            <div class="row align-items-end">
+                                <div class="col-lg-8">
+                                    <div class="page-header-title">
+                                        <i class="feather icon-settings bg-c-blue"></i>
+                                        <div class="d-inline">
+                                            <h5>Einstellungen</h5>
+                                            <span>Hier kannst DU dein Profil bearbeiten</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                   
+                   
+                   
+                   
+                   <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <div class="page-body">
+                                        <!-- [ page content ] start -->
+                                        <div class="row">
+
+                                            <!-- lettest acivity and statustic card start -->
+
+                                            
+                                            <div class="col-xl-12">
+                                                <div class="card proj-progress-card">
+                                                    <div class="card-header">
+                                                        <h5>Benutzername veränderen</h5>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <button class="btn waves-effect waves-light btn-primary btn-block">neuer Benutzername</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-xl-12">
+                                                <div class="card proj-progress-card">
+                                                    <div class="card-header">
+                                                        <h5>Passwort veränderen</h5>
+                                                    </div>
+                                                    <div class="card-block">
+                                                    <button class="btn waves-effect waves-light btn-primary btn-block">neuers Passwort</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-xl-12">
+                                                <div class="card proj-progress-card">
+                                                    <div class="card-header">
+                                                        <h5>Avatar veränderen</h5>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div class="row">
+                                                            <div class="col-xl-3 col-md-6">
+                                                            
+                                                                <img src="<%= userData.userAvatar %>"   alt="Profiles Avatar" class="profile-Avatar-presentation">
+                                                                
+                                                            </div>
+                                                            <div class="col-xl-9 col-md-6">
+                                                            <br>
+                                                            <br>
+                                                                <h4><%= userData.userName %></h4>
+                                                                <h5 class="m-b-30 text-muted"><%= userData.userEmail %></h5>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12">
+                                                <div class="card proj-progress-card card-red ">
+                                                    <div class="card-header">
+                                                        <h5 class="text-white">Konto löschen</h5>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <button class="btn waves-effect waves-light btn-danger btn-outline-danger btn-block" style="background: #FDB3B3;"><i class="icofont icofont-warning-alt"></i>Konto löschen</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- lettest acivity and statustic card end -->
+
+                                        </div>
+
+                                       
+                                        <!-- [ page content ] end -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
                     </div>
+
+
+
+
+
+
+
+                    
+
+
+
+                    
                     <!-- [ style Customizer ] start -->
                     <div id="styleSelector">
                     </div>
@@ -75,6 +211,18 @@
     </ul>
 </body>
  <style>
+
+
+
+    .profile-Avatar-presentation{
+        width : 200px;
+        height : 200px;
+        margin : auto;
+        border-radius : 50%;
+        border: 3px solid white;
+        box-shadow: 0 5px 10px 0 rgba(43,43,43,0.2);
+    }
+
     .costum_error_list {
         position: absolute;
         bottom: 0;
