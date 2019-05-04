@@ -113,6 +113,7 @@ router.get("/profil", function(req, res, next){
     if (req.session.userId){
         data.userData.userId = req.session.userId ;
         data.userData.userName = req.session.userName;
+        data.userData.userEmail = req.session.userEmail;
         data.userData.avatar = req.session.avatar;
     }
 
