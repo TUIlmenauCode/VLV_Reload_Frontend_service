@@ -292,7 +292,7 @@ function userName_menu(){
             }else{
                 $.ajax({
                     type: "POST",
-                    url: "<%= url %>/api/user/setName",
+                    url: "<%= url %>/api/user/updateName",
                     data: {
                         userId : <%= userData.userId %>,
                         userName : result.value
