@@ -15,9 +15,14 @@ const Student = {
         return db.query("SELECT `studentID`,`name`,`email`,`password`,`avatar`,`group`, `confirmed` FROM `Student` WHERE Student.email = ?", [user_email], callback);
     },
 
+    get__from_ID(user_ID, callback){
+        return db.query("SELECT `studentID`,`name`,`email`,`password`,`avatar`,`group`, `confirmed` FROM `Student` WHERE Student.studentID = ?",[user_ID], callback);
+    },
+
     set_Name__with_ID:function(userId, UserName, callback){
         return db.query("UPDATE `Student` SET `name`= ? WHERE Student.studentID = ?", [UserName, userId], callback);
-    }
+    },
+
 
 }
 
