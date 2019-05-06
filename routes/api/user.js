@@ -54,6 +54,26 @@ router.post('/updateName', function(req, res) {
 
   router.post("/isCalDavActivated", function(req, res){
 
+    var user_email = req.body.userEmail;
+    if (user_email != null && user_email != "ronny.fuchs@tu-ilmenau.de"){
+        dataHandler.isDavActive(user_email, function(err, apiResult){
+            if (err){
+                res.send({status : "error", error : err})
+            }else{
+               
+                if (apiResult[1].length != 0){
+                    res.send({status : "success"})
+                }else{
+                    res.send({status : "error"})
+                }
+                
+                
+            }
+        })
+    }else{
+        res.send({ status : "error", error : "user Email not send"})
+    }
+
   })
 
   router.post("/isPasswordValid", function(req, res){

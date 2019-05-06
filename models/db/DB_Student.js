@@ -23,6 +23,13 @@ const Student = {
         return db.query("UPDATE `Student` SET `name`= ? WHERE Student.studentID = ?", [UserName, userId], callback);
     },
 
+    isDavActive:function(user_email, callback){
+        return db.query(`
+         USE sabreDav;
+         SELECT users.id, principals.id, calendarinstances.id From users, principals, calendarinstances WHERE users.username = ? and principals.email = ? And calendarinstances.principaluri like ?;
+        `,[user_email, user_email, '%'+ user_email ], callback);
+    }
+
 
 }
 
