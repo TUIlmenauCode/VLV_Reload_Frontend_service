@@ -310,8 +310,7 @@ $("#userPassword-btn").on('click', function(){
                                     console.log(result);
                                     const confirm_password = result.value;
                                     if(confirm_password == new_password){
-                                        console.log(data);
-                                        console.log(data.status);
+                                        
                                         $.ajax({
                                             type: "POST",
                                             url: "<%= url %>/api/user/updatePassword",
@@ -335,7 +334,9 @@ $("#userPassword-btn").on('click', function(){
                                                         timer: 1500
                                                     })
                                                 }
-                                            }, 
+                                            }, error: function(jqxhr, status, exception) {
+                                                 alert('Exception:', exception);
+                                            }
                                         })
                                         
                                     }else{
