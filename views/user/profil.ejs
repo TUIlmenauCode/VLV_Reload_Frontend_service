@@ -293,7 +293,9 @@ $("#userPassword-btn").on('click', function(){
                         if(data.status == "success"){
                             Swal.fire({
                                 title : "neues Passwort eingeben",
-                                input: 'text',
+                                html:
+                                '<input id="swal-input1" class="swal2-input">' +
+                                '<input id="swal-input2" class="swal2-input">',
                                 showCancelButton: true,
                                 confirmButtonText: "Speichern",
                                 cancelButtonText : "Abbrechen"
