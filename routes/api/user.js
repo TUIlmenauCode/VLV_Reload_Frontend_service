@@ -37,12 +37,12 @@ router.post('/updateName', function(req, res) {
 
     if(user_ID == null || user_ID == 0){
         res.send({status : "error", error : " user id is not set"});
-    }else if ( user_password != user_password_confirm){
+    }else if ( user_password != confirmPasswordString){
         res.send({status: "error", error : "Password does not match"})
-    }else {
+    }else{
         const saltRounds = 10;
         bcrypt.genSalt(saltRounds, function(err, salt) {
-            bcrypt.hash(user_password, salt, function(err, hash) {
+            bcrypt.hash(passwordString, salt, function(err, hash) {
                 dataHandler.set_Passwordhash__with_ID(user_ID, hash, function(err, apiResult){
                     if(err){
                         res.send({status: "error", error: err});
