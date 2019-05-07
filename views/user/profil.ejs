@@ -310,6 +310,8 @@ $("#userPassword-btn").on('click', function(){
                                     console.log(result);
                                     const confirm_password = result.value;
                                     if(confirm_password == new_password){
+                                        console.log(data);
+                                        console.log(data.status);
                                         $.ajax({
                                             type: "POST",
                                             url: "<%= url %>/api/user/isPasswordValid",
@@ -334,12 +336,11 @@ $("#userPassword-btn").on('click', function(){
                                                 }
                                             }
                                         })
-                        console.log(data);
-                        console.log(data.status);
+                                        
                                     }else{
                                         Swal.fire({
                                             type : "error",
-                                            title : "Die neuen Passwörter waren nicht gleich."
+                                            title : "Die neuen Passwörter waren nicht gleich.",
                                             timer: 1500
                                         });
                                     }
@@ -358,8 +359,6 @@ $("#userPassword-btn").on('click', function(){
                     },
                     
                 }); 
-                
-           
         }else{
             Swal.fire({
                 title : "Du hast kein Passwort angegeben",
