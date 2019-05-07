@@ -240,45 +240,66 @@ var my_croppie = $('#profile-Avatar-croppie').croppie({
 });
 
 
-$('.actionUpload input').on('change', function () { readFile(this); });
+$('.actionUpload input').on('change', function () { console.log(my_croppie); readFile(this); });
 
 function readFile(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
 
     reader.onload = function (e) {
-      my_croppie = $('#profile-Avatar-croppie').croppie('bind', {
+        $(my_croppie).croppie('bind', {
         url: e.target.result
       });
     }
-
     reader.readAsDataURL(input.files[0]);
   }
+  console.log(my_croppie)
 }
 
 $("#save-new-avatar").on('click', function(){
     console.log("test");
-    my_croppie.croppie('result', 'base64').then(function(base64) {
-        console.log(base64);
-        // $.ajax({
-        //     type: "POST",
-        //     url: "<%= url %>/api/user/updateAvatar",
-        //     data: {
-        //         userId : <%= userData.userId %>,
-        //         userAvatar : base64,
-        //     },
-        //     success: function(data, status, xhr){
-        //         console.log(data);
-        //     },
-        //     error: function(jqxhr, status, exception) {
-        //         console.log(jqxhr)
-        //         console.log(status)
-        //         console.log(exception)
-        //             alert('Exception:', exception);
-        //     }
-        // })
+    console.log(my_croppie);
+    my_croppie.croppie('result', {
+        type : "base64"
+    }).then(function(base64) {
+        $.ajax({
+            type: "POST",
+            url: "<%= url %>/api/user/updateAvatar",
+            data: {
+                userId : <%= userData.userId %>,
+                userAvatar : base64,
+            },
+            success: function(data, status, xhr){
+                console.log(data);
+                if (data.status == "success"){
+                    Swal.fire({
+                        type : "success",
+                        title: "Dein Avatar wurde erfolgreich geändert",
+                        timer: 1500
+                    }).then((result) => {
+                        window.location.href = "<%= url %>/user/logout";
+                    })
+                }else{
+                    Swal.fire({
+                        type : "error",
+                        title: "Dein Avatar konnte nicht geändert werden",
+                        text: data.error,
+                        timer: 1500
+                    })
+                }
+            },
+            error: function(jqxhr, status, exception) {
+                console.log(jqxhr)
+                console.log(status)
+                console.log(exception)
+                    alert('Exception:', exception);
+            }
+        })
     });
 })
+
+
+  
 
 
 
