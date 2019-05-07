@@ -30,7 +30,7 @@ router.post('/updateName', function(req, res) {
   });
 
 
-  router.post("/updatePassword", function(req,res){
+  router.post("/updatePassword", function(req, res){
     var passwordString = req.body.userPassword;
     var confirmPasswordString = req.body.confirmPassword;
     var user_ID = req.body.userId;
@@ -53,7 +53,7 @@ router.post('/updateName', function(req, res) {
             });
         });
     }
-  })
+  });
 
   router.post("/updateAvatar", function(req,res){
 
@@ -71,11 +71,11 @@ router.post('/updateName', function(req, res) {
     }else{
         res.send({status : "error", error : "userId not send"})
     }
-  })
+  });
 
   router.post("/deleteAccount", function(req,res){
       
-  })
+  });
 
   router.post("/isCalDavActivated", function(req, res){
 
@@ -99,7 +99,7 @@ router.post('/updateName', function(req, res) {
         res.send({ status : "error", error : "user Email not send"})
     }
 
-  })
+  });
 
   router.post("/isPasswordValid", function(req, res){
       console.log(req.body);
@@ -136,6 +136,6 @@ router.post('/updateName', function(req, res) {
     }
 
     
-  })
+  });
 
   module.exports = router;
