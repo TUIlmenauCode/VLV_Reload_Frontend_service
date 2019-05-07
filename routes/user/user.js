@@ -120,7 +120,7 @@ router.get("/profil", function(req, res, next){
     if (req.session.userId){
         var data = {
             url : utility.domain,
-            page_title : "Dein Dashboard",
+            page_title : "Dein Profil",
             apiErrors : [],
             userData : userData,
         }
