@@ -106,7 +106,6 @@ router.get("/logout", function(req, res, next){
 
 router.get("/profil", function(req, res, next){
 
-    
 
     var data = utility.data;
 
