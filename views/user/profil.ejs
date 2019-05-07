@@ -335,6 +335,9 @@ $("#userPassword-btn").on('click', function(){
                                                     })
                                                 }
                                             }, error: function(jqxhr, status, exception) {
+                                                console.log(jqxhr)
+                                                console.log(status)
+                                                console.log(exception)
                                                  alert('Exception:', exception);
                                             }
                                         })
