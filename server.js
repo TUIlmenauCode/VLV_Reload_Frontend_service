@@ -78,6 +78,9 @@ app.get('/', function (req, res, next) {
     data.userData.avatar = req.session.userAvatar;
   }
 
+  console.log(utility.data);
+  console.log(data);
+
   data.page_title = "Willkommen";
   res.render("welcome", data)  ;
 });
