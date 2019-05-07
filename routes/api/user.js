@@ -37,15 +37,40 @@ router.post('/updateName', function(req, res) {
 
     if(user_ID == null || user_ID == 0){
         res.send({status : "error", error : " user id is not set"});
-    }else if ( user_password !== user_password_confirm){
-        errorMessage.push("Du hast zwei unterschiedliche Passworter angegeben")
+    }else if ( user_password != user_password_confirm){
+        res.send({status: "error", error : "Password does not match"})
     }else {
-
+        const saltRounds = 10;
+        bcrypt.genSalt(saltRounds, function(err, salt) {
+            bcrypt.hash(user_password, salt, function(err, hash) {
+                dataHandler.set_Passwordhash__with_ID(user_ID, hash, function(err, apiResult){
+                    if(err){
+                        res.send({status: "error", error: err});
+                    }else{
+                        res.send({status: "success"});
+                    }
+                })
+            });
+        });
     }
   })
 
   router.post("/updateAvatar", function(req,res){
 
+    const avatarEncode = req.body.userAvatar;
+    const user_ID = req.body.userId;
+
+    if(user_ID != null && user_ID != 0 && avatarEncode != null && avatarEncode != ""){
+        dataHandler.set_Avatar__with_ID(avatarEncode, user_ID, function(err, apiResult){
+            if(err){
+                res.send({status: "error", error : err});
+            }else{
+                res.send({status: "success"})
+            }
+        })
+    }else{
+        res.send({status : "error", error : "userId not send"})
+    }
   })
 
   router.post("/deleteAccount", function(req,res){

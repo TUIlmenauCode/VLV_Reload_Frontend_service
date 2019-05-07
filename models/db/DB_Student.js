@@ -23,10 +23,19 @@ const Student = {
         return db.query("UPDATE `Student` SET `name`= ? WHERE Student.studentID = ?", [UserName, userId], callback);
     },
 
+    set_Passwordhash__with_ID:function(userId, PasswordHash, callback){
+        return db.query("UPDATE `Student` SET `password`= ? WHERE Student.studentID = ?", [PasswordHash, userId], callback);
+    },
+
+    set_Avatar__with_ID(avatarEncode, user_ID, callback){
+        return db.query("UPDATE `Student` SET `avatar`= ? WHERE `studentID` = ?",[avatarEncode, user_ID], callback);
+    },
+
     isDavActive:function(user_email, callback){
         return db.query(`
          USE sabreDav;
          SELECT users.id, principals.id, calendarinstances.id From users, principals, calendarinstances WHERE users.username = ? and principals.email = ? And calendarinstances.principaluri like ?;
+         USE VLV_V1;
         `,[user_email, user_email, '%'+ user_email ], callback);
     }
 

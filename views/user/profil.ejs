@@ -118,7 +118,7 @@
                                                         <h5>Passwort veränderen</h5>
                                                     </div>
                                                     <div class="card-block">
-                                                        <button class="btn waves-effect waves-light btn-primary btn-block">neueres Passwort</button>
+                                                        <button id="userPassword-btn" class="btn waves-effect waves-light btn-primary btn-block">neueres Passwort</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -267,6 +267,60 @@ $("#save-new-avatar").on('click', function(){
 
 $("#userName-btn").on('click', function(){
     userName_menu();
+})
+
+$("#userPassword-btn").on('click', function(){
+    Swal.fire({
+        title : "Passwort eingeben",
+        input: 'text',
+        showCancelButton: true,
+        confirmButtonText: "Speichern",
+        cancelButtonText : "Abbrechen"
+    }).then((result)=>{
+        const current_password = result.value;
+        if(current_password){
+            $.ajax({
+                    type: "POST",
+                    url: "<%= url %>/api/user/isPasswordValid",
+                    data: {
+                        userId : <%= userData.userId %>,
+                        userPassword : current_password
+                    },
+                    success: function(data){
+                        console.log(data);
+                        console.log(data.status);
+                        
+                        if(data.status == "success"){
+                            Swal.fire({
+                                title : "neues Passwort eingeben",
+                                input: 'text',
+                                showCancelButton: true,
+                                confirmButtonText: "Speichern",
+                                cancelButtonText : "Abbrechen"
+                            }).then((result) => {
+                                Swal(result.value);
+                            })  
+                        }else{
+                          Swal.fire({
+                            type: 'error',
+                            title: 'Etwas ist schief gelaufen',
+                            text : data.error,
+                            showConfirmButton: false,
+                            timer: 1500
+                            })  
+                        }
+                    },
+                    
+                }); 
+                
+           
+        }else{
+            Swal.fire({
+                title : "Du hast kein Passwort angegeben",
+                type: 'error',
+            })
+        }
+    })
 })
 
 function userName_menu(){
