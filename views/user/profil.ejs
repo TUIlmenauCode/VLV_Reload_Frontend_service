@@ -280,7 +280,7 @@ $("#save-new-avatar").on('click', function(){
                         title: "Dein Avatar wurde erfolgreich geändert",
                         timer: 1500
                     }).then((result) => {
-                        window.location.href = "<%= url %>/user/logout";
+                        //window.location.href = "<%= url %>/user/logout";
                     })
                 }else{
                     Swal.fire({
@@ -295,7 +295,7 @@ $("#save-new-avatar").on('click', function(){
                 console.log(jqxhr)
                 console.log(status)
                 console.log(exception)
-                    alert('Exception:', exception);
+                alert('Exception:', exception);
             }
         })
     });
