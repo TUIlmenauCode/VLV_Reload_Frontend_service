@@ -37,7 +37,7 @@ router.post('/updateName', function(req, res) {
 
     if(user_ID == null || user_ID == 0){
         res.send({status : "error", error : " user id is not set"});
-    }else if ( user_password != confirmPasswordString){
+    }else if ( passwordString != confirmPasswordString){
         res.send({status: "error", error : "Password does not match"})
     }else{
         const saltRounds = 10;
