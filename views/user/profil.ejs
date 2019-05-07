@@ -300,7 +300,7 @@ $("#userPassword-btn").on('click', function(){
                                 confirmButtonText: "Speichern",
                                 cancelButtonText : "Abbrechen"
                             }).then((result) => {
-                                Swal(result.value);
+                                console.log(result);
                             })  
                         }else{
                           Swal.fire({
