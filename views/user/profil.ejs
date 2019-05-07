@@ -235,7 +235,7 @@
 
 <script>
 var my_croppie = $('#profile-Avatar-croppie').croppie({
-    boundary: { width: 260, height: 260 },
+    boundary: { width: 250, height: 250 },
     viewport: { width: 190, height: 190, type: 'circle' }
 });
 
@@ -260,7 +260,9 @@ $("#save-new-avatar").on('click', function(){
     console.log("test");
     console.log(my_croppie);
     my_croppie.croppie('result', {
-        type : "base64"
+        type : "base64",
+        format: 'jpeg',
+        quality: 0.8
     }).then(function(base64) {
         console.log(base64);
         $.ajax({
