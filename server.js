@@ -69,77 +69,52 @@ const api_meal = require("./routes/api/Meals")
 
 // ROUTES 
 app.get('/', function (req, res, next) {
-  
-  var userData = {
-    userId : 0 ,
-    userName : "Ronny Fuchs" ,
-    avatar : ""
-}
 
-  if (req.session.userId){
-    userData.userId = req.session.userId ;
-    userData.userName = req.session.userName;
-    userData.avatar = req.session.userAvatar;
-  }
+  var data = utility.data;
   
-  var data = {
-    url : utility.domain,
-    page_title : "Willkommen",
-    userData : userData
+  if (req.session.userId){
+    data.userData.userId = req.session.userId ;
+    data.userData.userName = req.session.userName;
+    data.userData.avatar = req.session.userAvatar;
   }
+
+  data.page_title = "Willkommen";
   res.render("welcome", data)  ;
 });
 
 app.get('/public/view',function(req,res,next){
 
-  var userData = {
-    userId : 0 ,
-    userName : "Ronny Fuchs" ,
-    avatar : ""
-}
+  var data = utility.data;
 
   if (req.session.userId){
-    userData.userId = req.session.userId ;
-    userData.userName = req.session.userName;
-    userData.avatar = req.session.userAvatar;
+    data.userData.userId = req.session.userId ;
+    data.userData.userName = req.session.userName;
+    data.userData.avatar = req.session.userAvatar;
   }
 
-  var data = {
-    url : utility.domain,
-    page_title : "öffentliche Ansicht",
-    userData : userData
-  }
-res.render("public_start", data)  ;
+  data.page_title = "öffentliche Ansicht";
+  res.render("public_start", data)  ;
 })
 
 app.get('/public/dashboard',function(req,res,next){
 
-  var userData = {
-    userId : 0 ,
-    userName : "Ronny Fuchs" ,
-    avatar : ""
-}
-
+  var data = utility.data;
   if (req.session.userId){
-    userData.userId = req.session.userId ;
-    userData.userName = req.session.userName;
-    userData.avatar = req.session.userAvatar;
+    data.userData.userId = req.session.userId ;
+    data.userData.userName = req.session.userName;
+    data.userData.avatar = req.session.userAvatar;
   }
   
+  data.page_title = "aktuelle Raum Übersicht";
+
   var fetched_roomList = [{ roomId : 0, name : "Dummy"}];
   DB_room.selectAll__Name_ID(function(err, apiResult){
     if(err){
         console.log(err);
     }else{
         fetched_roomList = apiResult;
-        var data = {
-          url : utility.domain,
-          page_title : "aktuelle Raum Übersicht",
-          room_list : fetched_roomList,
-          userData : userData
-        }
-      
-      res.render("roomOverview", data)  ;
+        data.room_list = fetched_roomList;
+        res.render("roomOverview", data)  ;
     }
   })
 })
