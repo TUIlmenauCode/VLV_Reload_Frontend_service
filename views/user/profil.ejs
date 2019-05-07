@@ -262,6 +262,7 @@ $("#save-new-avatar").on('click', function(){
     my_croppie.croppie('result', {
         type : "base64"
     }).then(function(base64) {
+        console.log(base64);
         $.ajax({
             type: "POST",
             url: "<%= url %>/api/user/updateAvatar",
