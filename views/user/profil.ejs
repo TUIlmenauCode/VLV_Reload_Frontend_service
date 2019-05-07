@@ -314,10 +314,11 @@ $("#userPassword-btn").on('click', function(){
                                         console.log(data.status);
                                         $.ajax({
                                             type: "POST",
-                                            url: "<%= url %>/api/user/isPasswordValid",
+                                            url: "<%= url %>/api/user/updatePassword",
                                             data: {
                                                 userId : <%= userData.userId %>,
-                                                userPassword : current_password
+                                                userPassword : new_password,
+                                                confirmPassword : confirm_password
                                             },
                                             success: function(data){
                                                 if (data.status == "success"){
