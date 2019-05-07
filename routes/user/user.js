@@ -106,27 +106,23 @@ router.get("/logout", function(req, res, next){
 
 router.get("/profil", function(req, res, next){
 
-    var userData = utility.userData;
+    
 
     var data = utility.data;
 
     if (req.session.userId){
+        data.page_title = "Dein Profil",
         data.userData.userId = req.session.userId ;
         data.userData.userName = req.session.userName;
         data.userData.userEmail = req.session.userEmail;
         data.userData.avatar = req.session.userAvatar;
+        res.render("user/profil", data);
+    }else{
+        res.redirect(utility.domain + "/user/login");
     }
 
-    if (req.session.userId){
-        var data = {
-            url : utility.domain,
-            page_title : "Dein Profil",
-            apiErrors : [],
-            userData : userData,
-        }
-    }
     
-    res.render("user/profil", data);
+    
 })
 
 
