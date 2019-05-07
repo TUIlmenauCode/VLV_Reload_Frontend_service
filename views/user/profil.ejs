@@ -321,13 +321,13 @@ $("#userPassword-btn").on('click', function(){
                                                 if (data.status == "success"){
                                                     Swal.fire({
                                                         type : "success",
-                                                        title: "Dein Password wurde erfolgreich geändert"
+                                                        title: "Dein Password wurde erfolgreich geändert",
                                                         timer: 1500
                                                     })
                                                 }else{
                                                     Swal.fire({
                                                         type : "error",
-                                                        title: "Dein Password konnte nicht geändert werden"
+                                                        title: "Dein Password konnte nicht geändert werden",
                                                         text: data.error,
                                                         timer: 1500
                                                     })
