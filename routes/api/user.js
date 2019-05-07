@@ -16,9 +16,7 @@ router.post('/updateName', function(req, res) {
                     status: "error", 
                     error: err
                 });
-                
             }else{
-
                 res.send({
                     status: "success",
                     data: JSON.stringify(apiResult)
