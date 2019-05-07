@@ -269,6 +269,12 @@ $("#save-new-avatar").on('click', function(){
             },
             success: function(data, status, xhr){
                 console.log(data);
+            },
+            error: function(jqxhr, status, exception) {
+                console.log(jqxhr)
+                console.log(status)
+                console.log(exception)
+                    alert('Exception:', exception);
             }
         })
     });
