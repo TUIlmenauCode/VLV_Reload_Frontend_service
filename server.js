@@ -79,7 +79,7 @@ app.get('/', function (req, res, next) {
   if (req.session.userId){
     userData.userId = req.session.userId ;
     userData.userName = req.session.userName;
-    userData.avatar = req.session.avatar;
+    userData.avatar = req.session.userAvatar;
   }
   
   var data = {
@@ -101,7 +101,7 @@ app.get('/public/view',function(req,res,next){
   if (req.session.userId){
     userData.userId = req.session.userId ;
     userData.userName = req.session.userName;
-    userData.avatar = req.session.avatar;
+    userData.avatar = req.session.userAvatar;
   }
 
   var data = {
@@ -123,7 +123,7 @@ app.get('/public/dashboard',function(req,res,next){
   if (req.session.userId){
     userData.userId = req.session.userId ;
     userData.userName = req.session.userName;
-    userData.avatar = req.session.avatar;
+    userData.avatar = req.session.userAvatar;
   }
   
   var fetched_roomList = [{ roomId : 0, name : "Dummy"}];
@@ -160,7 +160,7 @@ app.get('/zug/abfahrtzeiten',function(req,res,next){
   if (req.session.userId){
     userData.userId = req.session.userId ;
     userData.userName = req.session.userName;
-    userData.avatar = req.session.avatar;
+    userData.avatar = req.session.userAvatar;
   }
   
   var fetched_roomList = [{ roomId : 0, name : "Dummy"}];
