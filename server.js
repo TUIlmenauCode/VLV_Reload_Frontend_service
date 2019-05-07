@@ -134,7 +134,6 @@ app.get('/zug/abfahrtzeiten',function(req,res,next){
     userName : "Ronny Fuchs" ,
     avatar : ""
 }
-
   if (req.session.userId){
     userData.userId = req.session.userId ;
     userData.userName = req.session.userName;
