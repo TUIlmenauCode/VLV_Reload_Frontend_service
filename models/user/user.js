@@ -32,7 +32,7 @@ const User = {
         }
 
         if ( user_password !== user_password_confirm){
-            errorMessage.push("Du hast zwei unterschiedliche Passworter angegeben")
+            errorMessage.push("Du hast zwei unterschiedliche Passwörter angegeben")
         }
 
         console.log(errorMessage);
