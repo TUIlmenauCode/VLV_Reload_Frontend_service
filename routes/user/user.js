@@ -73,7 +73,7 @@ router.get("/dashboard", function(req, res, next){
     if (req.session.userId){
         userData.userId = req.session.userId ;
         userData.userName = req.session.userName;
-        userData.avatar = req.session.avatar;
+        userData.avatar = req.session.userAvatar;
     }
 
     if (req.session.userId){
@@ -114,7 +114,7 @@ router.get("/profil", function(req, res, next){
         data.userData.userId = req.session.userId ;
         data.userData.userName = req.session.userName;
         data.userData.userEmail = req.session.userEmail;
-        data.userData.avatar = req.session.avatar;
+        data.userData.avatar = req.session.userAvatar;
     }
 
     if (req.session.userId){
