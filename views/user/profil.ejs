@@ -293,14 +293,58 @@ $("#userPassword-btn").on('click', function(){
                         if(data.status == "success"){
                             Swal.fire({
                                 title : "neues Passwort eingeben",
-                                html:
-                                '<input id="swal-input1" class="swal2-input">' +
-                                '<input id="swal-input2" class="swal2-input">',
+                                input : "text",
                                 showCancelButton: true,
                                 confirmButtonText: "Speichern",
                                 cancelButtonText : "Abbrechen"
                             }).then((result) => {
                                 console.log(result);
+                                const new_password = result.value;
+                                Swal.fire({
+                                    title : "neues Passwort eingeben",
+                                    input : "text",
+                                    showCancelButton: true,
+                                    confirmButtonText: "Speichern",
+                                    cancelButtonText : "Abbrechen"
+                                }).then((result) => {
+                                    console.log(result);
+                                    const confirm_password = result.value;
+                                    if(confirm_password == new_password){
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "<%= url %>/api/user/isPasswordValid",
+                                            data: {
+                                                userId : <%= userData.userId %>,
+                                                userPassword : current_password
+                                            },
+                                            success: function(data){
+                                                if (data.status == "success"){
+                                                    Swal.fire({
+                                                        type : "success",
+                                                        title: "Dein Password wurde erfolgreich geändert"
+                                                        timer: 1500
+                                                    })
+                                                }else{
+                                                    Swal.fire({
+                                                        type : "error",
+                                                        title: "Dein Password konnte nicht geändert werden"
+                                                        text: data.error,
+                                                        timer: 1500
+                                                    })
+                                                }
+                                            }
+                                        })
+                        console.log(data);
+                        console.log(data.status);
+                                    }else{
+                                        Swal.fire({
+                                            type : "error",
+                                            title : "Die neuen Passwörter waren nicht gleich."
+                                            timer: 1500
+                                        });
+                                    }
+
+                                })  
                             })  
                         }else{
                           Swal.fire({
