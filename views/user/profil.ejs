@@ -260,23 +260,23 @@ $("#save-new-avatar").on('click', function(){
     console.log("test");
     my_croppie.croppie('result', 'base64').then(function(base64) {
         console.log(base64);
-        $.ajax({
-            type: "POST",
-            url: "<%= url %>/api/user/updateAvatar",
-            data: {
-                userId : <%= userData.userId %>,
-                userAvatar : base64,
-            },
-            success: function(data, status, xhr){
-                console.log(data);
-            },
-            error: function(jqxhr, status, exception) {
-                console.log(jqxhr)
-                console.log(status)
-                console.log(exception)
-                    alert('Exception:', exception);
-            }
-        })
+        // $.ajax({
+        //     type: "POST",
+        //     url: "<%= url %>/api/user/updateAvatar",
+        //     data: {
+        //         userId : <%= userData.userId %>,
+        //         userAvatar : base64,
+        //     },
+        //     success: function(data, status, xhr){
+        //         console.log(data);
+        //     },
+        //     error: function(jqxhr, status, exception) {
+        //         console.log(jqxhr)
+        //         console.log(status)
+        //         console.log(exception)
+        //             alert('Exception:', exception);
+        //     }
+        // })
     });
 })
 
