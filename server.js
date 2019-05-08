@@ -70,7 +70,7 @@ const api_meal = require("./routes/api/Meals")
 // ROUTES 
 app.get('/', function (req, res, next) {
 
-  var data = JSON.parse(JSON.stringfy(utility.data));
+  var data = JSON.parse(JSON.stringify(utility.data));
   
   if (req.session.userId){
     data.userData.userId = req.session.userId ;
