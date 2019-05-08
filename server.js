@@ -75,7 +75,7 @@ app.get('/', function (req, res, next) {
   if (req.session.userId){
     data.userData.userId = req.session.userId ;
     data.userData.userName = req.session.userName;
-    data.userData.avatar = req.session.userAvatar;
+    data.userData.userAvatar = req.session.userAvatar;
   }
 
   console.log(utility.data);
@@ -87,12 +87,12 @@ app.get('/', function (req, res, next) {
 
 app.get('/public/view',function(req,res,next){
 
-  var data = utility.data;
+  var data = JSON.parse(JSON.stringify(utility.data));
 
   if (req.session.userId){
     data.userData.userId = req.session.userId ;
     data.userData.userName = req.session.userName;
-    data.userData.avatar = req.session.userAvatar;
+    data.userData.userAvatar = req.session.userAvatar;
   }
 
   data.page_title = "öffentliche Ansicht";
@@ -101,11 +101,11 @@ app.get('/public/view',function(req,res,next){
 
 app.get('/public/dashboard',function(req,res,next){
 
-  var data = utility.data;
+  var data = JSON.parse(JSON.stringify(utility.data));
   if (req.session.userId){
     data.userData.userId = req.session.userId ;
     data.userData.userName = req.session.userName;
-    data.userData.avatar = req.session.userAvatar;
+    data.userData.userAvatar = req.session.userAvatar;
   }
   
   data.page_title = "aktuelle Raum Übersicht";
@@ -129,33 +129,17 @@ app.get('/public/dashboard',function(req,res,next){
 
 app.get('/zug/abfahrtzeiten',function(req,res,next){
 
-  var userData = {
-    userId : 0 ,
-    userName : "Ronny Fuchs" ,
-    avatar : ""
-}
+  var data = JSON.parse(JSON.stringify(utility.data));
+
   if (req.session.userId){
     userData.userId = req.session.userId ;
     userData.userName = req.session.userName;
-    userData.avatar = req.session.userAvatar;
+    userData.userAvatar = req.session.userAvatar;
   }
+
+  data.page_title = "Abfahrtzeiten Bahnhof Ilmenau";
+  res.render("departure_times", data)  ;
   
-  var fetched_roomList = [{ roomId : 0, name : "Dummy"}];
-  DB_room.selectAll__Name_ID(function(err, apiResult){
-    if(err){
-        console.log(err);
-    }else{
-        fetched_roomList = apiResult;
-        var data = {
-          url : utility.domain,
-          page_title : "aktuelle Raum Übersicht",
-          room_list : fetched_roomList,
-          userData : userData
-        }
-      
-      res.render("departure_times", data)  ;
-    }
-  })
 })
 
 

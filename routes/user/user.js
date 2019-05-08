@@ -64,11 +64,7 @@ router.get("/verifiy", function(req, res, next){
 });
 
 router.get("/dashboard", function(req, res, next){
-    var userData = {
-        userId : 0 ,
-        userName : "Ronny Fuchs" ,
-        avatar : ""
-    }
+    var data = JSON.parse(JSON.stringify(utility.data));
     
     if (req.session.userId){
         userData.userId = req.session.userId ;
@@ -107,7 +103,7 @@ router.get("/logout", function(req, res, next){
 router.get("/profil", function(req, res, next){
 
 
-    var data = utility.data;
+    var data = JSON.parse(JSON.stringify(utility.data));
 
     if (req.session.userId){
         data.page_title = "Dein Profil",
