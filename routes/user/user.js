@@ -67,20 +67,13 @@ router.get("/dashboard", function(req, res, next){
     var data = JSON.parse(JSON.stringify(utility.data));
     
     if (req.session.userId){
-        userData.userId = req.session.userId ;
-        userData.userName = req.session.userName;
-        userData.userAvatar = req.session.userAvatar;
+        data.userData.userId = req.session.userId ;
+        data.userData.userName = req.session.userName;
+        data.userData.userAvatar = req.session.userAvatar;
     }
-
+    data.page_title =  "Dein Dashboard";
     if (req.session.userId){
-        var data = {
-            url : utility.domain,
-            page_title : "Dein Dashboard",
-            apiErrors : [],
-            userData : userData,
-          }
         res.render("user/dashboard", data);
-
     }else{
         res.redirect(utility.domain + "/user/login");
     }
